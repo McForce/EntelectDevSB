@@ -1,0 +1,34 @@
+{
+  "required" : [ "Input:Candidate", "Input:Content" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input:Candidate" : {
+      "title" : "Candidate",
+      "description" : "Candidate record 18 digit Id",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Candidate__c"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Input:Content" : {
+      "title" : "Content",
+      "description" : "PDF document attached to the Candidate Record",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "ContentDocument"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "outputLanguage" : {
+      "title" : "Prompt Operation output language",
+      "description" : "Select Prompt Operation output language",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

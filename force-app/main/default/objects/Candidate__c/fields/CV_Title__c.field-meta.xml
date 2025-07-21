@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CV_Title__c</fullName>
+    <description>Descriptive title of the uploaded CV document (e.g., “JohnDoe_SFDCArchitect.pdf”). 
+This field is for Automation purposes</description>
+    <externalId>false</externalId>
+    <label>CV Title</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

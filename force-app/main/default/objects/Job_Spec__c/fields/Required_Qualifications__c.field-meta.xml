@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Required_Qualifications__c</fullName>
+    <description>Academic or professional credentials required (e.g., BSc Computer Science, Salesforce Admin Cert). Note that the candidate wont be automatically disqualified if they don&apos;t meet all requirements</description>
+    <label>Required Qualifications</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

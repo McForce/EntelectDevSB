@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Required_Experience__c</fullName>
+    <description>Specific types or years of experience required for the role (e.g., “5+ years Salesforce project delivery experience”). Note that Candidate wont be automatically disqualified if they dont meet all requirements</description>
+    <label>Required Experience</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>6</visibleLines>
+</CustomField>
