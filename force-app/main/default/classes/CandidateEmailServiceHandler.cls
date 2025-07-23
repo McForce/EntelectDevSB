@@ -1,63 +1,56 @@
-global class CandidateEmailServiceHandler implements Messaging.InboundEmailHandler {
-
-    global Messaging.InboundEmailResult handleInboundEmail(Messaging.InboundEmail email,
-                                                          Messaging.InboundEnvelope envelope) {
-        
-        Messaging.InboundEmailResult result = new Messaging.InboundEmailResult();
-        
-        try {
-            // Create Candidate record
-            Candidate__c candidate = new Candidate__c();
-            
-            // Extract sender's name from fromName or email address
-            String senderName = String.isNotBlank(email.fromName) ? email.fromName : email.fromAddress;
-            
-            // Populate Candidate fields
-            candidate.Name = senderName;
-            candidate.From_Email__c = email.fromAddress;
-            candidate.Email_Subject__c = email.subject;
-            candidate.Email_Body__c = email.plainTextBody != null ? email.plainTextBody : email.htmlBody;
-            
-            insert candidate;
-            
-            // Save attachments, if any
-            List<Attachment> attachmentList = new List<Attachment>();
-            
-            // Process text attachments
-            if (email.textAttachments != null && !email.textAttachments.isEmpty()) {
-                for (Messaging.InboundEmail.TextAttachment tAttachment : email.textAttachments) {
-                    Attachment attachment = new Attachment();
-                    attachment.Name = tAttachment.fileName;
-                    attachment.Body = Blob.valueOf(tAttachment.body);
-                    attachment.ParentId = candidate.Id;
-                    attachmentList.add(attachment);
-                }
-            }
-            
-            // Process binary attachments
-            if (email.binaryAttachments != null && !email.binaryAttachments.isEmpty()) {
-                for (Messaging.InboundEmail.BinaryAttachment bAttachment : email.binaryAttachments) {
-                    Attachment attachment = new Attachment();
-                    attachment.Name = bAttachment.fileName;
-                    attachment.Body = bAttachment.body;
-                    attachment.ParentId = candidate.Id;
-                    attachmentList.add(attachment);
-                }
-            }
-            
-            // Insert all attachments at once
-            if (!attachmentList.isEmpty()) {
-                insert attachmentList;
-            }
-            
-            result.success = true;
-            
-        } catch (Exception e) {
-            result.success = false;
-            result.message = 'Error creating Candidate record: ' + e.getMessage();
-        }
-        
-        return result;
+public with sharing class CandidateEmailServiceHandler implements Messaging.InboundEmailHandler {
+ 
+  public Messaging.InboundEmailResult handleInboundEmail(Messaging.inboundEmail email, 
+                                                       Messaging.InboundEnvelope env){
+ 
+    // Create an InboundEmailResult object for returning the result of the 
+    // Apex Email Service
+    Messaging.InboundEmailResult result = new Messaging.InboundEmailResult();
+  
+    String myPlainText= '';
+    
+    // Add the email plain text into the local variable 
+    myPlainText = email.plainTextBody;
+   
+    // New Task object to be created
+    Task[] newTask = new Task[0];
+   
+    // Try to look up any contacts based on the email from address
+    // If there is more than one contact with the same email address,
+    // an exception will be thrown and the catch statement will be called.
+    try {
+      Contact vCon = [SELECT Id, Name, Email
+        FROM Contact
+        WHERE Email = :email.fromAddress
+        WITH USER_MODE
+        LIMIT 1];
+      
+      // Add a new Task to the contact record we just found above.
+      newTask.add(new Task(Description =  myPlainText,
+           Priority = 'Normal',
+           Status = 'Inbound Email',
+           Subject = email.subject,
+           IsReminderSet = true,
+           ReminderDateTime = System.now()+1,
+           WhoId =  vCon.Id));
+     
+     // Insert the new Task 
+     insert as user newTask;    
+     
+     System.debug('New Task Object: ' + newTask );   
     }
-    }
-        
+    // If an exception occurs when the query accesses 
+    // the contact record, a QueryException is called.
+    // The exception is written to the Apex debug log.
+   catch (QueryException e) {
+       System.debug('Query Issue: ' + e);
+   }
+   
+   // Set the result to true. No need to send an email back to the user 
+   // with an error message
+   result.success = true;
+   
+   // Return the result for the Apex Email Service
+   return result;
+  }
+}
