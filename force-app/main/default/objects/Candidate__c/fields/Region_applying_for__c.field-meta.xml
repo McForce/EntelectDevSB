@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Region_applying_for__c</fullName>
+    <label>Region applying for</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>PRETORIA, South Africa</fullName>
+                <default>false</default>
+                <label>PRETORIA, South Africa</label>
+            </value>
+            <value>
+                <fullName>CAPE TOWN, South Africa</fullName>
+                <default>false</default>
+                <label>CAPE TOWN, South Africa</label>
+            </value>
+            <value>
+                <fullName>DURBAN, South Africa</fullName>
+                <default>false</default>
+                <label>DURBAN, South Africa</label>
+            </value>
+            <value>
+                <fullName>Johannesburg, South Africa</fullName>
+                <default>false</default>
+                <label>Johannesburg, South Africa</label>
+            </value>
+            <value>
+                <fullName>Amsterdam, The Netherlands</fullName>
+                <default>false</default>
+                <label>Amsterdam, The Netherlands</label>
+            </value>
+            <value>
+                <fullName>Auckland, New Zealand</fullName>
+                <default>false</default>
+                <label>Auckland, New Zealand</label>
+            </value>
+            <value>
+                <fullName>Wellington, New Zealand</fullName>
+                <default>false</default>
+                <label>Wellington, New Zealand</label>
+            </value>
+            <value>
+                <fullName>London, United Kingdom</fullName>
+                <default>false</default>
+                <label>London, United Kingdom</label>
+            </value>
+            <value>
+                <fullName>Sydney, Australia</fullName>
+                <default>false</default>
+                <label>Sydney, Australia</label>
+            </value>
+            <value>
+                <fullName>Harare, Zimbabwe</fullName>
+                <default>false</default>
+                <label>Harare, Zimbabwe</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

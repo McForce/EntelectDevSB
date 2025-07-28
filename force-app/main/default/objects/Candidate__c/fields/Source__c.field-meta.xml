@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Source__c</fullName>
+    <label>Source</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Careers 24</fullName>
+                <default>false</default>
+                <label>Careers 24</label>
+            </value>
+            <value>
+                <fullName>Email</fullName>
+                <default>false</default>
+                <label>Email</label>
+            </value>
+            <value>
+                <fullName>Glassdoor</fullName>
+                <default>false</default>
+                <label>Glassdoor</label>
+            </value>
+            <value>
+                <fullName>Headhunt</fullName>
+                <default>false</default>
+                <label>Headhunt</label>
+            </value>
+            <value>
+                <fullName>Internal Referral</fullName>
+                <default>false</default>
+                <label>Internal Referral</label>
+            </value>
+            <value>
+                <fullName>LinkedIn</fullName>
+                <default>false</default>
+                <label>LinkedIn</label>
+            </value>
+            <value>
+                <fullName>Pnet</fullName>
+                <default>false</default>
+                <label>Pnet</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
