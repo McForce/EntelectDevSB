@@ -20,6 +20,11 @@ global class CandidateEmailServiceHandler implements Messaging.InboundEmailHandl
             // Set the email subject
             if (email.subject != null && email.subject != '') {
                 candidate.Email_Subject__c = email.subject;
+                
+                // Check if subject contains "New submission from Application Form"
+                if (email.subject.contains('New submission from Application Form')) {
+                    candidate.Creation_Source__c = 'Culture Site Application Form Email';
+                }
             }
             
              //Set the email body
