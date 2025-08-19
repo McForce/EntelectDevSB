@@ -20,19 +20,19 @@ trigger ContentDocumentLinkTrigger on ContentDocumentLink (after insert) {
         
         // Only proceed if we have Candidate records to update
         if (!candidateIds.isEmpty()) {
-            // Query ContentDocument records to get titles
+            // Query ContentDocument records to get titles and FileType
             Map<Id, ContentDocument> contentDocuments = new Map<Id, ContentDocument>(
-                [SELECT Id, Title FROM ContentDocument WHERE Id IN :contentDocumentIds]
+                [SELECT Id, Title, FileType FROM ContentDocument WHERE Id IN :contentDocumentIds]
             );
             
             // Create map to store Candidate ID to Document Title
             Map<Id, String> candidateToDocumentTitle = new Map<Id, String>();
             
-            // Match ContentDocument titles to Candidates
+            // Match ContentDocument titles to Candidates, excluding SNOTE types
             for (ContentDocumentLink cdl : Trigger.new) {
                 if (String.valueOf(cdl.LinkedEntityId).startsWith(candidatePrefix)) {
                     ContentDocument cd = contentDocuments.get(cdl.ContentDocumentId);
-                    if (cd != null) {
+                    if (cd != null && cd.FileType != 'SNOTE') {
                         candidateToDocumentTitle.put(cdl.LinkedEntityId, cd.Title);
                     }
                 }
