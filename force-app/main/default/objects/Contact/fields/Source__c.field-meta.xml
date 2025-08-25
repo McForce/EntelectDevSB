@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Source__c</fullName>
+    <label>Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Manual Creation</fullName>
+                <default>false</default>
+                <label>Manual Creation</label>
+            </value>
+            <value>
+                <fullName>Wiza</fullName>
+                <default>false</default>
+                <label>Wiza</label>
+            </value>
+            <value>
+                <fullName>Candidate Application</fullName>
+                <default>false</default>
+                <label>Candidate Application</label>
+            </value>
+            <value>
+                <fullName>LinkedIn</fullName>
+                <default>false</default>
+                <label>LinkedIn</label>
+            </value>
+            <value>
+                <fullName>Lead</fullName>
+                <default>false</default>
+                <label>Lead</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
