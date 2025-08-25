@@ -1,8 +1,343 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Agent_to_update_Candidate_with_App_Form</name>
+        <label>Agent to update Candidate with App Form</label>
+        <locationX>68</locationX>
+        <locationY>518</locationY>
+        <actionName>Copilot_for_Salesforce</actionName>
+        <actionType>generateAiAgentResponse</actionType>
+        <connector>
+            <targetReference>Get_Application</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>userMessage</name>
+            <value>
+                <stringValue>A candidate has applied to a job by sending their details via email. the details are stored in the Email body field ({!$Record.Email_Body__c}) on this Candidate__c cecord {!$Record.Id}. All the information is on the Email Body field ({!$Record.Email_Body__c}). Firstly Organize the information in the following format:
+Name:
+Email:
+Phone:
+Timing:
+Role/s applying for:
+Years of Experience:
+Current Role:
+Region applying for:
+Identification Type:
+Ethnicity:
+CV:
+How did you first learn about us?:
+Hidden Field:
+Consent:
+Please organize the information and use the Capture Application Form Email Auto Launched Flow action to update the Canidate</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>Copilot_for_Salesforce</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Call_Salesforce_Agent</name>
+        <label>Call Salesforce Agent</label>
+        <locationX>943</locationX>
+        <locationY>1123</locationY>
+        <actionName>Copilot_for_Salesforce</actionName>
+        <actionType>generateAiAgentResponse</actionType>
+        <connector>
+            <targetReference>Culture_Site_Application</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>userMessage</name>
+            <value>
+                <stringValue>{!PromptForAgent}</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>Copilot_for_Salesforce</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>CV_Analysis_and_Candidate_Job_Match_Prompt</name>
+        <label>CV Analysis and Candidate Job Match Prompt</label>
+        <locationX>1329</locationX>
+        <locationY>910</locationY>
+        <actionName>CV_Analysis_and_Candidate_Job_Match_Prompt</actionName>
+        <actionType>generatePromptResponse</actionType>
+        <connector>
+            <targetReference>Call_Salesforce_Agent</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>Input:Content</name>
+            <value>
+                <elementReference>Get_Content</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Input:Application</name>
+            <value>
+                <elementReference>Get_Application</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>CV_Analysis_and_Candidate_Job_Match_Prompt</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>CV_Analysis_Prompt</name>
+        <label>CV Analysis Prompt</label>
+        <locationX>1172</locationX>
+        <locationY>781</locationY>
+        <actionName>CV_Analysis_Prompt</actionName>
+        <actionType>generatePromptResponse</actionType>
+        <connector>
+            <targetReference>Update_Candidate_Only</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>Input:Candidate</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Input:Content</name>
+            <value>
+                <elementReference>Get_Content</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>CV_Analysis_Prompt</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Jop_Match_Prompt</name>
+        <label>Jop Match Prompt</label>
+        <locationX>1403</locationX>
+        <locationY>734</locationY>
+        <actionName>CV_Analysis_Prompt</actionName>
+        <actionType>generatePromptResponse</actionType>
+        <connector>
+            <targetReference>CV_Analysis_and_Candidate_Job_Match_Prompt</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>Input:Candidate</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Input:Content</name>
+            <value>
+                <elementReference>Get_Content</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>CV_Analysis_Prompt</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_To_Recruiter</name>
+        <label>Send Email To Recruiter</label>
+        <locationX>502</locationX>
+        <locationY>1008</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Owner:User.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>composeEmailContent</name>
+            <value>
+                <stringValue>True</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Culture Site Application</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <stringValue>&lt;p&gt;{!Emailtobesent}&lt;/p&gt;</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>useLineBreaks</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+        <versionString>1.0.1</versionString>
+    </actionCalls>
+    <actionCalls>
+        <name>Update_Candidate_Only</name>
+        <label>Update Candidate Only</label>
+        <locationX>1013</locationX>
+        <locationY>757</locationY>
+        <actionName>Copilot_for_Salesforce</actionName>
+        <actionType>generateAiAgentResponse</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>userMessage</name>
+            <value>
+                <stringValue>Please update the Candidate record ({!$Record.Id}) with the relevant CV information found below:
+
+{!CV_Analysis_Prompt.promptResponse}</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>Copilot_for_Salesforce</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
     <apiVersion>64.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Application</name>
+        <label>Application</label>
+        <locationX>1170</locationX>
+        <locationY>600</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Application_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Application</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Jop_Match_Prompt</targetReference>
+            </connector>
+            <label>Application Found</label>
+        </rules>
+        <rules>
+            <name>No_Application</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Application</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CV_Analysis_Prompt</targetReference>
+            </connector>
+            <label>No Application</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Creation_Source</name>
+        <label>Creation Source</label>
+        <locationX>345</locationX>
+        <locationY>420</locationY>
+        <defaultConnector>
+            <targetReference>Get_Application</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Culture_Site_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Creation_Source__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Culture Site Application Form Email</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Agent_to_update_Candidate_with_App_Form</targetReference>
+            </connector>
+            <label>Culture Site Email</label>
+        </rules>
+        <rules>
+            <name>Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Creation_Source__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Direct Candidate Email</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Not_a_CV</targetReference>
+            </connector>
+            <label>Email</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Culture_Site_Application</name>
+        <label>Culture Site Application</label>
+        <locationX>686</locationX>
+        <locationY>1051</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Culture_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Creation_Source__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Culture Site Application Form Email</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_To_Recruiter</targetReference>
+            </connector>
+            <label>Culture Email</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Not_a_CV</name>
+        <label>Not a CV</label>
+        <locationX>1033</locationX>
+        <locationY>429</locationY>
+        <defaultConnector>
+            <targetReference>Get_Application</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Not_a_vadid_CV_document</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CV_Analysis_Prompt.promptResponse</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>not a CV document</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Candidate</targetReference>
+            </connector>
+            <label>Not a vadid CV document</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
+    <formulas>
+        <name>CandidateLinkEmail</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Partner_Server_URL_340},FIND(&quot;/services&quot;, {!$Api.Partner_Server_URL_340})) &amp; {!$Record.Id}</expression>
+    </formulas>
     <interviewLabel>Candidate RTF Update {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Candidate RTF Update</label>
     <processMetadataValues>
@@ -24,21 +359,76 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <name>Get_Content</name>
-        <label>Get Content</label>
-        <locationX>776</locationX>
-        <locationY>551</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+    <recordDeletes>
+        <name>Delete_Candidate</name>
+        <label>Delete Candidate</label>
+        <locationX>1377</locationX>
+        <locationY>429</locationY>
         <connector>
-            <targetReference>Call_Agentforce_Agent_Auto_Launched_Flow</targetReference>
+            <targetReference>Delete_CV</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>Get_Content_Document_Link.ContentDocumentId</elementReference>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <object>Candidate__c</object>
+    </recordDeletes>
+    <recordDeletes>
+        <name>Delete_CV</name>
+        <label>Delete CV</label>
+        <locationX>1769</locationX>
+        <locationY>414</locationY>
+        <inputReference>Get_Content</inputReference>
+    </recordDeletes>
+    <recordLookups>
+        <name>Get_Application</name>
+        <label>Get Application</label>
+        <locationX>464</locationX>
+        <locationY>800</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Application</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Candidate__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Application__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Content</name>
+        <label>Get Content</label>
+        <locationX>402</locationX>
+        <locationY>223</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Creation_Source</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>Transform_Links</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>FileType</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>SNOTE</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -48,11 +438,11 @@
     <recordLookups>
         <name>Get_Content_Document_Link</name>
         <label>Get Content Document Link</label>
-        <locationX>776</locationX>
-        <locationY>443</locationY>
+        <locationX>778</locationX>
+        <locationY>156</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_Content</targetReference>
+            <targetReference>Transform_Links</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -62,16 +452,13 @@
                 <elementReference>$Record.Id</elementReference>
             </value>
         </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>ContentDocumentLink</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>656</locationX>
+        <locationX>1104</locationX>
         <locationY>50</locationY>
-        <connector>
-            <targetReference>Get_Content_Document_Link</targetReference>
-        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>CV_Title__c</field>
@@ -82,35 +469,46 @@
         </filters>
         <object>Candidate__c</object>
         <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>Get_Content_Document_Link</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
-    <subflows>
-        <name>Call_Agentforce_Agent_Auto_Launched_Flow</name>
-        <label>Call Agentforce Agent Auto Launched Flow</label>
-        <locationX>649</locationX>
-        <locationY>905</locationY>
-        <flowName>Call_Agentforce_Agent_Auto_Launched_Flow</flowName>
-        <inputAssignments>
-            <name>CandidateId</name>
-            <value>
-                <elementReference>$Record</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>ContentDocId</name>
-            <value>
-                <elementReference>Get_Content</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>ContentDocumentLink</name>
-            <value>
-                <elementReference>Get_Content_Document_Link</elementReference>
-            </value>
-        </inputAssignments>
+    <textTemplates>
+        <name>Emailtobesent</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;A new Application has been made through the Culture site&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Please follow this link to be taken to the Candidate record.  &lt;a href=&quot;{!CandidateLinkEmail}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Candidate Link&lt;/a&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>PromptForAgent</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Please update the Candidate record &lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;(&lt;/span&gt;{!$Record.Id}) with the relevant CV information found below:&lt;/p&gt;&lt;p&gt;CV {!CV_Analysis_and_Candidate_Job_Match_Prompt.promptResponse}&lt;/p&gt;&lt;p&gt;Job Match {!Jop_Match_Prompt.promptResponse}&lt;/p&gt;&lt;h1&gt;Use the &quot;&lt;strong style=&quot;font-size: 20px;&quot;&gt;Capture Application Form Email Auto Launched Flow&lt;/strong&gt;&quot; action&lt;/h1&gt;</text>
+    </textTemplates>
+    <transforms>
+        <name>Transform_Links</name>
+        <label>Transform Links</label>
+        <locationX>602</locationX>
+        <locationY>154</locationY>
+        <connector>
+            <targetReference>Get_Content</targetReference>
+        </connector>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <scale>0</scale>
         <storeOutputAutomatically>true</storeOutputAutomatically>
-    </subflows>
+        <transformValues>
+            <transformValueActions>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>Get_Content_Document_Link[$EachItem].ContentDocumentId</elementReference>
+                </value>
+            </transformValueActions>
+        </transformValues>
+    </transforms>
     <variables>
         <name>Prompt</name>
         <dataType>String</dataType>

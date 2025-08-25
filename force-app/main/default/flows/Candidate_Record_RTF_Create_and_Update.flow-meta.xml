@@ -1,32 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <name>Sync_Candidate_Skills_from_Text</name>
-        <label>Sync Candidate Skills from Text</label>
-        <locationX>678</locationX>
-        <locationY>348</locationY>
-        <actionName>CandidateSkillsFromText</actionName>
-        <actionType>apex</actionType>
-        <connector>
-            <targetReference>Get_Application</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>candidateId</name>
-            <value>
-                <elementReference>Get_Candidate.Id</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>skillsText</name>
-            <value>
-                <elementReference>Get_Candidate.Skills__c</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>CandidateSkillsFromText</nameSegment>
-        <offset>0</offset>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </actionCalls>
     <apiVersion>64.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
@@ -69,8 +42,8 @@
     <decisions>
         <name>Contact_Exists</name>
         <label>Contact Exists</label>
-        <locationX>974</locationX>
-        <locationY>506</locationY>
+        <locationX>859</locationX>
+        <locationY>614</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Existing</name>
@@ -141,18 +114,8 @@
         </rules>
     </decisions>
     <environments>Default</environments>
-    <formulas>
-        <name>CVNumber</name>
-        <dataType>Number</dataType>
-        <expression>IF(
-    ISBLANK({!Look_for_Duplicate_Candidates.Id}),
-    1,
-    {!Look_for_Duplicate_Candidates.CV_Number__c} + 1
-)</expression>
-        <scale>2</scale>
-    </formulas>
-    <interviewLabel>Candidate Update Auto launched Flow {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Candidate Update Auto launched Flow</label>
+    <interviewLabel>Candidate Record RTF Create and Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Candidate Record RTF Create and Update</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -245,12 +208,6 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>MobilePhone</field>
-            <value>
-                <elementReference>Phone</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>RecordTypeId</field>
             <value>
                 <elementReference>Get_Record_Type.Id</elementReference>
@@ -268,8 +225,8 @@
     <recordLookups>
         <name>Get_Account</name>
         <label>Get Account</label>
-        <locationX>1258</locationX>
-        <locationY>383</locationY>
+        <locationX>1240</locationX>
+        <locationY>512</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Contact_Exists</targetReference>
@@ -287,43 +244,20 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>Get_Application</name>
-        <label>Get Application</label>
-        <locationX>999</locationX>
-        <locationY>323</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Update_Application</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Candidate__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Candidate.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Application__c</object>
-        <sortField>CreatedDate</sortField>
-        <sortOrder>Asc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>Get_Candidate</name>
         <label>Get Candidate</label>
         <locationX>974</locationX>
-        <locationY>183</locationY>
+        <locationY>384</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Look_for_Duplicate_Candidates</targetReference>
+            <targetReference>Get_Contact</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>recordId</elementReference>
+                <elementReference>$Record.Id</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -333,8 +267,8 @@
     <recordLookups>
         <name>Get_Contact</name>
         <label>Get Contact</label>
-        <locationX>1306</locationX>
-        <locationY>247</locationY>
+        <locationX>1198</locationX>
+        <locationY>329</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Account</targetReference>
@@ -372,222 +306,6 @@
         <object>RecordType</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
-    <recordLookups>
-        <name>Look_for_Duplicate_Candidates</name>
-        <label>Look for Duplicate Candidates</label>
-        <locationX>452</locationX>
-        <locationY>104</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Update_Candidate</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Email__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Email</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>CV_Number__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Candidate__c</object>
-        <sortField>CreatedDate</sortField>
-        <sortOrder>Desc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordUpdates>
-        <name>Update_Application</name>
-        <label>Update Application</label>
-        <locationX>1309</locationX>
-        <locationY>48</locationY>
-        <connector>
-            <targetReference>Get_Contact</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Application.Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>Application_Rating__c</field>
-            <value>
-                <elementReference>AppRating</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Minimum_Requirements__c</field>
-            <value>
-                <elementReference>AppMinRequirements</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Overview_of_applicant__c</field>
-            <value>
-                <elementReference>AppOverview</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>What_makes_applicant_a_good_fit__c</field>
-            <value>
-                <elementReference>AppGoodFit</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>What_requirements_Skills_missing__c</field>
-            <value>
-                <elementReference>RequirementsMissing</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Application__c</object>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Update_Candidate</name>
-        <label>Update Candidate</label>
-        <locationX>442</locationX>
-        <locationY>411</locationY>
-        <connector>
-            <targetReference>Sync_Candidate_Skills_from_Text</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Candidate.Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>Address__c</field>
-            <value>
-                <elementReference>Address</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>CV_Number__c</field>
-            <value>
-                <elementReference>CVNumber</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Candidate_Rating__c</field>
-            <value>
-                <elementReference>CandidateRating</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Certifications__c</field>
-            <value>
-                <elementReference>Certs</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Current_Position__c</field>
-            <value>
-                <elementReference>Position</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Date_of_Birth__c</field>
-            <value>
-                <elementReference>DOB</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Degree__c</field>
-            <value>
-                <elementReference>Degree</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Education__c</field>
-            <value>
-                <elementReference>Education</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Email__c</field>
-            <value>
-                <elementReference>Email</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Fields_Updated_by_AI__c</field>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>First_Name__c</field>
-            <value>
-                <elementReference>Fname</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ID_Passport_nr__c</field>
-            <value>
-                <elementReference>IDnumber</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Last_Name__c</field>
-            <value>
-                <elementReference>LName</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Name</field>
-            <value>
-                <elementReference>Name</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Overview__c</field>
-            <value>
-                <elementReference>Overview</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Phone__c</field>
-            <value>
-                <elementReference>Phone</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Professional_Experience__c</field>
-            <value>
-                <elementReference>Experience</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Seniority_Level__c</field>
-            <value>
-                <elementReference>Level</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Skills__c</field>
-            <value>
-                <elementReference>Skills</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>University__c</field>
-            <value>
-                <elementReference>Uni</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Candidate__c</object>
-    </recordUpdates>
     <recordUpdates>
         <name>Update_Candidate_with_Contact</name>
         <label>Update Candidate with Contact</label>
@@ -726,8 +444,19 @@
         <connector>
             <targetReference>Get_Candidate</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Email__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Candidate__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>Address</name>
         <dataType>String</dataType>
