@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title={cardTitle} icon-name="standard:people">
+        <template if:true={candidates.length}>
+            <lightning-datatable
+                key-field="fullName"
+                data={candidates}
+                columns={columns}
+                hide-checkbox-column
+                show-row-number-column>
+            </lightning-datatable>
+        </template>
+        
+        <template if:true={error}>
+            <div class="slds-p-around_medium">
+                <div class="slds-text-color_error">
+                    {error}
+                </div>
+            </div>
+        </template>
+
+        <template if:false={candidates.length}>
+            <div class="slds-p-around_medium">
+                <div class="slds-text-color_weak">
+                    No candidates found in the output.
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>

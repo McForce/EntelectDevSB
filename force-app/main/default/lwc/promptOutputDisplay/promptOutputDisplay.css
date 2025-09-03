@@ -1,0 +1,26 @@
+.prompt-output {
+    font-size: 0.875rem;
+}
+
+.prompt-output h2,
+.prompt-output h3 {
+    color: #080707;
+    font-weight: 700;
+}
+
+.prompt-output table {
+    margin-top: 1rem;
+}
+
+.prompt-output a {
+    color: #0176d3;
+    text-decoration: none;
+}
+
+.prompt-output a:hover {
+    text-decoration: underline;
+}
+
+.slds-scrollable_x {
+    overflow-x: auto;
+}
