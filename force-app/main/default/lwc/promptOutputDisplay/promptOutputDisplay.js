@@ -7,40 +7,41 @@ export default class CandidateMatchTable extends LightningElement {
     candidates = [];
     error;
     
-    columns = [
-        { 
-            label: 'Full Name', 
-            fieldName: 'fullName', 
-            type: 'text',
-            sortable: true 
-        },
-        { 
-            label: 'Candidate Link', 
-            fieldName: 'candidateLink', 
+columns = [
+    { 
+            label: 'Candidate Name', 
+            fieldName: 'candidateName', 
             type: 'url',
             typeAttributes: {
                 label: 'View Candidate',
                 target: '_blank'
+
             }
-        },
-        { 
-            label: 'Resume Summary', 
-            fieldName: 'resumeSummary', 
-            type: 'text',
-            wrapText: true 
-        },
-        { 
-            label: 'Match Score', 
-            fieldName: 'matchScore', 
-            type: 'number',
-            sortable: true,
-            cellAttributes: { 
-                class: { 
-                    fieldName: 'scoreClass' 
-                }
+    },
+    { 
+        label: 'Candidate Summary', 
+        fieldName: 'resumeSummary', 
+        type: 'text',
+        wrapText: true 
+    },
+    { 
+        label: 'Reason for Match', 
+        fieldName: 'reasonForMatch', 
+        type: 'text',
+        wrapText: true 
+    },
+    { 
+        label: 'Match Score', 
+        fieldName: 'matchScore', 
+        type: 'number',
+        sortable: true,
+        cellAttributes: { 
+            class: { 
+                fieldName: 'scoreClass' 
             }
         }
-    ];
+    }
+];
 
     connectedCallback() {
         if (this.promptOutput) {
@@ -73,55 +74,55 @@ export default class CandidateMatchTable extends LightningElement {
         return cleaned.trim();
     }
 
-    extractTableData(markdown) {
-        const candidates = [];
-        const lines = markdown.split('\n');
-        let inTable = false;
-        let headerSkipped = false;
+extractTableData(markdown) {
+    const candidates = [];
+    const lines = markdown.split('\n');
+    let inTable = false;
+    let headerSkipped = false;
 
-        for (let line of lines) {
-            if (line.includes('| Full Name') || line.includes('|Full Name')) {
-                inTable = true;
-                headerSkipped = false;
-                continue;
-            }
+    for (let line of lines) {
+        if (line.includes('| Candidate Name') || line.includes('|Candidate Name')) {
+            inTable = true;
+            headerSkipped = false;
+            continue;
+        }
 
-            if (inTable && line.includes(':---')) {
-                headerSkipped = true;
-                continue;
-            }
+        if (inTable && line.includes(':---')) {
+            headerSkipped = true;
+            continue;
+        }
 
-            if (inTable && headerSkipped && line.includes('|')) {
-                const cells = line.split('|').filter(cell => cell.trim() !== '');
+        if (inTable && headerSkipped && line.includes('|')) {
+            const cells = line.split('|').filter(cell => cell.trim() !== '');
+            
+            if (cells.length >= 4) {
+                const candidate = {
+                    fullName: cells[0].trim(),
+                    resumeSummary: cells[1].trim(),
+                    reasonForMatch: cells[2].trim(),
+                    matchScore: parseInt(cells[3].trim()) || 0
+                };
                 
-                if (cells.length >= 4) {
-                    const candidate = {
-                        fullName: cells[0].trim(),
-                        candidateLink: this.extractUrl(cells[1].trim()),
-                        resumeSummary: cells[2].trim(),
-                        matchScore: parseInt(cells[3].trim()) || 0
-                    };
-                    
-                    // Add score class for conditional formatting
-                    if (candidate.matchScore >= 90) {
-                        candidate.scoreClass = 'slds-text-color_success';
-                    } else if (candidate.matchScore >= 70) {
-                        candidate.scoreClass = 'slds-text-color_default';
-                    } else {
-                        candidate.scoreClass = 'slds-text-color_weak';
-                    }
-                    
-                    candidates.push(candidate);
+                // Add score class for conditional formatting
+                if (candidate.matchScore >= 90) {
+                    candidate.scoreClass = 'slds-text-color_success';
+                } else if (candidate.matchScore >= 70) {
+                    candidate.scoreClass = 'slds-text-color_default';
+                } else {
+                    candidate.scoreClass = 'slds-text-color_weak';
                 }
-            }
-
-            if (inTable && !line.includes('|')) {
-                inTable = false;
+                
+                candidates.push(candidate);
             }
         }
 
-        return candidates;
+        if (inTable && !line.includes('|')) {
+            inTable = false;
+        }
     }
+
+    return candidates;
+}
 
 extractUrl(text) {
     // Try to extract a URL from markdown link format [label](url)
