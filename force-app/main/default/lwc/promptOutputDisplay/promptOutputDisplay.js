@@ -10,10 +10,10 @@ export default class CandidateMatchTable extends LightningElement {
 columns = [
     { 
         label: 'Candidate Name', 
-        fieldName: 'candidateUrl',  // Changed from fullName
+        fieldName: 'fullName',
         type: 'url',
         typeAttributes: {
-            label: { fieldName: 'fullName' },  // This will show the name as the link text
+            label: { fieldName: 'displayName' }, // This will show the name text
             target: '_blank'
         },
         sortable: true 
@@ -96,13 +96,12 @@ extractTableData(markdown) {
             const cells = line.split('|').filter(cell => cell.trim() !== '');
             
             if (cells.length >= 4) {
-                // Parse the URL and name from the markdown link format [name](url)
                 const nameCell = cells[0].trim();
                 const linkMatch = nameCell.match(/\[(.*?)\]\((.*?)\)/);
                 
                 const candidate = {
-                    fullName: linkMatch ? linkMatch[1] : nameCell,  // Get the name from inside []
-                    candidateUrl: linkMatch ? linkMatch[2] : nameCell, // Get the URL from inside ()
+                    displayName: linkMatch ? linkMatch[1] : nameCell, // The text to display
+                    fullName: linkMatch ? linkMatch[2] : '', // The URL to navigate to
                     resumeSummary: cells[1].trim(),
                     reasonForMatch: cells[2].trim(),
                     matchScore: parseInt(cells[3].trim()) || 0
