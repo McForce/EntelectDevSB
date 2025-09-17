@@ -1,4 +1,4 @@
-public with sharing class UpdateCandidateSkills { 
+public with sharing class UpdateCandidateSkills {
 
     // Wrapper for Flow input
     public class Request {
@@ -10,6 +10,7 @@ public with sharing class UpdateCandidateSkills {
     }
 
     // DTO for parsed skill
+    @TestVisible
     private class SkillDetail {
         public String skillName;
         public Decimal experience;
@@ -23,7 +24,7 @@ public with sharing class UpdateCandidateSkills {
 
     @InvocableMethod(
         label='Update Candidate Skills' 
-        description='Takes a skill input string and candidate Id from Flow and processes it'
+        description='Updates candidate skills (Years Experience + Speciality) based on input'
     )
     public static void updateSkills(List<Request> requests) {
         if (requests == null || requests.isEmpty()) {
@@ -38,19 +39,18 @@ public with sharing class UpdateCandidateSkills {
             }
 
             try {
-                System.debug('Candidate Id passed from Flow: ' + req.candidateId);
-                System.debug('Skill string passed from Flow: ' + req.skillInput);
+                System.debug('Candidate Id: ' + req.candidateId);
+                System.debug('Skill string: ' + req.skillInput);
 
-                List<Candidate_Skill__c> skillRecords = parseAndBuildSkills(req.skillInput, req.candidateId);
+                List<Candidate_Skill__c> updates = parseAndBuildSkillUpdates(req.skillInput, req.candidateId);
 
-                if (!skillRecords.isEmpty()) {
-                    insert skillRecords;
-                    System.debug('Inserted ' + skillRecords.size() + ' skill records for Candidate Id: ' + req.candidateId);
+                if (!updates.isEmpty()) {
+                    update updates;
+                    System.debug('Updated ' + updates.size() + ' candidate skills for Candidate Id: ' + req.candidateId);
                 } else {
-                    System.debug('No valid skills parsed for Candidate Id: ' + req.candidateId);
+                    System.debug('No matching candidate skills found to update for Candidate Id: ' + req.candidateId);
                 }
             } catch (Exception e) {
-                // Prevent Flow from failing and provide context
                 System.debug('Error processing Candidate Id ' + req.candidateId + ': ' + e.getMessage());
             }
         }
@@ -60,8 +60,9 @@ public with sharing class UpdateCandidateSkills {
     // Private Helpers
     // -------------------------------
 
-    private static List<Candidate_Skill__c> parseAndBuildSkills(String skillInput, Id candidateId) {
-        List<Candidate_Skill__c> skillRecords = new List<Candidate_Skill__c>();
+    @TestVisible
+    private static List<Candidate_Skill__c> parseAndBuildSkillUpdates(String skillInput, Id candidateId) {
+        List<Candidate_Skill__c> skillUpdates = new List<Candidate_Skill__c>();
         List<String> rawSkills = new List<String>();
 
         for (String skill : skillInput.split(',')) {
@@ -69,42 +70,51 @@ public with sharing class UpdateCandidateSkills {
                 rawSkills.add(skill.trim());
             }
         }
-        if (rawSkills.isEmpty()) return skillRecords;
+        if (rawSkills.isEmpty()) return skillUpdates;
 
-        // Bulk query all matching Skill__c records once
-        Map<String, Id> skillNameToId = new Map<String, Id>();
-        List<Skill__c> matchedSkills = [
-            SELECT Id, Name FROM Skill__c 
-            WHERE Name IN :rawSkills
-        ];
-        for (Skill__c s : matchedSkills) {
-            skillNameToId.put(s.Name.toLowerCase(), s.Id);
-        }
-
-        // Build Candidate_Skill__c records
+        // Parse details
+        List<SkillDetail> parsedDetails = new List<SkillDetail>();
+        Set<String> skillNames = new Set<String>();
         for (String rawSkill : rawSkills) {
             SkillDetail detail = parseSkill(rawSkill);
-            if (detail == null || String.isBlank(detail.skillName)) continue;
-
-            Id skillId = skillNameToId.get(detail.skillName.toLowerCase());
-
-            skillRecords.add(new Candidate_Skill__c(
-                Candidate__c        = candidateId,
-                Skill__c            = skillId,
-                Name       = detail.skillName,
-                Years_Experience__c = detail.experience,
-                Speciality__c        = detail.isSpecialty
-            ));
+            if (detail != null && !String.isBlank(detail.skillName)) {
+                parsedDetails.add(detail);
+                skillNames.add(detail.skillName);
+            }
         }
 
-        return skillRecords;
+        if (skillNames.isEmpty()) return skillUpdates;
+
+        // Query existing Candidate_Skill__c records
+        Map<String, Candidate_Skill__c> existingMap = new Map<String, Candidate_Skill__c>();
+        for (Candidate_Skill__c cs : [
+            SELECT Id, Name, Candidate__c 
+            FROM Candidate_Skill__c
+            WHERE Candidate__c = :candidateId
+            AND Name IN :skillNames
+        ]) {
+            existingMap.put(cs.Name.toLowerCase(), cs);
+        }
+
+        // Build updates
+        for (SkillDetail detail : parsedDetails) {
+            Candidate_Skill__c existing = existingMap.get(detail.skillName.toLowerCase());
+            if (existing != null) {
+                existing.Years_Experience__c = detail.experience;
+                existing.Speciality__c = detail.isSpecialty;
+                skillUpdates.add(existing);
+            }
+        }
+
+        return skillUpdates;
     }
 
+    @TestVisible
     private static SkillDetail parseSkill(String rawSkill) {
         SkillDetail detail = new SkillDetail();
 
         if (!rawSkill.contains('-')) {
-            detail.skillName = rawSkill;
+            detail.skillName = rawSkill.trim();
             return detail;
         }
 
@@ -123,6 +133,7 @@ public with sharing class UpdateCandidateSkills {
         return detail;
     }
 
+    @TestVisible
     private static Decimal parseExperience(String expPart) {
         if (String.isBlank(expPart)) return 0;
 
