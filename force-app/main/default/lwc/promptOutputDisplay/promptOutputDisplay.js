@@ -10,31 +10,34 @@ export default class CandidateMatchTable extends LightningElement {
 columns = [
     { 
         label: 'Candidate Name', 
-        fieldName: 'fullName',
+        fieldName: 'candidateNameUrl', 
         type: 'url',
+        initialWidth: 200,
         typeAttributes: {
-            label: { fieldName: 'displayName' }, // This will show the name text
+            label: { fieldName: 'candidateNameLabel' },
             target: '_blank'
-        },
-        sortable: true 
+        }
     },
     { 
         label: 'Candidate Summary', 
         fieldName: 'resumeSummary', 
         type: 'text',
-        wrapText: true 
+        wrapText: true ,
+        initialWidth: 300
     },
     { 
         label: 'Reason for Match', 
         fieldName: 'reasonForMatch', 
         type: 'text',
-        wrapText: true 
+        wrapText: true,
+        initialWidth: 300 
     },
     { 
         label: 'Match Score', 
         fieldName: 'matchScore', 
         type: 'number',
         sortable: true,
+        initialWidth: 120,
         cellAttributes: { 
             class: { 
                 fieldName: 'scoreClass' 
@@ -97,11 +100,11 @@ extractTableData(markdown) {
             
             if (cells.length >= 4) {
                 const nameCell = cells[0].trim();
-                const linkMatch = nameCell.match(/\[(.*?)\]\((.*?)\)/);
-                
+                const { label, url } = this.extractUrl(nameCell);
+
                 const candidate = {
-                    displayName: linkMatch ? linkMatch[1] : nameCell, // The text to display
-                    fullName: linkMatch ? linkMatch[2] : '', // The URL to navigate to
+                    candidateNameLabel: label,
+                    candidateNameUrl: url,
                     resumeSummary: cells[1].trim(),
                     reasonForMatch: cells[2].trim(),
                     matchScore: parseInt(cells[3].trim()) || 0
@@ -129,15 +132,28 @@ extractTableData(markdown) {
 }
 
 extractUrl(text) {
-    // Try to extract a URL from markdown link format [label](url)
-    const markdownLinkMatch = text.match(/\[.*?\]\((.*?)\)/);
+    // Match [label](url)
+    const markdownLinkMatch = text.match(/\[(.*?)\]\((.*?)\)/);
     if (markdownLinkMatch) {
-        return markdownLinkMatch[1];
+        return {
+            label: markdownLinkMatch[1],
+            url: markdownLinkMatch[2]    
+        };
     }
-    // If it's already a URL
+
+    // If it's already just a URL, fall back
     if (text.startsWith('http')) {
-        return text;
+        return {
+            label: text,
+            url: text
+        };
     }
-    return '#';
+
+    // Default
+    return {
+        label: text,
+        url: '#'
+    };
 }
+
 }
