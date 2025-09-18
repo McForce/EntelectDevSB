@@ -1,13 +1,71 @@
 <template>
     <lightning-card title={cardTitle} icon-name="standard:people">
-        <template if:true={candidates.length}>
-            <lightning-datatable
-                key-field="fullName"
-                data={candidates}
-                columns={columns}
-                hide-checkbox-column
-                show-row-number-column>
-            </lightning-datatable>
+        <!---Show filters button-->
+        <lightning-button
+            label="Show/Hide Filters"
+            title="Show/Hide Filters"
+            onclick={toggleFilters}
+            icon-name="utility:filterList"
+            icon-position="left"
+            class="slds-m-bottom_large"
+            padding="around-small">
+        </lightning-button>
+        <!--filters-->
+        <lightning-layout multiple-rows if:true={showFilters}>
+            <lightning-layout-item padding="around-small">
+            <lightning-dual-listbox
+                name="skillsFilter"
+                label="Skills"
+                source-label="Available"
+                selected-label="Selected"
+                field-level-help="Select one or more skills"
+                options={skillsOptions}
+                value={skillsFilter}
+                onchange={handleSkillsChange}>
+            </lightning-dual-listbox>
+            </lightning-layout-item>
+            <template if:true={skillsFilter}>
+                <lightning-layout-item padding="around-small"  class="slds-m-top_large">
+                    <lightning-input
+                        type="number"
+                        name="minYearsExperience"
+                        label="Min Years Experience"
+                        value={minYearsExperience}
+                        min="0"
+                        onchange={handleMinYearsExperienceChange}>
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" class="slds-m-top_large">
+                    <lightning-combobox
+                        name="proficiencyFilter"
+                        label="Proficiency"
+                        value={proficiencyFilter}
+                        placeholder="All"
+                        options={proficiencyOptions}
+                        onchange={handleProficiencyChange}>"
+                    </lightning-combobox>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+
+        <!-- Spinner while loading -->
+        <template if:true={loading}>
+            <lightning-spinner
+                alternative-text="Loading candidates"
+                size="medium">
+            </lightning-spinner>
+        </template>
+
+        <template if:false={loading}>
+            <template if:true={candidates.length}>
+                <lightning-datatable
+                    key-field="fullName"
+                    data={candidates}
+                    columns={columns}
+                    hide-checkbox-column
+                    show-row-number-column>
+                </lightning-datatable>
+            </template>
         </template>
         
         <template if:true={error}>

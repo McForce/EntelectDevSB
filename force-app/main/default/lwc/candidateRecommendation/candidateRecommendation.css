@@ -1,0 +1,26 @@
+.candidate-recommendation {
+    font-size: 0.875rem;
+}
+
+.candidate-recommendation h2,
+.candidate-recommendation h3 {
+    color: #080707;
+    font-weight: 700;
+}
+
+.candidate-recommendation table {
+    margin-top: 1rem;
+}
+
+.candidate-recommendation a {
+    color: #0176d3;
+    text-decoration: none;
+}
+
+.candidate-recommendation a:hover {
+    text-decoration: underline;
+}
+
+.slds-scrollable_x {
+    overflow-x: auto;
+}
