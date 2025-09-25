@@ -24,15 +24,15 @@ export default class CandidateRecommendation extends LightningElement {
 
     columns = [
         { 
-        label: 'Name', 
-        fieldName: 'Candidate_Link__c', 
-        type: 'url',
-        initialWidth: 200,
-        typeAttributes: {
-            label: { fieldName: 'Name' },
-            target: '_blank'
-        }
-    },
+            label: 'Name', 
+            fieldName: 'Candidate_Link__c', 
+            type: 'url',
+            initialWidth: 200,
+            typeAttributes: {
+                label: { fieldName: 'Name' },
+                target: '_blank'
+            }
+        },
         { label: 'Overview', fieldName: 'Overview__c', type: 'text', wrapText: true, initialWidth: 350 }, 
         { label: 'Skills', fieldName: 'Skills__c', type: 'text', wrapText: true, initialWidth: 350 },
     ];
@@ -65,17 +65,25 @@ export default class CandidateRecommendation extends LightningElement {
     }
 
     @wire(getRecommendedCandidates, { 
-        projectRoleId: '$recordId', 
-        skillFilter: '$skillsFilter', 
-        minYearsExperience: '$minYearsExperience', 
-        proficiencyFilter: '$proficiencyFilter' 
+        projectRoleId: '$recordId'
+        // skillFilter: '$skillsFilter', 
+        // minYearsExperience: '$minYearsExperience', 
+        // proficiencyFilter: '$proficiencyFilter' 
     })
     wiredCandidates(result) {
         console.log('Wired candidates result:', result);
-        this.wiredCandidateResult = result; // save reference for refresh
-        if (result.data) {
+        this.wiredCandidateResult = result;
+       if (result.data) {
             this.loading = false;
-            this.candidates = result.data;
+
+            this.candidates = result.data.map(cand => {
+                return {
+                    ...cand,
+                    Candidate_Link__c: '/' + cand.Id
+                };
+            });
+
+            this.error = undefined;
         } else if (result.error) {
             this.error = result.error;
             this.candidates = [];
