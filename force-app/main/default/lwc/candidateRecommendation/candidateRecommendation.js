@@ -38,31 +38,31 @@ export default class CandidateRecommendation extends LightningElement {
     ];
 
     // Get Picklist Values for Proficiency Filter from Candidate_Skill__c object
-    @wire(getObjectInfo, { objectApiName: CANDIDATE_SKILL_OBJECT })
-    objectInfo;
+    // @wire(getObjectInfo, { objectApiName: CANDIDATE_SKILL_OBJECT })
+    // objectInfo;
 
-    @wire(getPicklistValues, { recordTypeId: '$objectInfo.data.defaultRecordTypeId', fieldApiName: CANDIDATE_PROFICIENCY_FIELD })
-    wiredProficiencyPicklist({ error, data }) {
-        if (data) {
-            this.proficiencyOptions = [ {label: 'All', value: ''}, ...data.values ];
-            this.error = undefined;
-        } else if (error) {
-            this.error = error;
-            this.proficiencyOptions = [];
-        }
-    }
+    // @wire(getPicklistValues, { recordTypeId: '$objectInfo.data.defaultRecordTypeId', fieldApiName: CANDIDATE_PROFICIENCY_FIELD })
+    // wiredProficiencyPicklist({ error, data }) {
+    //     if (data) {
+    //         this.proficiencyOptions = [ {label: 'All', value: ''}, ...data.values ];
+    //         this.error = undefined;
+    //     } else if (error) {
+    //         this.error = error;
+    //         this.proficiencyOptions = [];
+    //     }
+    // }
 
-    // Get all Skills for Skills Filter from Apex
-    @wire(getAllSkills)
-    wiredSkills({ error, data }) {
-        if (data) {
-            this.skillsOptions = data.map(skill => ({ label: skill.Name, value: skill.Id }));
-            this.error = undefined;
-        } else if (error) {
-            this.error = error;
-            this.skillsOptions = [];
-        }
-    }
+    // // Get all Skills for Skills Filter from Apex
+    // @wire(getAllSkills)
+    // wiredSkills({ error, data }) {
+    //     if (data) {
+    //         this.skillsOptions = data.map(skill => ({ label: skill.Name, value: skill.Id }));
+    //         this.error = undefined;
+    //     } else if (error) {
+    //         this.error = error;
+    //         this.skillsOptions = [];
+    //     }
+    // }
 
     @wire(getRecommendedCandidates, { 
         projectRoleId: '$recordId'
@@ -71,7 +71,7 @@ export default class CandidateRecommendation extends LightningElement {
         // proficiencyFilter: '$proficiencyFilter' 
     })
     wiredCandidates(result) {
-        console.log('Wired candidates result:', result);
+        // console.log('Wired candidates result:', result);
         this.wiredCandidateResult = result;
        if (result.data) {
             this.loading = false;
