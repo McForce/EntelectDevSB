@@ -44,12 +44,12 @@ public with sharing class CandidateController {
         List<Candidate__c> matchingCandidates = new List<Candidate__c>();
 
         for (Candidate__c cand : candidates) {
-            Boolean meetsAny = false;
+            Boolean meetsAll = true;
 
             for (Candidate_Skill__c reqSkill : requiredSkills.values()) {
+                Boolean foundMatch = false;
                 for (Candidate_Skill__c candSkill : cand.Candidate_Skills__r) {
                     if (candSkill.Skill__c == reqSkill.Skill__c) {
-                        
                         // ---- Years of Experience check ----
                         Boolean yearsOk = true; 
                         if (reqSkill.Years_Experience__c != null) {
@@ -72,15 +72,23 @@ public with sharing class CandidateController {
                         
                         // If both checks pass, candidate matches this skill
                         if (yearsOk && profOk) {
-                            meetsAny = true;
-                            break; // no need to check more skills for this requirement
+                            foundMatch = true;
+                            break;
+                        }
+                        if (!yearsOk || !profOk) {
+                            meetsAll = false;
+                            break; 
                         }
                     }
                 }
-                if (meetsAny) break; // already found one matching requirement
+                // If candidate doesn't have this required skill at all
+                if (!foundMatch) {
+                    meetsAll = false;
+                }
+                if (!meetsAll) break;
             }
 
-            if (meetsAny) {
+            if (meetsAll) {
                 matchingCandidates.add(cand);
             }
         }

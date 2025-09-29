@@ -33,8 +33,8 @@ export default class CandidateRecommendation extends LightningElement {
                 target: '_blank'
             }
         },
-        { label: 'Overview', fieldName: 'Overview__c', type: 'text', wrapText: true, initialWidth: 350 }, 
-        { label: 'Skills', fieldName: 'Skills__c', type: 'text', wrapText: true, initialWidth: 350 },
+        { label: 'Overview', fieldName: 'Overview__c', type: 'text', wrapText: true, initialWidth: 400 }, 
+        { label: 'Skills', fieldName: 'Skills__c', type: 'text', wrapText: true, initialWidth: 400 },
     ];
 
     // Get Picklist Values for Proficiency Filter from Candidate_Skill__c object
