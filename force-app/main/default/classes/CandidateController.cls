@@ -16,7 +16,11 @@ public with sharing class CandidateController {
         // 2. Build a map of required skills for easy comparison
         Map<Id, Candidate_Skill__c> requiredSkills = new Map<Id, Candidate_Skill__c>();
         for (Candidate_Skill__c reqSkill : projectRole.Candidate_Skills__r) {
-            requiredSkills.put(reqSkill.Skill__c, reqSkill);
+            // only include skills with a defined skill and at least one requirement
+            if (reqSkill.Skill__c != null &&
+                (reqSkill.Years_Experience__c != null || reqSkill.Proficiency__c != null)) {
+                requiredSkills.put(reqSkill.Skill__c, reqSkill);
+            }
         }
 
         // 3. Query candidates that match base filters
