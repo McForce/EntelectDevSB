@@ -23,21 +23,21 @@ columns = [
         fieldName: 'resumeSummary', 
         type: 'text',
         wrapText: true ,
-        initialWidth: 300
+        initialWidth: 400
     },
     { 
         label: 'Reason for Match', 
         fieldName: 'reasonForMatch', 
         type: 'text',
         wrapText: true,
-        initialWidth: 300 
+        initialWidth: 400 
     },
     { 
         label: 'Match Score', 
         fieldName: 'matchScore', 
         type: 'number',
         sortable: true,
-        initialWidth: 120,
+        initialWidth: 150,
         cellAttributes: { 
             class: { 
                 fieldName: 'scoreClass' 
