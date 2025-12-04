@@ -77,7 +77,31 @@ global class CandidateEmailServiceHandler implements Messaging.InboundEmailHandl
             
             // Insert the candidate record
             insert candidate;
-            
+
+            Application__c application = new Application__c();
+            application.Name = candidate.Name;
+            application.Candidate__c = candidate.Id;
+
+            // Set the email subject
+            if (email.subject != null && email.subject != '' && email.subject.contains('New submission from Application Form')) {
+                // Use case-insensitive regex
+                Pattern p = Pattern.compile('(?i)for\\s+(.+)$');
+                Matcher m = p.matcher(email.subject);
+
+                String jobTitle = '';
+                if (m.find()) {
+                    jobTitle = m.group(1).trim(); // trim any extra spaces
+                }
+                if (jobTitle != '') {
+                    // Query for the Job__c record with matching title
+                    Job__c job = [SELECT Id FROM Job__c WHERE Name = :jobTitle LIMIT 1];
+                    if (job != null) {
+                        application.Job__c = job.Id;
+                    }
+                }
+            }
+
+            insert application;
             // Handle all attachments by converting them to Files (ContentVersion)
             List<ContentVersion> contentVersions = new List<ContentVersion>();
             
@@ -112,6 +136,18 @@ global class CandidateEmailServiceHandler implements Messaging.InboundEmailHandl
             if (!contentVersions.isEmpty()) {
                 insert contentVersions;
             }
+
+            // Update the CV Title field on Candidate with the first attachment's name
+            if (!contentVersions.isEmpty()) {
+                candidate.CV_Title__c = contentVersions[0].Title;
+                update candidate;
+            }
+
+            // invoke the flow
+            // Flow.Interview.Candidate_ATF_Update candidateFlow = new Flow.Interview.Candidate_ATF_Update(
+            //     new Map<String, Object>{ 'candidate' => candidate }
+            // );
+            // candidateFlow.start();
             
             // Return success result
             result.success = true;
