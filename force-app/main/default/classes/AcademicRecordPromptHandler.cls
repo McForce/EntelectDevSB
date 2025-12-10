@@ -12,7 +12,6 @@ public with sharing class AcademicRecordPromptHandler {
         @InvocableVariable public String message;
     }
 
-    // DTO must match incoming JSON keys
     public class AcademicRecordDTO {
         public String DocumentType;
         public String AcademicRecordName;
@@ -24,7 +23,10 @@ public with sharing class AcademicRecordPromptHandler {
         public String Major;
         public String GraduationDate;      // 'YYYY-MM-DD' or some text like 'Not available'
         public String GraduationStatus;
-        public String Average;             // <-- allow number OR string; we'll coerce to Decimal
+        public String FirstYearAverage;
+        public String SecondYearAverage;
+        public String ThirdYearAverage;
+        public String Average;             // <-- allow number OR string
         public List<String> Modules;
     }
 
@@ -59,7 +61,7 @@ public with sharing class AcademicRecordPromptHandler {
 
                 Academic_Record__c rec = new Academic_Record__c();
 
-                // Basic required fields (adjust to your org's validation rules)
+                // Basic required fields
                 rec.Name = dto.AcademicRecordName;
                 rec.Institution_Name__c = dto.InstitutionName;
                 rec.Qualification__c = dto.Qualification;
@@ -74,11 +76,17 @@ public with sharing class AcademicRecordPromptHandler {
                     System.debug(LoggingLevel.WARN, 'CandidateId provided does not look like a Salesforce Id: ' + dto.CandidateId);
                 }
 
-                // Average: coerce to Decimal (supports "81.5" string or numeric)
+                // Averages: coerce to Decimal 
+                Decimal firstYrDec = coerceDecimal(dto.FirstYearAverage);
+                rec.First_Year_Average__c = firstYrDec;
+                Decimal secondYrDec = coerceDecimal(dto.SecondYearAverage);
+                rec.Second_Year_Average__c = secondYrDec;
+                Decimal thirdYrDec = coerceDecimal(dto.ThirdYearAverage);
+                rec.Third_Year_Average__c = thirdYrDec;
                 Decimal avgDec = coerceDecimal(dto.Average);
                 rec.Average__c = avgDec;
 
-                // Modules: join list for text area (use '; '), or ';' for multi-select picklist
+                // Modules: join list for text area field
                 if (dto.Modules != null && !dto.Modules.isEmpty()) {
                     rec.Modules__c = String.join(dto.Modules, '; ');
                     System.debug('Joined modules for index ' + i + ': ' + rec.Modules__c);

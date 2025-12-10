@@ -16,6 +16,9 @@ private class AcademicRecordPromptHandlerTest {
             'AcademicLevel' => 'Undergraduate',
             'GraduationDate' => '2022-11-30',
             'GraduationStatus' => 'Graduated',
+            'FirstYearAverage' =>  80,
+            'SecondYearAverage' =>  70,
+            'ThirdYearAverage' =>  75,
             'Average' => 75,
             'Modules' => new List<String>{ 'Computer Science', 'Mathematics' }
         });
@@ -41,6 +44,9 @@ private class AcademicRecordPromptHandlerTest {
         System.assertEquals('Undergraduate', ar.Academic_Level__c);
         System.assertEquals('Graduated', ar.Graduation_Status__c);
         System.assertEquals('Computer Science; Mathematics', ar.Modules__c);
+        System.assertEquals(80, ar.First_Year_Average__c);
+        System.assertEquals(70, ar.Second_Year_Average__c);
+        System.assertEquals(75, ar.Third_Year_Average__c);
         System.assertEquals(75, ar.Average__c);
         System.assertEquals('BSc CS', ar.Qualification__c);
         
