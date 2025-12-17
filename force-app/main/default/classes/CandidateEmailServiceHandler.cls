@@ -128,6 +128,7 @@ global class CandidateEmailServiceHandler implements Messaging.InboundEmailHandl
                     cv.PathOnClient = attachment.fileName;
                     cv.VersionData = Blob.valueOf(attachment.body);
                     cv.FirstPublishLocationId = candidate.Id;
+                    cv.Processed__c = true; // Custom field to mark text attachments as processed
                     contentVersions.add(cv);
                 }
             }
