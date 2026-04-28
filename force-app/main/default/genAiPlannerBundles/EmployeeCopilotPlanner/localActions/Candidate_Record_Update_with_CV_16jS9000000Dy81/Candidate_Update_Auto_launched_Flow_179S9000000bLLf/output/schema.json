@@ -1,0 +1,312 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Address" : {
+      "title" : "Address",
+      "description" : "The Address__c field to be populated with the Candidate's Address from the CV Document Format: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "AppGoodFit" : {
+      "title" : "AppGoodFit",
+      "description" : "What makes applicant a good fit for this specific job spec Format: Long Text To update What_makes_applicant_a_good_fit__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "AppMinRequirements" : {
+      "title" : "AppMinRequirements",
+      "description" : "Format: Text Input: These are the non negotiables as specified on the Job Spec record (if any) and whether the Candidate has all the minimum requirements or not, and to be populated on the Minimum_Requirements__c field on the Application record",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "AppOverview" : {
+      "title" : "AppOverview",
+      "description" : "Overview of Candidate: Give a short overview of the Candidate highlighting the number of years experience, overview of their job history, and anything else that would make this a good/ bad for this fit Format: Long Text To update Overview_of_applicant__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "AppRating" : {
+      "title" : "AppRating",
+      "description" : "Application Rating: What would you score the applicant out of ten for this Job Format: Number To update Application_Rating__c field of Application__c record",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "CVTitle" : {
+      "title" : "CVTitle",
+      "description" : "To populate the CV_Title__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "CandidateRating" : {
+      "title" : "CandidateRating",
+      "description" : "What is the Candidate rating Picklist Values: Green Amber Red DO NOT CONTACT To Update Candidate_Rating__c field on Candidate record",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Certs" : {
+      "title" : "Certs",
+      "description" : "To populate the Certifications__c field Data Type: Long Text: Extracted from the candidate's CV using Einstein's data parsing found from the Certification's section on the CV Document. Format: Write in Bullet Point Format",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Company" : {
+      "title" : "Company",
+      "description" : "The current or last company the Candidate as worked at to set the Company__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "CurrentRole" : {
+      "title" : "CurrentRole",
+      "description" : "To set the Current_Role__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "DOB" : {
+      "title" : "DOB",
+      "description" : "The Date_of_Birth__c Field to be populated with the Candidate's date of birth from the CV Document Format: YYYY-MM-DD IF there is no date of birth on the CV this can be ignored",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Degree" : {
+      "title" : "Degree",
+      "description" : "1\n*DegreeInstructions\nTo Update Degree__c field From the Undergraduate Degrees/ Degree Abbreviation What is the highest Degree the Candidate has Picklist values: BEng, BIS, BIT, BTech, Honours, Masters, BCom, BCompt, Other, PHD Undergraduate Degrees: BSc – Bachelor of Science Typically science-focused degrees like Physics, Chemistry, Biology, Computer Science, etc. BEng – Bachelor of Engineering Focused on professional engineering disciplines such as Electrical, Civil, Mechanical, etc. BIS – Bachelor of Information Science Often includes topics like data management, information systems, and digital content. BIT – Bachelor of Information Technology More focused on practical IT skills like programming, networking, and software development. BTech – Bachelor of Technology A more technically and vocationally oriented degree, often awarded by universities of technology. BCom – Bachelor of Commerce Focused on business, finance, accounting, and economics. BCompt – Bachelor of Accounting Science (Compt = Computationis) Accounting-focused degree, often a path to becoming a Chartered Accountant (CA). Other – Any degree not listed above (e.g., BA, LLB, BEd, etc.)",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Education" : {
+      "title" : "Education",
+      "description" : "To Populate the Education__c field Data Type: Text: Extracted from the candidate's CV using Einstein's data parsing found from the Education section on the CV Document. Format: Rich Text Bullet Point Institution Qualification Year Qualified Any other information mentioned like subjects, activities, affiliations etc",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Email" : {
+      "title" : "Email",
+      "description" : "Email Address of the user To update the Email__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Ethnicity" : {
+      "title" : "Ethnicity",
+      "description" : "To update the Ethnicity__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Experience" : {
+      "title" : "Experience",
+      "description" : "To update the Experience__c field Data Type: Text: Extracted from the candidate's CV using Einstein's data parsing found from the Work/ Professional Experience section on the CV Document. Format: Rich Text Title | Company Name | Location | Date from and To Bullet point of their duties, Projects they worked on, Achievements and anything else they mentioned Reason for leaving if on CV",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Fname" : {
+      "title" : "Fname",
+      "description" : "To update the First_Name__c field First Name of the candidate on the CV\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "HowDidTheyFirstHearAboutUs" : {
+      "title" : "HowDidTheyFirstHearAboutUs",
+      "description" : "To update the How_did_they_first_hear_about_us__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "IDnumber" : {
+      "title" : "IDnumber",
+      "description" : "ID or Passport number To update the ID_Number__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "IdentificationType" : {
+      "title" : "IdentificationType",
+      "description" : "To update the Identification_Type__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "LName" : {
+      "title" : "LName",
+      "description" : "Last Name of the candidate on the CV To Update Last_Name__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Level" : {
+      "title" : "Level",
+      "description" : "To update Seniority_Level__c Seniority Level (Intermediate, Mid, Senior, Junior, Graduate), make a judgement call, this would be based on number of years experience, current position title etc",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Name" : {
+      "title" : "Name",
+      "description" : "The Full name of the Candidate to update the Name field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Overview" : {
+      "title" : "Overview",
+      "description" : "This is a summary of the Candidate done by the Agent, summarising their overall CV. Format: Long Text Example: This Candidate is a Salesforce Architect and has 7 years Professional working experience with 5 years in Salesforce, they have a degree in Computer Sciences and 5 Salesforce Certifications To update Overview__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Phone" : {
+      "title" : "Phone",
+      "description" : "The Phone/ Mobile/ Contact number To update the Phone__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Position" : {
+      "title" : "Position",
+      "description" : "Their current position title To update the Current__Position__c",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "RegionApplyingFor" : {
+      "title" : "RegionApplyingFor",
+      "description" : "To update the Region_Applying_For__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "RequirementsMissing" : {
+      "title" : "RequirementsMissing",
+      "description" : "What requirements/ Skills missing: where might this candidate possibly be missing or lacking for this specific job Format: Long Text To update What_requirements_Skills_missing__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "RoleApplyingFor" : {
+      "title" : "RoleApplyingFor",
+      "description" : "To update the Role_Applying_For__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Skills" : {
+      "title" : "Skills",
+      "description" : "Data Type: Long Text: Extracted from the candidate's CV using Einstein's data parsing found from the skills section on the CV Document. Format: Comma Delimited format To Update Skills__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Timing" : {
+      "title" : "Timing",
+      "description" : "To update the Timing__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Uni" : {
+      "title" : "Uni",
+      "description" : "What is the name of the University the Candidate obtained their highest education To update the University__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "YearsOfExperience" : {
+      "title" : "YearsOfExperience",
+      "description" : "To update the Years_Of_Experience field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "recordId" : {
+      "title" : "recordId",
+      "description" : "This is the Candidate record 18 digit record Id of Candidate",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

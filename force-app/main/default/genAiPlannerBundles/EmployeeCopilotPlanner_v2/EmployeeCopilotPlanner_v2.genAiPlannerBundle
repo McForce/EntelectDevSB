@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <description>Planner for ReAct-based Employee copilot.</description>
+    <localActionLinks>
+        <genAiFunctionName>AnswerQuestionsWithKnowledge_16j838610213580</genAiFunctionName>
+    </localActionLinks>
+    <localTopicLinks>
+        <genAiPluginName>Academic_Record_Management_16j8a5b62148028</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>Candidate_Record_Update_with_CV_16j0096ce6deff5</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>Candidate_Record_Update_with_Transcript_16j4bd6105baffc</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>GeneralCRM_16j4c31aa46cd24</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>OOTBSingleRecordSummary_16jce8a3ceb2150</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>GeneralCRM_16j4c31aa46cd24</fullName>
+        <aiPluginUtterances>
+            <developerName>shownewleads</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>show-new-leads</masterLabel>
+            <utterance>Show new leads.</utterance>
+        </aiPluginUtterances>
+        <aiPluginUtterances>
+            <developerName>gettopopportunities</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>get-top-opportunities</masterLabel>
+            <utterance>Get top amount opportunities.</utterance>
+        </aiPluginUtterances>
+        <canEscalate>false</canEscalate>
+        <description>Engages and interacts with the user about any request that could be CRM data related. This could be tasks such as identify and summarize records, answer queries, aggregate data, find and query objects, update records, or drafting and refining emails.</description>
+        <developerName>GeneralCRM_16j4c31aa46cd24</developerName>
+        <genAiPluginInstructions>
+            <description>There are multiple available data retrieval functions at your disposal. You can use each one of them multiple times if needed. You should use functions as many times as necessary until you have all the data required to fulfill the request of the user. You can perform extra calls if you think you can get additional relevant information.</description>
+            <developerName>dataretrieval</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>data-retrieval</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Do not declare your intent i.e. &quot;I will now retrieve the data&quot; - Just fetch the data.</description>
+            <developerName>proceedwithaction</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>proceed-with-action</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Identify the object type (i.e., leads, opportunities, accounts) the user asks about. If unclear, confirm with the user and make a suggestion based on the query context and history.</description>
+            <developerName>identifyobjecttype</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>identify-object-type</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When only the name of a record is mentioned in the user request, you MUST call the IdentifyRecordByName action to get the necessary IDs.</description>
+            <developerName>identifyrecord</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>identify-record</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Always call QueryRecords &amp; QueryRecordsWithAggregate passing plain natural language english as input. You must Include the record ID in the input if available.</description>
+            <developerName>queryrecords</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>query-records</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a user asks for a summary or overview of a record, use GetRecordDetails to get an overview of the data of the record, then use other data retrieval actions as needed.</description>
+            <developerName>summary0</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>summary0</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When asked for a summary on multiple records, you must iterate over all record IDs and for each one call GetRecordDetails.</description>
+            <developerName>summary1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>summary1</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the user asks about activities you must call GetActivitiesTimeline.</description>
+            <developerName>activitytimeline0</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>activity-timeline0</masterLabel>
+            <sortOrder>7</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When providing the Activity Types for GetActivitiesTimeline, choose all the types that are relevant to the user request. Examples - User Request 1 - &quot;What questions does John Doe have that need addressing?&quot;, Activity Types - &quot;Call&quot;, &quot;Email&quot;. User Request 2 - &quot;What are the next activities for John Doe?&quot;, Activity Types - &quot;Task&quot;, &quot;Event&quot;.</description>
+            <developerName>activitytimeline1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>activity-timeline1</masterLabel>
+            <sortOrder>8</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When asked about recent activities, you should provide the answer, starting from the last 30 days and ending on the current date, unless a specific date range is specified by the user.</description>
+            <developerName>activitytimeline2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>activity-timeline2</masterLabel>
+            <sortOrder>9</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When you are asked about a single Call, Meeting, Email or any other single specific activity, call GetActivityDetails. Do not call it for any other record type.</description>
+            <developerName>getactivitydetails0</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>get-activity-details0</masterLabel>
+            <sortOrder>10</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Always use DraftOrReviseEmail when asked to generate a new email or revise a previously generated email.</description>
+            <developerName>draftorreviseemail</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>draft-or-revise-email</masterLabel>
+            <sortOrder>11</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>ExtractRecordFieldsAndValuesFromUserInput must be called prior to UpdateRecordFields.</description>
+            <developerName>updaterecord</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>update-record</masterLabel>
+            <sortOrder>12</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Avoid using structured lists, bullet points, or numbered lists. Instead, present the information in complete sentences and paragraphs as if you were writing an article or a report.</description>
+            <developerName>outputstyle</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>output-style</masterLabel>
+            <sortOrder>13</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>User questions which can be answered by knowledge articles or documents. These questions usually want information, instructions or guidance, including but not limited to customer questions about company information, polices and frequently asked questions.</description>
+            <developerName>answerquestions</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>answer-questions</masterLabel>
+            <sortOrder>14</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>IdentifyRecordByName_179c2cd98ced7fb</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GetActivityDetails_179a2546c714dea</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>AnswerQuestionsWithKnowledge_17905111b2c8127</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>QueryRecords_179ce3762da2060</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GetRecordDetails_17944c4cf301f33</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>ExtractFieldsAndValuesFromUserInput_179850c7675a880</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>QueryRecordsWithAggregate_1794e17776f8a7c</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>UpdateRecordFields_1794775fc7146dd</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GetActivitiesTimeline_1793c809ec109ca</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>IdentifyObjectByName_17918ca5405be97</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>DraftOrReviseEmail_179a783c1e35d25</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>GetRecordDetails_17944c4cf301f33</fullName>
+            <description>Generates a text blob containing record details, including object fields and values and records from related lists.</description>
+            <developerName>GetRecordDetails_17944c4cf301f33</developerName>
+            <invocationTarget>getDataForGrounding</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetRecordDetails</localDeveloperName>
+            <masterLabel>Get Record Details</masterLabel>
+            <progressIndicatorMessage>Getting details</progressIndicatorMessage>
+            <source>EmployeeCopilot__GetRecordDetails</source>
+        </localActions>
+        <localActions>
+            <fullName>ExtractFieldsAndValuesFromUserInput_179850c7675a880</fullName>
+            <description>Extracts Salesforce CRM record fields and their corresponding field values from the user input. This action must run before updateRecord to convert user input to a Salesforce sObject.</description>
+            <developerName>ExtractFieldsAndValuesFromUserInput_179850c7675a880</developerName>
+            <invocationTarget>getRecordFieldsAndValues</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>ExtractFieldsAndValuesFromUserInput</localDeveloperName>
+            <masterLabel>Extract Fields And Values From User Input</masterLabel>
+            <progressIndicatorMessage>Preparing your changes</progressIndicatorMessage>
+            <source>EmployeeCopilot__ExtractFieldsAndValuesFromUserInput</source>
+        </localActions>
+        <localActions>
+            <fullName>QueryRecordsWithAggregate_1794e17776f8a7c</fullName>
+            <description>Answers aggregation questions (such as count, sum, max, min, or average) about Salesforce CRM data based on the user input and specific conditions, such as field values. For example &apos;Find the number of open opportunities created in the last 5 days.&apos;</description>
+            <developerName>QueryRecordsWithAggregate_1794e17776f8a7c</developerName>
+            <invocationTarget>queryRecordsWithAggregate</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>QueryRecordsWithAggregate</localDeveloperName>
+            <masterLabel>Query Records with Aggregate</masterLabel>
+            <source>EmployeeCopilot__QueryRecordsWithAggregate</source>
+        </localActions>
+        <localActions>
+            <fullName>UpdateRecordFields_1794775fc7146dd</fullName>
+            <description>Updates fields on a Salesforce CRM record. The action ExtractFieldsAndValuesFromUserInput must be called prior to this action to extract the record&apos;s fields and values.</description>
+            <developerName>UpdateRecordFields_1794775fc7146dd</developerName>
+            <invocationTarget>einsteinCopilotUpdateRecord</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>UpdateRecordFields</localDeveloperName>
+            <masterLabel>Update Record</masterLabel>
+            <progressIndicatorMessage>Making updates</progressIndicatorMessage>
+            <source>EmployeeCopilot__UpdateRecordFields</source>
+        </localActions>
+        <localActions>
+            <fullName>GetActivitiesTimeline_1793c809ec109ca</fullName>
+            <description>Retrieve a timeline of all CRM activities associated with one record, including past and future activities.</description>
+            <developerName>GetActivitiesTimeline_1793c809ec109ca</developerName>
+            <invocationTarget>getActivitiesTimeline</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetActivitiesTimeline</localDeveloperName>
+            <masterLabel>Get Activities Timeline</masterLabel>
+            <progressIndicatorMessage>Retrieving activities</progressIndicatorMessage>
+            <source>EmployeeCopilot__GetActivitiesTimeline</source>
+        </localActions>
+        <localActions>
+            <fullName>IdentifyObjectByName_17918ca5405be97</fullName>
+            <description>Finds the Salesforce object API name by extracting an object name from the user input.</description>
+            <developerName>IdentifyObjectByName_17918ca5405be97</developerName>
+            <invocationTarget>identifyObject</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>IdentifyObjectByName</localDeveloperName>
+            <masterLabel>Identify Object by Name</masterLabel>
+            <source>EmployeeCopilot__IdentifyObjectByName</source>
+        </localActions>
+        <localActions>
+            <fullName>DraftOrReviseEmail_179a783c1e35d25</fullName>
+            <description>Creates an email draft or revises the latest generated email based on user input.</description>
+            <developerName>DraftOrReviseEmail_179a783c1e35d25</developerName>
+            <invocationTarget>getDraftOrReviseEmailPrompt</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>DraftOrReviseEmail</localDeveloperName>
+            <masterLabel>Draft or Revise Email</masterLabel>
+            <progressIndicatorMessage>Crafting your email</progressIndicatorMessage>
+            <source>EmployeeCopilot__DraftOrReviseEmail</source>
+        </localActions>
+        <localActions>
+            <fullName>IdentifyRecordByName_179c2cd98ced7fb</fullName>
+            <description>Searches for Salesforce CRM records by name and returns a list of matching Salesforce CRM record IDs.</description>
+            <developerName>IdentifyRecordByName_179c2cd98ced7fb</developerName>
+            <invocationTarget>identifyRecordByName</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>IdentifyRecordByName</localDeveloperName>
+            <masterLabel>Identify Record by Name</masterLabel>
+            <source>EmployeeCopilot__IdentifyRecordByName</source>
+        </localActions>
+        <localActions>
+            <fullName>GetActivityDetails_179a2546c714dea</fullName>
+            <description>Provides data about an activity record, including its content and other key details. The record type is strictly limited to a Call, Email, Event, or Task.</description>
+            <developerName>GetActivityDetails_179a2546c714dea</developerName>
+            <invocationTarget>getActivityDetails</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetActivityDetails</localDeveloperName>
+            <masterLabel>Get Activity Details</masterLabel>
+            <progressIndicatorMessage>Getting activity details</progressIndicatorMessage>
+            <source>EmployeeCopilot__GetActivityDetails</source>
+        </localActions>
+        <localActions>
+            <fullName>AnswerQuestionsWithKnowledge_17905111b2c8127</fullName>
+            <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+            <developerName>AnswerQuestionsWithKnowledge_17905111b2c8127</developerName>
+            <invocationTarget>streamKnowledgeSearch</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+            <masterLabel>Answer Questions with Knowledge</masterLabel>
+            <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+            <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+        </localActions>
+        <localActions>
+            <fullName>QueryRecords_179ce3762da2060</fullName>
+            <description>Finds and retrieves Salesforce CRM records based on user input and specific conditions, such as field values. This action automatically identifies the correct records and object type. e.g. &apos;Find all open opportunities created in the last 5 days sorted by created date.&apos;</description>
+            <developerName>QueryRecords_179ce3762da2060</developerName>
+            <invocationTarget>queryRecords</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>QueryRecords</localDeveloperName>
+            <masterLabel>Query Records</masterLabel>
+            <source>EmployeeCopilot__QueryRecords</source>
+        </localActions>
+        <localDeveloperName>GeneralCRM</localDeveloperName>
+        <masterLabel>General CRM</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is to interact and answer questions for the user about anything Salesforce or CRM data related, combining all data retrieval functions. i.e: QueryRecords(), GetRecordDetails(), GetActivitiesTimeline(), GetActivityDetails()</scope>
+        <source>EmployeeCopilot__GeneralCRM</source>
+    </localTopics>
+    <localTopics>
+        <fullName>Academic_Record_Management_16j8a5b62148028</fullName>
+        <aiPluginUtterances>
+            <developerName>utterance_0_1764597669254</developerName>
+            <language>en_US</language>
+            <masterLabel>utterance_0_1764597669254</masterLabel>
+            <utterance>Please create an Academic_Record__c object and populate the relevant fields on the Academic Record Object using the below information: 
+
+prompt with information</utterance>
+        </aiPluginUtterances>
+        <aiPluginUtterances>
+            <developerName>utterance_0_1764663902668</developerName>
+            <language>en_US</language>
+            <masterLabel>utterance_0_1764663902668</masterLabel>
+            <utterance>Please create an Academic Record Object using the below information from an academic transcript:
+
+prompt with information</utterance>
+        </aiPluginUtterances>
+        <canEscalate>true</canEscalate>
+        <description>Handles the creation and updating of academic record objects based on user-provided information.</description>
+        <developerName>Academic_Record_Management_16j8a5b62148028</developerName>
+        <genAiPluginInstructions>
+            <description>Ask the user for all required information to create or update the academic record, such as name, student ID, course details, and grades.</description>
+            <developerName>instruction_1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 1</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Validate that all mandatory fields are provided before proceeding to create or update the record.</description>
+            <developerName>instruction_2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 2</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If any required information is missing, prompt the user to provide it by asking clarifying questions.</description>
+            <developerName>instruction_3</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 3</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Once all information is gathered, use the provided data to populate the academic record fields accurately.</description>
+            <developerName>instruction_4</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 4</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Confirm with the user that the information entered is correct before finalizing the creation or update of the record.</description>
+            <developerName>instruction_5</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 5</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Create_Academic_Record_1796c5612ba99e0</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Create_Academic_Record_1796c5612ba99e0</fullName>
+            <description>You are to create the Academic Record and use the relevant information given to you in the prompt to populate the fields. Only use this action when the user tells you to create an Academic Record object and provides the necessary information</description>
+            <developerName>Create_Academic_Record_1796c5612ba99e0</developerName>
+            <invocationTarget>Update_Academic_Record</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Create_Academic_Record</localDeveloperName>
+            <masterLabel>Create Academic Record</masterLabel>
+        </localActions>
+        <localDeveloperName>Academic_Record_Management</localDeveloperName>
+        <masterLabel>Academic Record Management</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>My job is only to gather necessary information from the user to create or update academic records and populate the relevant fields accurately. I will not provide guidance or perform actions outside this scope.</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>Candidate_Record_Update_with_CV_16j0096ce6deff5</fullName>
+        <aiPluginUtterances>
+            <developerName>utterance_pleaseupda0</developerName>
+            <language>en_US</language>
+            <masterLabel>utterance_pleaseupda0</masterLabel>
+            <utterance>Please update the Candidate record with the relevant CV information found below:
+
+Prompt</utterance>
+        </aiPluginUtterances>
+        <aiPluginUtterances>
+            <developerName>utterance_thisrecord1</developerName>
+            <language>en_US</language>
+            <masterLabel>utterance_thisrecord1</masterLabel>
+            <utterance>This record {!$Record.Id} is from a Candidate that Applied for a particular job. All the information is on the Email Body field ({!$Record.Email_Body__c}). Firstly Organize the information in the following format:
+Name:
+Email:
+Phone:
+Timing:
+Role/s applying for:
+Years of Experience:
+Current Role:
+Region applying for:
+Identification Type:
+Ethnicity:
+CV:
+How did you first learn about us?:
+Hidden Field:
+Consent:
+Please organize the information and update the applicable fields of this record</utterance>
+        </aiPluginUtterances>
+        <canEscalate>false</canEscalate>
+        <description>Handles inquiries related to updating candidate records from CV or application form, including modifications to personal information and application details. This topic handles updating the Candidate record with relevant information provided in the prompt.</description>
+        <developerName>Candidate_Record_Update_with_CV_16j0096ce6deff5</developerName>
+        <genAiPluginInstructions>
+            <description>Degree Explanations: 
+Undergraduate Degrees:
+BSc – Bachelor of Science
+Typically science-focused degrees like Physics, Chemistry, Biology, Computer Science, etc.
+
+BEng – Bachelor of Engineering
+Focused on professional engineering disciplines such as Electrical, Civil, Mechanical, etc.
+
+BIS – Bachelor of Information Science
+Often includes topics like data management, information systems, and digital content.
+
+BIT – Bachelor of Information Technology
+More focused on practical IT skills like programming, networking, and software development.
+
+BTech – Bachelor of Technology
+A more technically and vocationally oriented degree, often awarded by universities of technology.
+
+BCom – Bachelor of Commerce
+Focused on business, finance, accounting, and economics.
+
+BCompt – Bachelor of Accounting Science (Compt = Computationis)
+Accounting-focused degree, often a path to becoming a Chartered Accountant (CA).
+
+Other – Any degree not listed above (e.g., BA, LLB, BEd, etc.)</description>
+            <developerName>instructions_0_1754472882546</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1754472882546</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Ensure that the updated information is accurate and complete before saving it to the Candidate record.</description>
+            <developerName>instruction_ensurethat0</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction_ensurethat0</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the user encounters issues, offer to escalate the matter to a human agent for further assistance.</description>
+            <developerName>instruction_iftheusere1</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction_iftheusere1</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Use the exact wording of the CV, don&apos;t change any of the wording, except for the overview field, for that you can use your own wording.</description>
+            <developerName>instruction_usetheexac2</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction_usetheexac2</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Capture_Application_Form_Email_Auto_Launched_Flow_179105c926eea45</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>Candidate_CV_Update_179bfd9869f0ce4</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Capture_Application_Form_Email_Auto_Launched_Flow_179105c926eea45</fullName>
+            <description>You are to update the Candidate record with the relevant information given to you in the prompt. Only use this action when the use tells you that A candidate has applied to a job by sending their details via email.</description>
+            <developerName>Capture_Application_Form_Email_Auto_Launched_Flow_179105c926eea45</developerName>
+            <invocationTarget>Capture_Application_Form_Email_Auto_Launched_Flow</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Capture_Application_Form_Email_Auto_Launched_Flow</localDeveloperName>
+            <masterLabel>Capture Application Form Email Auto Launched Flow</masterLabel>
+            <source>Capture_Application_Form_Email_Auto_Launched_Flow</source>
+        </localActions>
+        <localActions>
+            <fullName>Candidate_CV_Update_179bfd9869f0ce4</fullName>
+            <description>You are to use this action when the user tells you &quot;Please update the Candidate record ({!$Record.Id}) with the relevant CV &quot;. Parse the whole CV found in the prompt from the CV Analysis prompt, and you are then to update the Candidates record fields with the relevant information from the CV</description>
+            <developerName>Candidate_CV_Update_179bfd9869f0ce4</developerName>
+            <invocationTarget>Candidate_Update_Auto_launched_Flow</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Candidate_CV_Update</localDeveloperName>
+            <masterLabel>Candidate CV Update</masterLabel>
+            <source>Candidate_CV_Update</source>
+        </localActions>
+        <localDeveloperName>Candidate_Record_Update_with_CV</localDeveloperName>
+        <masterLabel>Candidate Record Update with CV</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is only to assist users in updating their candidate records, ensuring accuracy and completeness of the information provided. You are responsible for updating the Candidate record with the information provided by the user in the prompt. You should not attempt to perform actions outside of updating the record.</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>OOTBSingleRecordSummary_16jce8a3ceb2150</fullName>
+        <aiPluginUtterances>
+            <developerName>utterance1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>utterance1</masterLabel>
+            <utterance>Give me a quick summary of this record.</utterance>
+        </aiPluginUtterances>
+        <aiPluginUtterances>
+            <developerName>utterance2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>utterance2</masterLabel>
+            <utterance>Provide an overview of this record.</utterance>
+        </aiPluginUtterances>
+        <aiPluginUtterances>
+            <developerName>utterance3</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>utterance3</masterLabel>
+            <utterance>Share highlights for this record.</utterance>
+        </aiPluginUtterances>
+        <canEscalate>false</canEscalate>
+        <description>This topic is to help the user generate an out of the box summary for a SINGLE record. Use this topic when the user is requesting to summarize a single record without any additional instructions or specific filtering instructions.</description>
+        <developerName>OOTBSingleRecordSummary_16jce8a3ceb2150</developerName>
+        <genAiPluginInstructions>
+            <description>Always try to ask clarifying questions when trying to resolve the record</description>
+            <developerName>Instruction1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction1</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>IdentifyObjectByName_1799dbf717d1139</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>IdentifyRecordByName_179c3044ed21e84</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>QueryRecords_179b14b6bbe992c</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>QueryRecordsWithAggregate_179ee7bb202c632</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>SummarizeRecord_17967cbc2243a26</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>SummarizeRecord_17967cbc2243a26</fullName>
+            <description>Summarizes a single Salesforce CRM record. You must call summarizeRecord only if the user explicitly asks for a summary (e.g: &apos;Summary&apos;, &apos;Recap&apos;, &apos;Highlights&apos;). This action should be called only when there isn&apos;t a more specific summarization action.</description>
+            <developerName>SummarizeRecord_17967cbc2243a26</developerName>
+            <invocationTarget>getRecordSummarizationPrompt</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SummarizeRecord</localDeveloperName>
+            <masterLabel>Summarize Record</masterLabel>
+            <progressIndicatorMessage>Summarizing</progressIndicatorMessage>
+            <source>EmployeeCopilot__SummarizeRecord</source>
+        </localActions>
+        <localActions>
+            <fullName>IdentifyObjectByName_1799dbf717d1139</fullName>
+            <description>Finds the Salesforce object API name by extracting an object name from the user input.</description>
+            <developerName>IdentifyObjectByName_1799dbf717d1139</developerName>
+            <invocationTarget>identifyObject</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>IdentifyObjectByName</localDeveloperName>
+            <masterLabel>Identify Object by Name</masterLabel>
+            <source>EmployeeCopilot__IdentifyObjectByName</source>
+        </localActions>
+        <localActions>
+            <fullName>IdentifyRecordByName_179c3044ed21e84</fullName>
+            <description>Searches for Salesforce CRM records by name and returns a list of matching Salesforce CRM record IDs.</description>
+            <developerName>IdentifyRecordByName_179c3044ed21e84</developerName>
+            <invocationTarget>identifyRecordByName</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>IdentifyRecordByName</localDeveloperName>
+            <masterLabel>Identify Record by Name</masterLabel>
+            <source>EmployeeCopilot__IdentifyRecordByName</source>
+        </localActions>
+        <localActions>
+            <fullName>QueryRecords_179b14b6bbe992c</fullName>
+            <description>Finds and retrieves Salesforce CRM records based on user input and specific conditions, such as field values. This action automatically identifies the correct records and object type. e.g. &apos;Find all open opportunities created in the last 5 days sorted by created date.&apos;</description>
+            <developerName>QueryRecords_179b14b6bbe992c</developerName>
+            <invocationTarget>queryRecords</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>QueryRecords</localDeveloperName>
+            <masterLabel>Query Records</masterLabel>
+            <source>EmployeeCopilot__QueryRecords</source>
+        </localActions>
+        <localActions>
+            <fullName>QueryRecordsWithAggregate_179ee7bb202c632</fullName>
+            <description>Answers aggregation questions (such as count, sum, max, min, or average) about Salesforce CRM data based on the user input and specific conditions, such as field values. For example &apos;Find the number of open opportunities created in the last 5 days.&apos;</description>
+            <developerName>QueryRecordsWithAggregate_179ee7bb202c632</developerName>
+            <invocationTarget>queryRecordsWithAggregate</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>QueryRecordsWithAggregate</localDeveloperName>
+            <masterLabel>Query Records with Aggregate</masterLabel>
+            <source>EmployeeCopilot__QueryRecordsWithAggregate</source>
+        </localActions>
+        <localDeveloperName>OOTBSingleRecordSummary</localDeveloperName>
+        <masterLabel>Single Record Summary</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is to provide a rich summary of a Salesforce CRM record</scope>
+        <source>EmployeeCopilot__OOTBSingleRecordSummary</source>
+    </localTopics>
+    <localTopics>
+        <fullName>Candidate_Record_Update_with_Transcript_16j4bd6105baffc</fullName>
+        <aiPluginUtterances>
+            <developerName>utterance_0_1756971833484</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>utterance_0_1756971833484</masterLabel>
+            <utterance>Analise the below transcript of the Telephonic Screening Meeting and update the Candidate&apos;s appropriate fields with the relevant information</utterance>
+        </aiPluginUtterances>
+        <canEscalate>false</canEscalate>
+        <description>When a User tells you to analise the Transcript of the Telephonic Screening Meeting and update the Candidate with the relevant information
+Handles user requests to update a Candidate record with meeting transcript details by interpreting the provided transcript and categorizing with headers.</description>
+        <developerName>Candidate_Record_Update_with_Transcript_16j4bd6105baffc</developerName>
+        <genAiPluginInstructions>
+            <description>Interpret the meeting transcript provided by the user and categorize it into structured headers.</description>
+            <developerName>instruction_0_1756971833477</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>instruction_0_1756971833477</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Use the auto-launch flow to update the Candidate record with the categorized information.</description>
+            <developerName>instruction_1_1756971833483</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>instruction_1_1756971833483</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Ensure all updates to the Candidate record are accurate and align with the categorized headers.</description>
+            <developerName>instruction_2_1756971833483</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>instruction_2_1756971833483</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Update_Candidate_with_Telephonic_Screening_Transcript_Auto_launc_1797e72b560e3fe</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Update_Candidate_with_Telephonic_Screening_Transcript_Auto_launc_1797e72b560e3fe</fullName>
+            <description>You are a Recruitment Administrator working at a Tech company, you will be assisting Recruiters to capture the information that they have gathered from the Candidate in a Telephonic Interview.</description>
+            <developerName>Update_Candidate_with_Telephonic_Screening_Transcript_Auto_launc_1797e72b560e3fe</developerName>
+            <invocationTarget>Update_Candidate_with_Telephonic_Screening_Transcript_Auto_launched_Flow</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Update_Candidate_with_Telephonic_Screening_Transcript_Auto_launc</localDeveloperName>
+            <masterLabel>Update Candidate with Telephonic Screening Transcript Auto launched Flow</masterLabel>
+            <source>Update_Candidate_with_Telephonic_Screening_Transcript_Auto_launched_Flow</source>
+        </localActions>
+        <localDeveloperName>Candidate_Record_Update_with_Transcript</localDeveloperName>
+        <masterLabel>Candidate Record Update with Transcript</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is only to interpret the meeting transcript provided by the user, categorize it with appropriate headers, and use the auto-launch flow to update the Candidate record with the categorized information.</scope>
+    </localTopics>
+    <masterLabel>EmployeeCopilotPlanner</masterLabel>
+    <plannerActions>
+        <fullName>AnswerQuestionsWithKnowledge_16j838610213580</fullName>
+        <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+        <developerName>AnswerQuestionsWithKnowledge_16j838610213580</developerName>
+        <invocationTarget>streamKnowledgeSearch</invocationTarget>
+        <invocationTargetType>standardInvocableAction</invocationTargetType>
+        <isConfirmationRequired>false</isConfirmationRequired>
+        <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+        <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+        <masterLabel>Answer Questions with Knowledge</masterLabel>
+        <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+        <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+    </plannerActions>
+    <plannerType>AiCopilot__ReAct</plannerType>
+</GenAiPlannerBundle>

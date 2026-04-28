@@ -1,0 +1,1219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_18</activeVersionIdentifier>
+    <developerName>Academic_Transcript_Analysis_Prompt</developerName>
+    <masterLabel>Academic Transcript Analysis Prompt</masterLabel>
+    <templateVersions>
+        <content>You are an intelligent assistant that reviews documents attached to Salesforce records.
+
+Given the following document content:
+{!$Input:Document.Id}
+
+Determine if this document is an academic record (e.g., transcript, diploma, certificate). If it is, extract the following information:
+- Student Name
+- Institution Name
+- Degree or Qualification
+- Graduation Date
+- GPA or Grades (if available)
+- Calcul;ate the average of the sum of all the Grades
+
+Then, populate the corresponding fields in the record:
+- Name = [Extracted Name]
+- Institution_Name__c= [Extracted Institution]
+- Degree__c = [Extracted Degree]
+- Graduation_Date__c = [Extracted Date]
+- GPA__c = [Extracted GPA]
+- Average__c = [Extracted Percentage Average]
+- Candidate__c = {!$Input:Candidate.Id}
+- Graduation_Status__c = [Extracted Date is not null = True]
+- Academic_Level__c = [Extracted Qualification]
+- Qualification__c =  [Extracted Qualification]
+
+If the document is not academic transcript, set Name  = FALSE and do not populate other fields.
+
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an recruitment specialist skilled in analyzing academic transcripts for recruitment and talent acquisition purposes. Your task is to carefully review and extract all the information from Academic transcript attached to the candidate and categorize the academic transcript and populate in Academic transcript record later on in the Agent process:
+
+Given the following document content:
+{!$Input:Document.Id}
+
+Determine if this document is an academic record (e.g., transcript, diploma, certificate). If it is, extract the following information:
+- Student Name
+- Institution Name
+- Degree or Qualification
+- Graduation Date
+- GPA or Grades (if available)
+- Calcul;ate the average of the sum of all the Grades
+
+Then, populate the corresponding fields in the record:
+- Name = [Extracted Name]
+- Institution_Name__c= [Extracted Institution]
+- Degree__c = [Extracted Degree]
+- Graduation_Date__c = [Extracted Date]
+- GPA__c = [Extracted GPA]
+- Average__c = [Extracted Percentage Average]
+- Candidate__c = {!$Input:Candidate.Id}
+- Graduation_Status__c = [Extracted Date is not null = True]
+- Academic_Level__c = [Extracted Qualification]
+- Qualification__c =  [Extracted Qualification]
+
+If the document is not academic transcript, set Name  = FALSE and do not populate other fields.
+
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Draft</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_2</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an recruitment specialist skilled in analyzing academic transcripts for recruitment and talent acquisition purposes. Your task is to carefully review and extract all the information from Academic transcript attached to the candidate and categorize the academic transcript and populate in Academic transcript record later on in the Agent process:
+
+Given the following document content:
+{!$Input:Document.Id}
+
+Determine if this document is an academic record (e.g., transcript, diploma, certificate). If it is, extract the following information:
+- Student Name
+- Institution Name
+- Degree or Qualification
+- Graduation Date
+- GPA or Grades (if available)
+- Calcul;ate the average of the sum of all the Grades
+
+Then, populate the corresponding fields in the record:
+- Name = [Extracted Name]
+- Institution_Name__c= [Extracted Institution]
+- Degree__c = [Extracted Degree]
+- Graduation_Date__c = [Extracted Date]
+- GPA__c = [Extracted GPA]
+- Average__c = [Extracted Percentage Average]
+- Candidate__c = {!$Input:Candidate.Id}
+- Graduation_Status__c = [Extracted Date is not null = True]
+- Academic_Level__c = [Extracted Qualification]
+- Qualification__c =  [Extracted Qualification]
+
+If the document is not academic transcript, set Name  = FALSE and do not populate other fields.
+
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Draft</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_3</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an recruitment specialist skilled in analyzing academic transcripts for recruitment and talent acquisition purposes. Your task is to identify if the file is an academic transcript or a cv.
+if it is a cv,do not analyze the document further.
+if the file is positively identified as an Academic transcript, carefully review and extract all the information from Academic transcript attached to the candidate and categorize the academic transcript and populate in Academic transcript record later on in the Agent process:
+
+Given the following document content:
+{!$Input:Document.Id}
+
+Determine if this document is an academic record (e.g., transcript, diploma, certificate). If it is, extract the following information:
+- Student Name
+- Institution Name
+- Degree or Qualification
+- Graduation Date
+- GPA or Grades (if available)
+- Calcul;ate the average of the sum of all the Grades
+
+Then, populate the corresponding fields in the record:
+- Name = [Extracted Name]
+- Institution_Name__c= [Extracted Institution]
+- Degree__c = [Extracted Degree]
+- Graduation_Date__c = [Extracted Date]
+- GPA__c = [Extracted GPA]
+- Average__c = [Extracted Percentage Average]
+- Candidate__c = {!$Input:Candidate.Id}
+- Graduation_Status__c = [Extracted Date is not null = True]
+- Academic_Level__c = [Extracted Qualification]
+- Qualification__c =  [Extracted Qualification]
+- Modules__c = [Extracted Modules name and grades in bullet points]
+
+If the document is not academic transcript, set Name  = FALSE and do not populate other fields.
+
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_4</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an recruitment specialist skilled in analyzing academic transcripts for recruitment and talent acquisition purposes. Your task is to identify if the file is an academic transcript or a cv.
+if it is a cv,do not analyze the document further.
+if the file is positively identified as an Academic transcript, carefully review and extract all the information from Academic transcript attached to the candidate and categorize the academic transcript and populate in Academic transcript record later on in the Agent process:
+
+Given the following document content:
+{!$Input:Document.Id}
+
+Determine if this document is an academic record (e.g., transcript, diploma, certificate). If it is, extract the following information:
+- Student Name
+- Institution Name
+- Degree or Qualification
+- Graduation Date
+- GPA or Grades (if available)
+- Calcul;ate the average of the sum of all the Grades
+
+Then, populate the corresponding fields in the record:
+- Name = [Extracted Name]
+- Institution_Name__c= [Extracted Institution]
+- Degree__c = [Extracted Degree]
+- Graduation_Date__c = [Extracted Date]
+- GPA__c = [Extracted GPA]
+- Average__c = [Extracted Percentage Average]
+- Candidate__c = {!$Input:Candidate.Id}
+- Graduation_Status__c = [Extracted Date is not null = True]
+- Academic_Level__c = [Extracted Qualification]
+- Qualification__c =  [Extracted Qualification]
+- Modules__c = [Extracted Modules name and grades in bullet points]
+
+If the document is not academic transcript, set Name  = FALSE and do not populate other fields.
+
+Now create the response
+
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT5</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_5</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an recruitment specialist skilled in analyzing academic transcripts for recruitment and talent acquisition purposes. Your task is to identify if the file is an academic transcript or a cv.
+if it is a cv,do not analyze the document further.
+if the file is positively identified as an Academic transcript, carefully review and extract all the information from Academic transcript attached to the candidate and categorize the academic transcript and populate in Academic transcript record later on in the Agent process:
+
+Given the following document content:
+{!$Input:Document.Id}
+
+Determine if this document is an academic record (e.g., transcript, diploma, certificate). If it is, extract the following information:
+- Student Name
+- Institution Name
+- Degree or Qualification
+- Graduation Date
+- GPA or Grades (if available)
+- Calcul;ate the average of the sum of all the Grades
+
+Then, populate the corresponding fields in the record:
+- Name = [Extracted Name]
+- Institution_Name__c= [Extracted Institution]
+- Degree__c = [Extracted Degree]
+- Graduation_Date__c = [Extracted Date]
+- GPA__c = [Extracted GPA]
+- Average__c = [Extracted Percentage Average]
+- Candidate__c = {!$Input:Candidate.Id}
+- Graduation_Status__c = [Extracted Date is not null = True]
+- Academic_Level__c = [Extracted Qualification]
+- Qualification__c =  [Extracted Qualification]
+- Modules__c = [Extracted Modules name and grades in bullet points]
+
+If the document is not academic transcript, set Name  = FALSE and do not populate other fields.
+
+Now create the response
+
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGemini20Flash001</primaryModel>
+        <status>Draft</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_6</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an expert academic transcript analyst for recruitment and talent assessment.
+Your task is to carefully analyze the document content provided and extract structured academic information from it.
+The input below represents the full extracted text content of the document:
+
+1. Identify Document Type
+Determine whether this document is an academic record.
+Examples include: academic transcripts, statements of results, certificates, diplomas, or marks summaries.
+If it is not an academic record, clearly say so and stop.
+If it is an academic record, proceed with the extraction instructions below.
+
+2. Extract Academic Information
+If the document is an academic transcript or academic record, extract as much of the following as possible and output the results as follows:
+Student Name:
+Institution Name
+Qualification / Programme:
+Degree or Qualification Title (e.g., BSc Computer Science, Diploma in IT):
+Academic Level: (Infer based on the wording of the qualification using these options:
+None,
+Diploma,
+Undergraduate,
+Honours,
+Masters)
+Graduation Date: (Extract the latest date appearing anywhere in the transcript that logically matches a graduation or completion date.
+If no clear graduation date exists, return: Not available.) 
+Graduation Status: (Infer the most likely status using these rules:
+Graduated → If a graduation date or completion statement is present, or if final results are included.
+In Progress → If modules are listed for recent or current periods, or no completion/award wording exists.
+Dropped → If there is evidence of incomplete studies, withdrawal, failure to continue, or academic termination.
+ If unclear, choose the most reasonable interpretation based on the transcript.)
+Major: 
+Modules: (Extract all module names, codes (if present), and grades/marks.)
+Average: (If no Average is given, calculate an approximate average by: Using all available numeric grades, Computing the average percentage value)
+Linked Candidate: {!$Input:Candidate.Id} - 
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_7</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an expert academic transcript analyst for recruitment and talent assessment.
+Your task is to carefully analyze the document content provided and extract structured academic information from it.
+The input below represents the full extracted text content of the document:
+
+1. Identify Document Type
+Determine whether this document is an academic record.
+Examples include: academic transcripts, statements of results, certificates, diplomas, or marks summaries.
+If it is not an academic record, clearly say so and stop.
+If it is an academic record, proceed with the extraction instructions below.
+
+2. Extract Academic Information
+If the document is an academic transcript or academic record, extract as much of the following as possible and output the results as follows:
+Student Name:
+Institution Name
+Qualification: (e.g., BSc Computer Science, Diploma in IT):
+Academic Level: (Infer based on the wording of the qualification using these options:
+None,
+Diploma,
+Undergraduate,
+Honours,
+Masters)
+Graduation Date: (Extract the latest date appearing anywhere in the transcript that logically matches a graduation or completion date.
+If no clear graduation date exists, return: Not available.) 
+Graduation Status: (Infer the most likely status using these rules:
+Graduated → If a graduation date or completion statement is present, or if final results are included.
+In Progress → If modules are listed for recent or current periods, or no completion/award wording exists.
+Dropped → If there is evidence of incomplete studies, withdrawal, failure to continue, or academic termination.
+ If unclear, choose the most reasonable interpretation based on the transcript.)
+Major: 
+Modules: (Extract all module names, codes (if present), and grades/marks.)
+Average: (If no Average is given, calculate an approximate average by: Using all available numeric grades, Computing the average percentage value)
+Linked Candidate: {!$Input:Candidate.Id} -
+
+Now generate the response.
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_8</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an expert academic transcript analyst for recruitment and talent assessment.
+Your task is to carefully analyze the document content provided and extract structured academic information from it.
+The input below represents the full extracted text content of the document:
+
+1. Identify Document Type
+Determine whether this document is an academic record.
+Examples include: academic transcripts, statements of results, certificates, diplomas, or marks summaries.
+If it is not an academic record, clearly say so and stop.
+If it is an academic record, proceed with the extraction instructions below.
+
+2. Extract Academic Information
+If the document is an academic transcript or academic record, extract as much of the following information as possible  - which will be used to populate fields on an Academic Record and output the results as follows:
+Name: ( &apos;Student Name - &apos; + &apos;Institution Name&apos;)
+Institution Name
+Qualification: (e.g., BSc Computer Science, Diploma in IT):
+Academic Level: (Infer based on the wording of the qualification using these options:
+None,
+Diploma,
+Undergraduate,
+Honours,
+Masters)
+Graduation Date: (Extract the latest date appearing anywhere in the transcript that logically matches a graduation or completion date.
+If no clear graduation date exists, return: Not available.) 
+Graduation Status: (Infer the most likely status using these rules:
+Graduated → If a graduation date or completion statement is present, or if final results are included.
+In Progress → If modules are listed for recent or current periods, or no completion/award wording exists.
+Dropped → If there is evidence of incomplete studies, withdrawal, failure to continue, or academic termination.
+ If unclear, choose the most reasonable interpretation based on the transcript.)
+Major: 
+Modules: (Extract all module names, codes (if present), and grades/marks.)
+Average: (If no Average is given, calculate an approximate average by: Using all available numeric grades, Computing the average percentage value)
+
+Now generate the response.
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_9</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an expert academic transcript analyst for recruitment and talent assessment.
+Your task is to carefully analyze the document content provided and extract structured academic information from it.
+The input below represents the full extracted text content of the document:
+
+1. Identify Document Type
+Determine whether this document is an academic record.
+Examples include: academic transcripts, statements of results, certificates, diplomas, or marks summaries.
+If it is not an academic record, clearly say so and stop.
+If it is an academic record, proceed with the extraction instructions below.
+
+2. Extract Academic Information
+If the document is an academic transcript or academic record, extract as much of the following information as possible  - which will be used to populate fields on an Academic Record and output the results as follows:
+Name: ( &apos;Student Name - &apos; + &apos;Institution Name&apos;)
+Institution Name
+Qualification: (e.g., BSc Computer Science, Diploma in IT):
+Academic Level: (Infer based on the wording of the qualification using these options:
+None,
+Diploma,
+Undergraduate,
+Honours,
+Masters)
+Graduation Date: (Extract the latest date appearing anywhere in the transcript that logically matches a graduation or completion date.
+If no clear graduation date exists, return: Not available.) 
+Graduation Status: (Infer the most likely status using these rules:
+Graduated → If a graduation date or completion statement is present, or if final results are included.
+In Progress → If modules are listed for recent or current periods, or no completion/award wording exists.
+Dropped → If there is evidence of incomplete studies, withdrawal, failure to continue, or academic termination.
+ If unclear, choose the most reasonable interpretation based on the transcript.)
+Major: 
+Modules: (Extract all module names, codes (if present), and grades/marks.)
+Average: (If no Average is given, calculate an approximate average by: Using all available numeric grades, Computing the average percentage value)
+Candidate: {!$Input:Candidate.Id}
+
+Now generate the response.
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_10</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an expert academic transcript analyst for recruitment and talent assessment.
+Your task is to carefully analyze the document content provided and extract structured academic information from it.
+The input below represents the full extracted text content of the document:
+
+1. Identify Document Type
+Determine whether this document is an academic record.
+Examples include: academic transcripts, statements of results, certificates, diplomas, or marks summaries.
+If it is not an academic record, clearly say so and stop.
+If it is an academic record, proceed with the extraction instructions below.
+
+2. Extract Academic Information
+If the document is an academic transcript or academic record, extract as much of the following information as possible  - which will be used to populate fields on an Academic Record and output the results as follows:
+Name: ( &apos;Student Name - &apos; + &apos;Institution Name&apos;)
+Institution Name
+Qualification: (e.g., BSc Computer Science, Diploma in IT):
+Academic Level: (Infer based on the wording of the qualification using these options:
+None,
+Diploma,
+Undergraduate,
+Honours,
+Masters)
+Graduation Date: (Extract the latest date appearing anywhere in the transcript that logically matches a graduation or completion date.
+If no clear graduation date exists, return: Not available.) 
+Graduation Status: (Infer the most likely status using these rules:
+Graduated → If a graduation date or completion statement is present, or if final results are included.
+In Progress → If modules are listed for recent or current periods, or no completion/award wording exists.
+Dropped → If there is evidence of incomplete studies, withdrawal, failure to continue, or academic termination.
+ If unclear, choose the most reasonable interpretation based on the transcript.)
+Major: 
+Average: (If no Average is given, calculate an approximate average by: Using all available numeric grades, Computing the average percentage value)
+CandidateId: (Pass this Id along in your response) {!$Input:Candidate.Id}
+Modules: (Extract all module names, codes (if present), and grades/marks.)
+
+Now generate the response.
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_11</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an expert academic transcript analyst for recruitment and talent assessment.
+Your task is to carefully analyze the document content provided and extract structured academic information from it.
+The input below represents the full extracted text content of the document:
+
+1. Identify Document Type
+Determine whether this document is an academic record.
+Examples include: academic transcripts, statements of results, certificates, diplomas, or marks summaries.
+If it is not an academic record, clearly say so and stop.
+If it is an academic record, proceed with the extraction instructions below.
+
+2. Extract Academic Information
+If the document is an academic transcript or academic record, extract as much of the following information as possible  - which will be used to populate fields on an Academic Record and output the results as follows:
+Name: ( &apos;Student Name - &apos; + &apos;Institution Name&apos;)
+Institution Name
+Qualification: (e.g., BSc Computer Science, Diploma in IT):
+Academic Level: (Infer based on the wording of the qualification using these options:
+None,
+Diploma,
+Undergraduate,
+Honours,
+Masters)
+Graduation Date: (Extract the latest date appearing anywhere in the transcript that logically matches a graduation or completion date.
+If no clear graduation date exists, return: Not available.) 
+Graduation Status: (Infer the most likely status using these rules:
+Graduated → If a graduation date or completion statement is present, or if final results are included.
+In Progress → If modules are listed for recent or current periods, or no completion/award wording exists.
+Dropped → If there is evidence of incomplete studies, withdrawal, failure to continue, or academic termination.
+ If unclear, choose the most reasonable interpretation based on the transcript.)
+Major: 
+Average: (If no Average is given, calculate an approximate average by: Using all available numeric grades, Computing the average percentage value)
+CandidateId: (Pass this Id along in your response) {!$Input:Candidate.Id}
+Modules: (Extract all module names, codes (if present), and grades/marks.)
+
+Ensure that your response is less than 2000 characters
+
+Now generate the response.
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_12</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an expert academic transcript analyst for recruitment and talent assessment.
+Your task is to carefully analyze the document content provided and extract structured academic information from it.
+The input below represents the full extracted text content of the document:
+
+1. Identify Document Type
+Determine whether this document is an academic record.
+Examples include: academic transcripts, statements of results, certificates, diplomas, or marks summaries.
+If it is not an academic record, clearly say so and stop.
+If it is an academic record, proceed with the extraction instructions below.
+
+2. Extract Academic Information
+If the document is an academic transcript or academic record, extract as much of the following information as possible  - which will be used to populate fields on an Academic Record and output the results as follows:
+Name: ( &apos;Student Name - &apos; + &apos;Institution Name&apos;)
+Institution Name
+Qualification: (e.g., BSc Computer Science, Diploma in IT):
+Academic Level: (Infer based on the wording of the qualification using these options:
+None,
+Diploma,
+Undergraduate,
+Honours,
+Masters)
+Graduation Date: (Extract the latest date appearing anywhere in the transcript that logically matches a graduation or completion date.
+If no clear graduation date exists, return: Not available.) 
+Graduation Status: (Infer the most likely status using these rules:
+Graduated → If a graduation date or completion statement is present, or if final results are included.
+In Progress → If modules are listed for recent or current periods, or no completion/award wording exists.
+Dropped → If there is evidence of incomplete studies, withdrawal, failure to continue, or academic termination.
+ If unclear, choose the most reasonable interpretation based on the transcript.)
+Major: 
+Average: (If no Average is given, calculate an approximate average by: Using all available numeric grades, Computing the average percentage value)
+CandidateId: (Pass this Id along in your response) {!$Input:Candidate.Id}
+Modules: (Extract all module names, codes (if present), and grades/marks.)
+
+Ensure that your response is less than 1800 characters
+
+Now generate the response.
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_13</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an expert academic transcript classifier and parser. Analyze the full extracted text below and return ONLY structured academic data for creating a Salesforce Academic Record.
+1. Document Validation
+Determine if the document is an academic record (e.g., transcript, statement of results, certificate, diploma, marks summary).
+ If not, return:
+ DocumentType: Not an academic record
+ and stop.
+If it is, return:
+ DocumentType: Academic Record
+ and continue.
+2. Extract Academic Record Fields
+Extract or infer the following fields as accurately as possible:
+AcademicRecordName: &lt;Student Name&gt; - &lt;Institution Name&gt;
+CandidateId: {!$Input:Candidate.Id}
+InstitutionName:
+StudentName:
+Qualification: (e.g., BSc Computer Science, Diploma in IT)
+AcademicLevel: Choose ONE: None, Diploma, Undergraduate, Honours, Masters
+ (Infer from qualification wording)
+Major:
+GraduationDate:
+Use the latest date that indicates graduation/completion.
+If none: Not available
+GraduationStatus: Choose ONE:
+Graduated: graduation date or completion wording present
+In Progress: current/recent modules listed OR no completion wording
+Dropped: transcript indicates incomplete/terminated studies
+ (If unclear, choose the most reasonable interpretation.)
+Average:
+Extract if provided
+If not, compute approximate average from all numeric grades
+Modules:
+ Return an array of objects in format:
+ {ModuleName, ModuleCode (if any), Grade}
+3. Response Format
+Return ONLY the following JSON structure, no explanation or narrative:
+
+{
+ &quot;DocumentType&quot;: &quot;&quot;,
+ &quot;AcademicRecordName&quot;: &quot;&quot;,
+ &quot;CandidateId&quot;: &quot;{!$Input:Candidate.Id}&quot;,
+ &quot;InstitutionName&quot;: &quot;&quot;,
+ &quot;StudentName&quot;: &quot;&quot;,
+ &quot;Qualification&quot;: &quot;&quot;,
+ &quot;AcademicLevel&quot;: &quot;&quot;,
+ &quot;Major&quot;: &quot;&quot;,
+ &quot;GraduationDate&quot;: &quot;&quot;,
+ &quot;GraduationStatus&quot;: &quot;&quot;,
+ &quot;Average&quot;: &quot;&quot;,
+ &quot;Modules&quot;: [
+    {&quot;ModuleName&quot;: &quot;&quot;, &quot;ModuleCode&quot;: &quot;&quot;, &quot;Grade&quot;: &quot;&quot;}
+ ]
+}
+Ensure total response ≤ 1800 characters.
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_14</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an expert academic transcript classifier and parser. Analyze the full extracted text below and return ONLY structured academic data for creating a Salesforce Academic Record.
+1. Document Validation
+Determine if the document is an academic record (e.g., transcript, statement of results, certificate, diploma, marks summary).
+ If not, return:
+ DocumentType: Not an academic record
+ and stop.
+If it is, return:
+ DocumentType: Academic Record
+ and continue.
+2. Extract Academic Record Fields
+Extract or infer the following fields as accurately as possible:
+AcademicRecordName: &lt;Student Name&gt; - &lt;Institution Name&gt;
+CandidateId: {!$Input:Candidate.Id}
+InstitutionName:
+StudentName:
+Qualification: (e.g., BSc Computer Science, Diploma in IT)
+AcademicLevel: Choose ONE: None, Diploma, Undergraduate, Honours, Masters
+ (Infer from qualification wording)
+Major:
+GraduationDate:
+Use the latest date that indicates graduation/completion.
+If none: Not available
+GraduationStatus: Choose ONE:
+Graduated: graduation date or completion wording present
+In Progress: current/recent modules listed OR no completion wording
+Dropped: transcript indicates incomplete/terminated studies
+ (If unclear, choose the most reasonable interpretation.)
+Average:
+Extract if provided
+If not, compute approximate average from all numeric grades
+Modules 
+Extract only a list of module names.
+ No codes, no marks, no grade data.
+ Return them as a simple list of strings.
+3. Response Format
+Return ONLY the following JSON structure, no explanation or narrative:
+
+{
+ &quot;DocumentType&quot;: &quot;&quot;,
+ &quot;AcademicRecordName&quot;: &quot;&quot;,
+ &quot;CandidateId&quot;: &quot;{!$Input:Candidate.Id}&quot;,
+ &quot;InstitutionName&quot;: &quot;&quot;,
+ &quot;StudentName&quot;: &quot;&quot;,
+ &quot;Qualification&quot;: &quot;&quot;,
+ &quot;AcademicLevel&quot;: &quot;&quot;,
+ &quot;Major&quot;: &quot;&quot;,
+ &quot;GraduationDate&quot;: &quot;&quot;,
+ &quot;GraduationStatus&quot;: &quot;&quot;,
+ &quot;Average&quot;: &quot;&quot;,
+&quot;Modules&quot;: [
+ &quot;Computer Science 101&quot;,
+ &quot;Data Structures&quot;,
+ &quot;Mathematics II&quot;
+]
+}
+Ensure total response ≤ 1800 characters.
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_15</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an expert academic transcript classifier and parser. Analyze the full extracted text below and return ONLY structured academic data for creating a Salesforce Academic Record.
+1. Document Validation
+Determine if the document is an academic record (e.g., transcript, statement of results, certificate, diploma, marks summary).
+ If not, return:
+ DocumentType: Not an academic record
+ and stop.
+If it is, return:
+ DocumentType: Academic Record
+ and continue.
+2. Extract Academic Record Fields
+Extract or infer the following fields as accurately as possible:
+AcademicRecordName: &lt;Student Name&gt; - &lt;Institution Name&gt;
+CandidateId: {!$Input:Candidate.Id}
+InstitutionName:
+StudentName:
+Qualification: (e.g., BSc Computer Science, Diploma in IT)
+AcademicLevel: Choose ONE: None, Diploma, Undergraduate, Honours, Masters
+ (Infer from qualification wording)
+Major:
+GraduationDate:
+Use the latest date that indicates graduation/completion.
+If none: Not available
+GraduationStatus: Choose ONE:
+Graduated: graduation date or completion wording present
+In Progress: current/recent modules listed OR no completion wording
+Dropped: transcript indicates incomplete/terminated studies
+ (If unclear, choose the most reasonable interpretation.)
+Average:
+Extract if provided
+If not, compute approximate average from all numeric grades
+Modules 
+Extract only a list of module names.
+ No codes, no marks, no grade data.
+ Return them as a simple list of strings.
+3. Response Format
+Do not include any text, explanation, or Markdown formatting. 
+Return only the JSON object starting with { and ending with } - as seen below:
+
+{
+ &quot;DocumentType&quot;: &quot;&quot;,
+ &quot;AcademicRecordName&quot;: &quot;&quot;,
+ &quot;CandidateId&quot;: &quot;{!$Input:Candidate.Id}&quot;,
+ &quot;InstitutionName&quot;: &quot;&quot;,
+ &quot;StudentName&quot;: &quot;&quot;,
+ &quot;Qualification&quot;: &quot;&quot;,
+ &quot;AcademicLevel&quot;: &quot;&quot;,
+ &quot;Major&quot;: &quot;&quot;,
+ &quot;GraduationDate&quot;: &quot;&quot;,
+ &quot;GraduationStatus&quot;: &quot;&quot;,
+ &quot;Average&quot;: &quot;&quot;,
+&quot;Modules&quot;: [
+ &quot;Computer Science 101&quot;,
+ &quot;Data Structures&quot;,
+ &quot;Mathematics II&quot;
+]
+}
+Ensure total response ≤ 1800 characters.
+
+
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_16</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an expert academic transcript classifier and parser. Analyze the full extracted text below and return ONLY structured academic data for creating a Salesforce Academic Record.
+1. Document Validation
+Determine if the document is an academic record (e.g., transcript, statement of results, certificate, diploma, marks summary).
+ If not, return:
+ DocumentType: Not an academic record
+ and stop.
+If it is, return:
+ DocumentType: Academic Record
+ and continue.
+2. Extract Academic Record Fields
+Extract or infer the following fields as accurately as possible:
+AcademicRecordName: &lt;Student Name&gt; - &lt;Institution Name&gt;
+CandidateId: {!$Input:Candidate.Id}
+InstitutionName:
+StudentName:
+Qualification: (e.g., BSc Computer Science, Diploma in IT)
+AcademicLevel: Choose ONE: None, Diploma, Undergraduate, Honours, Masters
+ (Infer from qualification wording)
+Major:
+GraduationDate:
+Use the latest date that indicates graduation/completion.
+If none: Not available
+GraduationStatus: Choose ONE:
+Graduated: graduation date or completion wording present
+In Progress: current/recent modules listed OR no completion wording
+Dropped: transcript indicates incomplete/terminated studies
+ (If unclear, choose the most reasonable interpretation.)
+FirstYearAverage:
+ Calculate the average using all first-year modules. A module is considered first year if it contains a “1” immediately after the module prefix (e.g., CMPG 1, MATH 1, ACCN 1). If the transcript does not explicitly state the year, infer the year using this rule.
+ If a module appears multiple times due to repeat attempts, use only the final/latest attempt when calculating the average.
+SecondYearAverage:
+ Calculate the average using all second-year modules. A module is considered second year if it contains a “2” immediately after the module prefix (e.g., CMPG 2, MATH 2). If the transcript does not explicitly state the year, infer the year using this rule.
+ If a module appears multiple times due to repeat attempts, use only the final/latest attempt when calculating the average.
+ThirdYearAverage:
+ Calculate the average using all third-year modules. A module is considered third year if it contains a “3” immediately after the module prefix (e.g., CMPG 3, MATH 3). If the transcript does not explicitly state the year, infer the year using this rule.
+ If a module appears multiple times due to repeat attempts, use only the final/latest attempt when calculating the average.
+Average:
+Extract if provided
+If not, compute approximate average from all numeric grades
+Modules 
+Extract only a list of module names.
+ No codes, no marks, no grade data.
+ Return them as a simple list of strings.
+3. Response Format
+Do not include any text, explanation, or Markdown formatting. 
+Return only the JSON object starting with { and ending with } - as seen below:
+
+{
+ &quot;DocumentType&quot;: &quot;&quot;,
+ &quot;AcademicRecordName&quot;: &quot;&quot;,
+ &quot;CandidateId&quot;: &quot;{!$Input:Candidate.Id}&quot;,
+ &quot;InstitutionName&quot;: &quot;&quot;,
+ &quot;StudentName&quot;: &quot;&quot;,
+ &quot;Qualification&quot;: &quot;&quot;,
+ &quot;AcademicLevel&quot;: &quot;&quot;,
+ &quot;Major&quot;: &quot;&quot;,
+ &quot;GraduationDate&quot;: &quot;&quot;,
+ &quot;GraduationStatus&quot;: &quot;&quot;,
+ &quot;FirstYearAverage&quot;: &quot;&quot;,
+ &quot;SecondYearAverage&quot;: &quot;&quot;,
+ &quot;ThirdYearAverage&quot;: &quot;&quot;,
+ &quot;Average&quot;: &quot;&quot;,
+&quot;Modules&quot;: [
+ &quot;Computer Science 101&quot;,
+ &quot;Data Structures&quot;,
+ &quot;Mathematics II&quot;
+]
+}
+Ensure total response ≤ 1800 characters.
+
+
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultBedrockAnthropicClaude4Sonnet</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_17</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an expert academic transcript classifier and parser. Analyze the full extracted text below and return ONLY structured academic data for creating a Salesforce Academic Record.
+1. Document Validation
+Determine if the document is an academic record (e.g., transcript, statement of results, certificate, diploma, marks summary).
+ If not, return:
+ DocumentType: Not an academic record
+ and stop.
+If it is, return:
+ DocumentType: Academic Record
+ and continue.
+2. Extract Academic Record Fields
+Extract or infer the following fields as accurately as possible:
+AcademicRecordName: &lt;Student Name&gt; - &lt;Institution Name&gt;
+CandidateId: {!$Input:Candidate.Id}
+InstitutionName:
+StudentName:
+Qualification: (e.g., BSc Computer Science, Diploma in IT)
+AcademicLevel: Choose ONE: None, Diploma, Undergraduate, Honours, Masters
+ (Infer from qualification wording)
+Major:
+GraduationDate:
+Use the latest date that indicates graduation/completion.
+If none: Not available
+GraduationStatus: Choose ONE:
+Graduated: graduation date or completion wording present
+In Progress: current/recent modules listed OR no completion wording
+Dropped: transcript indicates incomplete/terminated studies
+ (If unclear, choose the most reasonable interpretation.)
+FirstYearAverage:
+ Calculate the average using all first-year modules. A module is considered first year if it contains a “1” immediately after the module prefix (e.g., CMPG 1, MATH 1, ACCN 1). If the transcript does not explicitly state the year, infer the year using this rule.
+ If a module appears multiple times due to repeat attempts, use only the final/latest attempt when calculating the average.
+SecondYearAverage:
+ Calculate the average using all second-year modules. A module is considered second year if it contains a “2” immediately after the module prefix (e.g., CMPG 2, MATH 2). If the transcript does not explicitly state the year, infer the year using this rule.
+ If a module appears multiple times due to repeat attempts, use only the final/latest attempt when calculating the average.
+ThirdYearAverage:
+ Calculate the average using all third-year modules. A module is considered third year if it contains a “3” immediately after the module prefix (e.g., CMPG 3, MATH 3). If the transcript does not explicitly state the year, infer the year using this rule.
+ If a module appears multiple times due to repeat attempts, use only the final/latest attempt when calculating the average.
+Average:
+Extract if provided
+If not, compute approximate average from all numeric grades
+Modules 
+Extract only a list of module names.
+ No codes, no marks, no grade data.
+ Return them as a simple list of strings.
+3. Response Format
+Do not include any text, explanation, or Markdown formatting. 
+Return only the JSON object starting with { and ending with } - as seen below:
+
+{
+ &quot;DocumentType&quot;: &quot;&quot;,
+ &quot;AcademicRecordName&quot;: &quot;&quot;,
+ &quot;CandidateId&quot;: &quot;{!$Input:Candidate.Id}&quot;,
+ &quot;InstitutionName&quot;: &quot;&quot;,
+ &quot;StudentName&quot;: &quot;&quot;,
+ &quot;Qualification&quot;: &quot;&quot;,
+ &quot;AcademicLevel&quot;: &quot;&quot;,
+ &quot;Major&quot;: &quot;&quot;,
+ &quot;GraduationDate&quot;: &quot;&quot;,
+ &quot;GraduationStatus&quot;: &quot;&quot;,
+ &quot;FirstYearAverage&quot;: &quot;&quot;,
+ &quot;SecondYearAverage&quot;: &quot;&quot;,
+ &quot;ThirdYearAverage&quot;: &quot;&quot;,
+ &quot;Average&quot;: &quot;&quot;,
+&quot;Modules&quot;: [
+ &quot;Computer Science 101&quot;,
+ &quot;Data Structures&quot;,
+ &quot;Mathematics II&quot;
+]
+}
+Ensure total response ≤ 1800 characters.
+
+
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AcademicTranscript</apiName>
+            <definition>SOBJECT://Academic_Record__c</definition>
+            <masterLabel>Academic Transcript</masterLabel>
+            <referenceName>Input:AcademicTranscript</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Document</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Document</masterLabel>
+            <referenceName>Input:Document</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_18</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

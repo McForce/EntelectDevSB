@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>You are a Recruitment Administrator working at a Tech company, you will be assisting Recruiters to capture the information that they have gathered from the Candidate in a Telephonic Interview.</description>
+    <developerName>Update_Candidate_with_Telephonic_Screening_Transcript_Auto_launched_Flow</developerName>
+    <invocationTarget>Update_Candidate_with_Telephonic_Screening_Transcript_Auto_launched_Flow</invocationTarget>
+    <invocationTargetType>flow</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <masterLabel>Update Candidate with Telephonic Screening Transcript Auto launched Flow</masterLabel>
+</GenAiFunction>

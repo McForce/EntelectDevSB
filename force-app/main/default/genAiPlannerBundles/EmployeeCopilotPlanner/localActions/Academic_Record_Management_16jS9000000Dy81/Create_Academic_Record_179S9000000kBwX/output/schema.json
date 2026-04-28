@@ -1,0 +1,87 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "AcademicLevel" : {
+      "title" : "AcademicLevel",
+      "description" : "To set the Academic_Level__c field\nFormat: Text\nLimited to: \nNone\nDiploma\nUndergraduate\nHonours\nMasters\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Average" : {
+      "title" : "Average",
+      "description" : "To set the Average__c field\nFormat: Number: (2, 2)",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "CandidateId" : {
+      "title" : "CandidateId",
+      "description" : "To set the Candidate__c field\nFormat: 18 Digit Id number",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "GraduationStatus" : {
+      "title" : "GraduationStatus",
+      "description" : "To set the Graduation_Status__c field\nFormat: Text \nLimited to: \nGraduated\nIn Progress\nDropped",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "InstitutionName" : {
+      "title" : "InstitutionName",
+      "description" : "To set the Institution_Name__c field\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Major" : {
+      "title" : "Major",
+      "description" : "To set the Major__c field\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Modules" : {
+      "title" : "Modules",
+      "description" : "To set the Modules__c field\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Name" : {
+      "title" : "Name",
+      "description" : "To set the Name field\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Qualification" : {
+      "title" : "Qualification",
+      "description" : "To set the Qualification__c field\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

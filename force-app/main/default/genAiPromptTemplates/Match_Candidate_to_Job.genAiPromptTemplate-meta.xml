@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_12</activeVersionIdentifier>
+    <developerName>Match_Candidate_to_Job</developerName>
+    <masterLabel>Match Candidate to Job</masterLabel>
+    <templateVersions>
+        <content>You are a specialist recruiter in the tech industry and you are to analyze the Job {!$Input:job.Id} and find that the best Candidates that might be suitable for this role
+
+&quot;&quot;&quot;
+
+
+A new job has been created with the following details: 
+Job Title: {!$Input:job.Name}
+Job requirements: {!$Input:job.What_We_Need_from_You__c}
+Required Skills and tech stack: {!$Input:job.Tech_Stacks_We_Use__c}
+
+
+Search the candidate database found in this flow {!$Flow:Get_Candidates_Prompt_Template_Flow.Prompt} then return the top matching candidates based on:
+Skill and tech stack match
+Years of relevant experience
+Education and certifications
+Previous job titles and industries
+Candidate availability
+Rank the candidates by relevance score (from 1–100), provide a brief reason for the match, and return their:
+Full Name
+Email Address 
+Contact Number
+Resume Summary
+Match Score
+Key Matching Criteria
+Only return candidates who meet at least 60% of the job requirements.
+Return at least 3 Candidates
+Return their Record Id&apos;s
+
+
+&quot;&quot;&quot;
+ 
+Now create the response
+</content>
+        <inputs>
+            <apiName>job</apiName>
+            <definition>SOBJECT://Job__c</definition>
+            <masterLabel>job</masterLabel>
+            <referenceName>Input:job</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Role</apiName>
+            <definition>SOBJECT://Role__c</definition>
+            <masterLabel>Role</masterLabel>
+            <referenceName>Input:Role</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT5</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Candidates_Prompt_Template_Flow</definition>
+            <referenceName>Flow:Get_Candidates_Prompt_Template_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a specialist recruiter in the tech industry and you are to analyze the Job {!$Input:job.Id} and find that the best Candidates that might be suitable for this role
+
+&quot;&quot;&quot;
+
+
+A new job has been created with the following details: 
+Job Title: {!$Input:job.Name}
+Job requirements: {!$Input:job.What_We_Need_from_You__c}
+Required Skills and tech stack: {!$Input:job.Tech_Stacks_We_Use__c}
+
+
+Search the candidate database found in this flow {!$Flow:Get_Candidates_Prompt_Template_Flow.Prompt} then return the top matching candidates based on:
+Skill and tech stack match
+Years of relevant experience
+Education and certifications
+Previous job titles and industries
+Candidate availability
+Rank the candidates by relevance score (from 1–100), provide a brief reason for the match, and return their:
+Full Name
+Email Address 
+Contact Number
+Resume Summary
+Match Score
+Key Matching Criteria
+Only return candidates who meet at least 60% of the job requirements.
+Return at least 3 Candidates
+Return their Record Id&apos;s
+
+
+&quot;&quot;&quot;
+ 
+Now create the response
+</content>
+        <inputs>
+            <apiName>job</apiName>
+            <definition>SOBJECT://Job__c</definition>
+            <masterLabel>job</masterLabel>
+            <referenceName>Input:job</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Role</apiName>
+            <definition>SOBJECT://Role__c</definition>
+            <masterLabel>Role</masterLabel>
+            <referenceName>Input:Role</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Draft</status>
+        <templateDataProviders>
+            <definition>flow://Get_Candidates_Prompt_Template_Flow</definition>
+            <referenceName>Flow:Get_Candidates_Prompt_Template_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_2</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a specialist recruiter in the tech industry and you are to analyze the Job {!$Input:job.Id} and find that the best Candidates that might be suitable for this role
+
+&quot;&quot;&quot;
+
+
+A new job has been created with the following details: 
+Job Title: {!$Input:job.Name}
+Job requirements: {!$Input:job.What_We_Need_from_You__c}
+Required Skills and tech stack: {!$Input:job.Tech_Stacks_We_Use__c}
+
+
+Search the candidate database found in this flow {!$Flow:Get_Candidates_Prompt_Template_Flow.Prompt} then return the top matching candidates based on:
+Skill and tech stack match
+Years of relevant experience
+Education and certifications
+Previous job titles and industries
+Candidate availability
+Rank the candidates by relevance score (from 1–100), provide a brief reason for the match, and return their:
+Full Name
+Candidate Link (make this a clickable URL link to the Candidate record)
+Resume Summary
+Match Score
+Return at least 3 Candidates
+
+
+Can you possibly return in Tabular format
+
+&quot;&quot;&quot;
+ 
+Now create the response
+</content>
+        <inputs>
+            <apiName>job</apiName>
+            <definition>SOBJECT://Job__c</definition>
+            <masterLabel>job</masterLabel>
+            <referenceName>Input:job</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Role</apiName>
+            <definition>SOBJECT://Role__c</definition>
+            <masterLabel>Role</masterLabel>
+            <referenceName>Input:Role</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Candidates_Prompt_Template_Flow</definition>
+            <referenceName>Flow:Get_Candidates_Prompt_Template_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_3</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a specialist recruiter in the tech industry and you are to analyze the Job {!$Input:job.Id} and find that the best Candidates that might be suitable for this role
+
+&quot;&quot;&quot;
+
+
+A new job has been created with the following details: 
+Job Title: {!$Input:job.Name}
+Job requirements: {!$Input:job.What_We_Need_from_You__c}
+Required Skills and tech stack: {!$Input:job.Tech_Stacks_We_Use__c}
+Industry Experience: {!$Input:job.Industry_Experience__c}
+The most important tech stacks: {!$Input:job.Most_Important_Tech_Stack__c}
+Region: {!$Input:job.Region__c}
+Minimum Requirements: {!$Input:job.Minimum_Requirements__c}
+
+
+Search the candidate database found in this flow {!$Flow:Get_Candidates_Prompt_Template_Flow.Prompt} then return the top matching candidates based on:
+Skill and tech stack match
+Years of relevant experience
+Education and certifications
+Previous job titles and industries
+Rank the candidates by relevance score (from 1–100), provide a brief reason for the match, and return their:
+Full Name
+Candidate Link (make this a clickable URL link to the Candidate record)
+Resume Summary
+Match Score
+Return at least 3 Candidates
+
+
+
+&quot;&quot;&quot;
+ 
+Now create the response
+</content>
+        <inputs>
+            <apiName>job</apiName>
+            <definition>SOBJECT://Job__c</definition>
+            <masterLabel>job</masterLabel>
+            <referenceName>Input:job</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Role</apiName>
+            <definition>SOBJECT://Role__c</definition>
+            <masterLabel>Role</masterLabel>
+            <referenceName>Input:Role</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Candidates_Prompt_Template_Flow</definition>
+            <referenceName>Flow:Get_Candidates_Prompt_Template_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_4</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a specialist recruiter in the tech industry and you are to analyze the Job {!$Input:job.Id} and find that the best Candidates that might be suitable for this role
+
+&quot;&quot;&quot;
+
+
+A new job has been created with the following details: 
+Job Title: {!$Input:job.Name}
+Job requirements: {!$Input:job.What_We_Need_from_You__c}
+Required Skills and tech stack: {!$Input:job.Tech_Stacks_We_Use__c}
+Industry Experience: {!$Input:job.Industry_Experience__c}
+The most important tech stacks: {!$Input:job.Most_Important_Tech_Stack__c}
+Region: {!$Input:job.Region__c}
+Minimum Requirements: {!$Input:job.Minimum_Requirements__c}
+
+
+Search the candidate database found in this flow {!$Flow:Get_Candidates_Prompt_Template_Flow.Prompt} then return the top matching candidates based on:
+Skill and tech stack match
+Years of relevant experience
+Education and certifications
+Previous job titles and industries
+Rank the candidates by relevance score (from 1–100), provide a brief reason for the match, and return their:
+Full Name
+Candidate Link (make this a clickable URL link to the Candidate record)
+Resume Summary
+Match Score
+Return at least 3 Candidates
+
+Return in tabular format
+
+Also list these candidate&apos;s record ID numbers in a comma delimited format and put in &quot;Candidates&quot; Variable
+
+
+
+&quot;&quot;&quot;
+ 
+Now create the response
+</content>
+        <inputs>
+            <apiName>job</apiName>
+            <definition>SOBJECT://Job__c</definition>
+            <masterLabel>job</masterLabel>
+            <referenceName>Input:job</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Role</apiName>
+            <definition>SOBJECT://Role__c</definition>
+            <masterLabel>Role</masterLabel>
+            <referenceName>Input:Role</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Candidates_Prompt_Template_Flow</definition>
+            <referenceName>Flow:Get_Candidates_Prompt_Template_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_5</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a specialist recruiter in the tech industry and you are to analyze the Job {!$Input:job.Id} and find that the best Candidates that might be suitable for this role
+
+&quot;&quot;&quot;
+
+
+A new job has been created with the following details: 
+Job Title: {!$Input:job.Name}
+Job requirements: {!$Input:job.What_We_Need_from_You__c}
+Required Skills and tech stack: {!$Input:job.Tech_Stacks_We_Use__c}
+Industry Experience: {!$Input:job.Industry_Experience__c}
+The most important tech stacks: {!$Input:job.Most_Important_Tech_Stack__c}
+Region: {!$Input:job.Region__c}
+Minimum Requirements: {!$Input:job.Minimum_Requirements__c}
+
+
+Search the candidate database found in this flow {!$Flow:Get_Candidates_Prompt_Template_Flow.Prompt} then return the top matching candidates based on:
+Skill and tech stack match
+Years of relevant experience
+Education and certifications
+Previous job titles and industries
+Rank the candidates by relevance score (from 1–100), provide a brief reason for the match, and return their:
+Full Name
+Candidate Link (make this a clickable URL link to the Candidate record)
+Resume Summary
+Match Score
+Return at least 3 Candidates
+
+Return in Tabular Format format
+
+Also list these candidate&apos;s record ID numbers in a comma delimited format and put in &quot;Candidates&quot; Variable
+
+
+
+&quot;&quot;&quot;
+ 
+Now create the response
+</content>
+        <inputs>
+            <apiName>job</apiName>
+            <definition>SOBJECT://Job__c</definition>
+            <masterLabel>job</masterLabel>
+            <referenceName>Input:job</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Role</apiName>
+            <definition>SOBJECT://Role__c</definition>
+            <masterLabel>Role</masterLabel>
+            <referenceName>Input:Role</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Candidates_Prompt_Template_Flow</definition>
+            <referenceName>Flow:Get_Candidates_Prompt_Template_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_6</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a specialist recruiter in the tech industry and you are to analyze the Job {!$Input:job.Id} and find that the best Candidates that might be suitable for this role
+
+&quot;&quot;&quot;
+
+
+A new job has been created with the following details: 
+Job Title: {!$Input:job.Name}
+Job requirements: {!$Input:job.What_We_Need_from_You__c}
+Required Skills and tech stack: {!$Input:job.Tech_Stacks_We_Use__c}
+Industry Experience: {!$Input:job.Industry_Experience__c}
+The most important tech stacks: {!$Input:job.Most_Important_Tech_Stack__c}
+Region: {!$Input:job.Region__c}
+Minimum Requirements: {!$Input:job.Minimum_Requirements__c}
+
+
+Search the candidate database found in this flow {!$Flow:Get_Candidates_Prompt_Template_Flow.Prompt} then return the top matching candidates based on:
+Skill and tech stack match
+Years of relevant experience
+Education and certifications
+Previous job titles and industries
+Rank the candidates by relevance score (from 1–100), provide a brief reason for the match, and return their:
+Full Name
+Candidate Link (make this a clickable URL link to the Candidate record)
+Resume Summary
+Match Score
+Return at least 3 Candidates
+
+Return the final results as a JSON array with this exact structure:
+[
+  {
+    &quot;fullName&quot;: &quot;Candidate Full Name&quot;,
+    &quot;candidateId&quot;: &quot;Salesforce Record ID&quot;, 
+    &quot;resumeSummary&quot;: &quot;Brief summary of match&quot;,
+    &quot;matchScore&quot;: 95
+  }
+]
+
+Only return the JSON array, no additional text or formatting.
+
+
+Also list these candidate&apos;s record ID numbers in a comma delimited format and put in &quot;Candidates&quot; Variable
+
+
+
+&quot;&quot;&quot;
+ 
+Now create the response
+</content>
+        <inputs>
+            <apiName>job</apiName>
+            <definition>SOBJECT://Job__c</definition>
+            <masterLabel>job</masterLabel>
+            <referenceName>Input:job</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Role</apiName>
+            <definition>SOBJECT://Role__c</definition>
+            <masterLabel>Role</masterLabel>
+            <referenceName>Input:Role</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Candidates_Prompt_Template_Flow</definition>
+            <referenceName>Flow:Get_Candidates_Prompt_Template_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_7</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a specialist recruiter in the tech industry and you are to analyze the Job {!$Input:job.Id} and find that the best Candidates that might be suitable for this role
+
+&quot;&quot;&quot;
+
+
+A new job has been created with the following details: 
+Job Title: {!$Input:job.Name}
+Job requirements: {!$Input:job.What_We_Need_from_You__c}
+Required Skills and tech stack: {!$Input:job.Tech_Stacks_We_Use__c}
+Industry Experience: {!$Input:job.Industry_Experience__c}
+The most important tech stacks: {!$Input:job.Most_Important_Tech_Stack__c}
+Region: {!$Input:job.Region__c}
+Minimum Requirements: {!$Input:job.Minimum_Requirements__c}
+
+
+Search the candidate database found in this flow {!$Flow:Get_Candidates_Prompt_Template_Flow.Prompt} then return the top matching candidates based on:
+Skills and tech stack 
+Years of relevant experience
+Education and certifications
+Previous job titles and industries
+Rank the candidates by relevance score (from 1–100), provide a brief reason for the match, and return their:
+Candidate Link (make this a clickable URL link to the Candidate record)
+Resume Summary
+The reason for the Match score
+Match Score
+Return at least 3 Candidates
+
+Return in Tabular Format
+
+
+
+&quot;&quot;&quot;
+ 
+Now create the response
+</content>
+        <inputs>
+            <apiName>job</apiName>
+            <definition>SOBJECT://Job__c</definition>
+            <masterLabel>job</masterLabel>
+            <referenceName>Input:job</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Role</apiName>
+            <definition>SOBJECT://Role__c</definition>
+            <masterLabel>Role</masterLabel>
+            <referenceName>Input:Role</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Candidates_Prompt_Template_Flow</definition>
+            <referenceName>Flow:Get_Candidates_Prompt_Template_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_8</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a specialist recruiter in the tech industry and you are to analyze the Job {!$Input:job.Id} and find that the best Candidates that might be suitable for this role
+
+&quot;&quot;&quot;
+
+
+A new job has been created with the following details: 
+Job Title: {!$Input:job.Name}
+Job requirements: {!$Input:job.What_We_Need_from_You__c}
+Required Skills and tech stack: {!$Input:job.Tech_Stacks_We_Use__c}
+Industry Experience: {!$Input:job.Industry_Experience__c}
+The most important tech stacks: {!$Input:job.Most_Important_Tech_Stack__c}
+Region: {!$Input:job.Region__c}
+Minimum Requirements: {!$Input:job.Minimum_Requirements__c}
+
+
+Search the candidate database found in this flow {!$Flow:Get_Candidates_Prompt_Template_Flow.Prompt} then return the top matching candidates based on:
+Skills and tech stack 
+Years of relevant experience
+Education and certifications
+Previous job titles and industries
+Rank the candidates by relevance score (from 1–100), provide a brief reason for the match, and return their:
+Candidate Name: Candidate Link (make this a clickable URL link to the Candidate record)
+Resume Summary
+The reason for the Match
+Match Score
+Return at least 3 Candidates
+
+Return in Tabular Format
+
+
+
+&quot;&quot;&quot;
+ 
+Now create the response
+</content>
+        <inputs>
+            <apiName>job</apiName>
+            <definition>SOBJECT://Job__c</definition>
+            <masterLabel>job</masterLabel>
+            <referenceName>Input:job</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Role</apiName>
+            <definition>SOBJECT://Role__c</definition>
+            <masterLabel>Role</masterLabel>
+            <referenceName>Input:Role</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Candidates_Prompt_Template_Flow</definition>
+            <referenceName>Flow:Get_Candidates_Prompt_Template_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_9</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a specialist recruiter in the tech industry and you are to analyze the Job {!$Input:job.Id} and find that the best Candidates that might be suitable for this role
+
+&quot;&quot;&quot;
+
+
+A new job has been created with the following details: 
+Job Title: {!$Input:job.Name}
+Job requirements: {!$Input:job.What_We_Need_from_You__c}
+Required Skills and tech stack: {!$Input:job.Tech_Stacks_We_Use__c}
+Industry Experience: {!$Input:job.Industry_Experience__c}
+The most important tech stacks: {!$Input:job.Most_Important_Tech_Stack__c}
+Region: {!$Input:job.Region__c}
+Minimum Requirements: {!$Input:job.Minimum_Requirements__c}
+
+
+Search the candidate database found in this flow {!$Flow:Get_Candidates_Prompt_Template_Flow.Prompt} then return the top matching candidates based on:
+Skills and tech stack 
+Years of relevant experience
+Education and certifications
+Previous job titles and industries
+Rank the candidates by relevance score (from 1–100), provide a brief reason for the match, and return their:
+Candidate Name - a markdown formatted URL - make use of the Candidate_Link__c field to populate this
+Resume Summary
+The reason for the Match
+Match Score
+Return at least 3 Candidates
+
+Return in Tabular Format
+
+
+
+&quot;&quot;&quot;
+ 
+Now create the response
+</content>
+        <inputs>
+            <apiName>job</apiName>
+            <definition>SOBJECT://Job__c</definition>
+            <masterLabel>job</masterLabel>
+            <referenceName>Input:job</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Role</apiName>
+            <definition>SOBJECT://Role__c</definition>
+            <masterLabel>Role</masterLabel>
+            <referenceName>Input:Role</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Candidates_Prompt_Template_Flow</definition>
+            <referenceName>Flow:Get_Candidates_Prompt_Template_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_10</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a specialist recruiter in the tech industry and you are to analyze the Job {!$Input:job.Id} and find that the best Candidates that might be suitable for this role
+
+&quot;&quot;&quot;
+
+
+A new job has been created with the following details: 
+Job Title: {!$Input:job.Name}
+Job requirements: {!$Input:job.What_We_Need_from_You__c}
+Required Skills and tech stack: {!$Input:job.Tech_Stacks_We_Use__c}
+Industry Experience: {!$Input:job.Industry_Experience__c}
+The most important tech stacks: {!$Input:job.Most_Important_Tech_Stack__c}
+Region: {!$Input:job.Region__c}
+Minimum Requirements: {!$Input:job.Minimum_Requirements__c}
+
+
+Search the candidate database found in this flow {!$Flow:Get_Candidates_Prompt_Template_Flow.Prompt} then return the top matching candidates based on:
+Skills and tech stack 
+Years of relevant experience
+Education and certifications
+Previous job titles and industries
+Rank the candidates by relevance score (from 1–100), provide a brief reason for the match, and return their:
+Candidate Name - a markdown formatted URL in this exact format: [Candidate Name](/Candidate Id)
+Resume Summary
+The reason for the Match
+Match Score
+Return at least 3 Candidates
+
+Return in Tabular Format
+
+
+
+&quot;&quot;&quot;
+ 
+Now create the response
+</content>
+        <inputs>
+            <apiName>job</apiName>
+            <definition>SOBJECT://Job__c</definition>
+            <masterLabel>job</masterLabel>
+            <referenceName>Input:job</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Role</apiName>
+            <definition>SOBJECT://Role__c</definition>
+            <masterLabel>Role</masterLabel>
+            <referenceName>Input:Role</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Candidates_Prompt_Template_Flow</definition>
+            <referenceName>Flow:Get_Candidates_Prompt_Template_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_11</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a specialist recruiter in the tech industry and you are to analyze the Job {!$Input:job.Id} and find that the best Candidates that might be suitable for this role
+
+&quot;&quot;&quot;
+
+
+A new job has been created with the following details: 
+Job Title: {!$Input:job.Name}
+Job requirements: {!$Input:job.What_We_Need_from_You__c}
+Required Skills and tech stack: {!$Input:job.Tech_Stacks_We_Use__c}
+Industry Experience: {!$Input:job.Industry_Experience__c}
+The most important tech stacks: {!$Input:job.Most_Important_Tech_Stack__c}
+Region: {!$Input:job.Region__c}
+Minimum Requirements: {!$Input:job.Minimum_Requirements__c}
+
+
+Search the candidate database found in this flow {!$Flow:Get_Candidates_Prompt_Template_Flow.Prompt} then return the top matching candidates based on:
+Skills and tech stack 
+Years of relevant experience
+Education and certifications
+Previous job titles and industries
+Rank the candidates by relevance score (from 1–100), provide a brief reason for the match, and return the following four attributes containing their:
+Candidate Name - a markdown formatted URL in this exact format: [Candidate Name](/Candidate Id),
+Resume Summary,
+The reason for the Match,
+Match Score.
+
+Return at least 3 Candidates
+
+Return in Tabular Format
+
+
+
+&quot;&quot;&quot;
+ 
+Now create the response
+</content>
+        <inputs>
+            <apiName>job</apiName>
+            <definition>SOBJECT://Job__c</definition>
+            <masterLabel>job</masterLabel>
+            <referenceName>Input:job</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Role</apiName>
+            <definition>SOBJECT://Role__c</definition>
+            <masterLabel>Role</masterLabel>
+            <referenceName>Input:Role</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Candidates_Prompt_Template_Flow</definition>
+            <referenceName>Flow:Get_Candidates_Prompt_Template_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_12</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

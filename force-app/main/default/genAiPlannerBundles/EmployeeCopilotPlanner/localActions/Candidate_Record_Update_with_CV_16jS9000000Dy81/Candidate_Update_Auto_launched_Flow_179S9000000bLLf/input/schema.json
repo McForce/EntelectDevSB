@@ -1,0 +1,244 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Address" : {
+      "title" : "Address",
+      "description" : "The address field to be populated with the Candidate's Address from the CV Document Format: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "AppGoodFit" : {
+      "title" : "AppGoodFit",
+      "description" : "What makes applicant a good fit for this specific job spec Format: Long Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "AppMinRequirements" : {
+      "title" : "AppMinRequirements",
+      "description" : "Format: Text Input: These are the non negotiables as specified on the Job Spec record (if any) and whether the Candidate has all the minimum requirements or not, and to be populated on the Minimum_Requirements__c field on the Application record",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "AppOverview" : {
+      "title" : "AppOverview",
+      "description" : "Overview of Candidate: Give a short overview of the Candidate highlighting the number of years experience, overview of their job history, and anything else that would make this a good/ bad for this fit Format:",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "AppRating" : {
+      "title" : "AppRating",
+      "description" : "Application Rating: What would you score the applicant out of ten for this Job Format: Number",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "CVTitle" : {
+      "title" : "CVTitle",
+      "description" : "The title of the pdf CV Document",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "CandidateRating" : {
+      "title" : "CandidateRating",
+      "description" : "What is the Candidate rating Picklist Values: Green Amber Red DO NOT CONTACT",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Certs" : {
+      "title" : "Certs",
+      "description" : "To populate the Certifications__c field Data Type: Long Text: Extracted from the candidate's CV using Einstein's data parsing found from the Certification's section on the CV Document. Format: Write in Bullet Point Format",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Company" : {
+      "title" : "Company",
+      "description" : "The current or last company the Candidate as worked at",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "CurrentRole" : {
+      "title" : "CurrentRole",
+      "description" : "The Current Role of the user",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "DOB" : {
+      "title" : "DOB",
+      "description" : "The Date Field to be populated with the Candidate's date of birth from the CV Document Format: YYYY-MM-DD IF there is no date of birth on the CV this can be ignored",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Degree" : {
+      "title" : "Degree",
+      "description" : "From the Undergraduate Degrees/ Degree Abbreviation What is the highest Degree the Candidate has Picklist values: BEng BIS BIT BTech Honours Masters BCom BCompt Other PHD",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Education" : {
+      "title" : "Education",
+      "description" : "Data Type: Text: Extracted from the candidate's CV using Einstein's data parsing found from the Education section on the CV Document. Format: Rich Text Bullet Point Institution Qualification Year Qualified Any other information mentioned like subjects, activities, affiliations etc",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Email" : {
+      "title" : "Email",
+      "description" : "Email Address of the user",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Ethnicity" : {
+      "title" : "Ethnicity",
+      "description" : "The Ethnicity of the user",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Experience" : {
+      "title" : "Experience",
+      "description" : "Data Type: Text: Extracted from the candidate's CV using Einstein's data parsing found from the Work/ Professional Experience section on the CV Document. Format: Rich Text Title | Company Name | Location | Date from and To Bullet point of their duties, Projects they worked on, Achievements and anything else they mentioned Reason for leaving if on CV",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Fname" : {
+      "title" : "Fname",
+      "description" : "First Name of the candidate on the CV",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "HowDidTheyFirstHearAboutUs" : {
+      "title" : "HowDidTheyFirstHearAboutUs",
+      "description" : "The value for How Did They First Hear About us passed through from the email fields:",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "IDnumber" : {
+      "title" : "IDnumber",
+      "description" : "ID or Passport number",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "IdentificationType" : {
+      "title" : "IdentificationType",
+      "description" : "The Identification Type value passed in from the email fields",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "LName" : {
+      "title" : "LName",
+      "description" : "Last Name of the candidate on the CV",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Level" : {
+      "title" : "Level",
+      "description" : "Seniority Level (Intermediate, Mid, Senior, Junior, Graduate), make a judgement call, this would be based on number of years experience, current position title etc",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Name" : {
+      "title" : "Name",
+      "description" : "the full Name of the candidate on the CV",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Overview" : {
+      "title" : "Overview",
+      "description" : "This is a summary of the Candidate done by the Agent, summarising their overall CV. Format: Long Text Example: This Candidate is a Salesforce Architect and has 7 years Professional working experience with 5 years in Salesforce, they have a degree in Computer Sciences and 5 Salesforce Certifications",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Phone" : {
+      "title" : "Phone",
+      "description" : "The Phone/ Mobile/ Contact number",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Position" : {
+      "title" : "Position",
+      "description" : "Their current position title",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "RegionApplyingFor" : {
+      "title" : "RegionApplyingFor",
+      "description" : "The Region Applying For Value given to you in the email fields",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "RequirementsMissing" : {
+      "title" : "RequirementsMissing",
+      "description" : "What requirements/ Skills missing: where might this candidate possibly be missing or lacking for this specific job Format: Long Text To update What_requirements_Skills_missing__c field",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "RoleApplyingFor" : {
+      "title" : "RoleApplyingFor",
+      "description" : "The Role/s Applying For value given in the email fields of the user",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Skills" : {
+      "title" : "Skills",
+      "description" : "Data Type: Long Text: Extracted from the candidate's CV using Einstein's data parsing found from the skills section on the CV Document. Format: Write in Bullet Point Format",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Timing" : {
+      "title" : "Timing",
+      "description" : "The Timing value given for the user in the email fields",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Uni" : {
+      "title" : "Uni",
+      "description" : "What is the name of the University the Candidate obtained their highest education",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "YearsOfExperience" : {
+      "title" : "YearsOfExperience",
+      "description" : "The Years Of Experience value given for the user",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "recordId" : {
+      "title" : "recordId",
+      "description" : "This is the Candidate record 18 digit record Id of Candidate",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

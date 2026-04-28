@@ -1,0 +1,100 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "CurrentRole" : {
+      "title" : "CurrentRole",
+      "description" : "The Current Role given to you in the prompt\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Email" : {
+      "title" : "Email",
+      "description" : "The Email Address given to you in the prompt\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Ethnicity" : {
+      "title" : "Ethnicity",
+      "description" : "The Ethnicity given to you in the prompt\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Howdidyoufirstlearnaboutus" : {
+      "title" : "Howdidyoufirstlearnaboutus",
+      "description" : "How did you first learn about us given to you in the prompt\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "IDNumber" : {
+      "title" : "IDNumber",
+      "description" : "The ID Number given to you in the prompt\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "IdentificationType" : {
+      "title" : "IdentificationType",
+      "description" : "The Identification Type given to you in the prompt\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Name" : {
+      "title" : "Name",
+      "description" : "The Name: given to you in the prompt\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Phone" : {
+      "title" : "Phone",
+      "description" : "The Phone number given to you in the prompt\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Regionapplyingfor" : {
+      "title" : "Regionapplyingfor",
+      "description" : "The region they are applying for given to you in the prompt\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Role_applying_for" : {
+      "title" : "Role_applying_for",
+      "description" : "The Role/ Job the Candidate is applying for given to you in the prompt\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Timing" : {
+      "title" : "Timing",
+      "description" : "The Timing given to you in the prompt\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "YearsofExperience" : {
+      "title" : "YearsofExperience",
+      "description" : "Their Years of Experience given to you in the prompt\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "recordId" : {
+      "title" : "recordId",
+      "description" : "The record ID of the Candidate object\nFormat: 18 Digit ID",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Candidate__c"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

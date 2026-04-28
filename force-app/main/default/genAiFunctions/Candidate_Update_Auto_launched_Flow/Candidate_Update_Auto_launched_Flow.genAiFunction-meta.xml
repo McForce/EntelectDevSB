@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Parse the whole CV found in the prompt from the CV Analysis prompt, and you are then to update the Candidates record fields with the relevant information from the CV</description>
+    <description>You are to use this action only when they ask you to update their details with the information provided by the CV. Parse the whole CV found in the prompt from the CV Analysis prompt, and you are then to update the Candidates record fields with the relevant information from the CV</description>
+    <developerName>Candidate_Update_Auto_launched_Flow</developerName>
     <invocationTarget>Candidate_Update_Auto_launched_Flow</invocationTarget>
     <invocationTargetType>flow</invocationTargetType>
     <isConfirmationRequired>false</isConfirmationRequired>

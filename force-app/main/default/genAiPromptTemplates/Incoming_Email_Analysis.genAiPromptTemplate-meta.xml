@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_2</activeVersionIdentifier>
+    <developerName>Incoming_Email_Analysis</developerName>
+    <masterLabel>Incoming Email Analysis</masterLabel>
+    <templateVersions>
+        <content>A candidate has applied to a job by sending their details via email. The details are stored in the Email body field seen here: {!$Input:Incoming_Email} Firstly Organize the information in the following format:
+Name:
+Email:
+Phone:
+Timing:
+Role/s applying for:
+Years of Experience:
+Current Role:
+Region applying for:
+Identification Type:
+Ethnicity:
+CV:
+How did you first learn about us?:
+Hidden Field:
+Consent:
+Please extract the information from the email provided into the provided formatting above.
+</content>
+        <inputs>
+            <apiName>Incoming_Email</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Incoming Email</masterLabel>
+            <referenceName>Input:Incoming_Email</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>A candidate has applied to a job by sending their details via email. The details are stored in the Email body field seen here: {!$Input:Incoming_Email} Firstly Organize the information in the following format:
+Name:
+Email:
+Phone:
+Timing:
+Role/s applying for:
+Years of Experience:
+Current Role:
+Region applying for:
+Identification Type:
+Ethnicity:
+ID Number:
+CV:
+How did you first learn about us?:
+Hidden Field:
+Consent:
+Please extract the information from the email provided into the provided formatting above.
+</content>
+        <inputs>
+            <apiName>Incoming_Email</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Incoming Email</masterLabel>
+            <referenceName>Input:Incoming_Email</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_2</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

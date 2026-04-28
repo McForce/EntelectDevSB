@@ -1,0 +1,183 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "ActivelyInterviewing" : {
+      "title" : "ActivelyInterviewing",
+      "description" : "As per the Prompt under the Actively Interviewing Heading\nFormat: Text\nupdate the Actively_Interviewing__c field\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Address" : {
+      "title" : "Address",
+      "description" : "As per the Prompt under the Address Heading\nFormat: Text\nupdate the Address__c field\n\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "ColTechStack" : {
+      "title" : "ColTechStack",
+      "description" : "As per the Prompt under the Tech Stack Heading\nFormat: Text",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "lightning__textType"
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "CounterOfferRisk" : {
+      "title" : "CounterOfferRisk",
+      "description" : "As per the Prompt under the Counter Offer Risk heading\nFormat: Text\n update the Counter_Offer_Risk__c field\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "DecisionFactors" : {
+      "title" : "DecisionFactors",
+      "description" : "As per the Prompt under the Decision Factors heading\nFormat: Text\nupdate the Decision_Factors__c field\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "HobbiesInterests" : {
+      "title" : "HobbiesInterests",
+      "description" : "As per the Prompt under the Hobbies & Interests heading\nFormat: Text\nupdate the Hobbies_Interests__c field\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Increase" : {
+      "title" : "Increase",
+      "description" : "As per the Prompt under the Increase % heading\nFormat: Number\nupdate the Increase__c field\n",
+      "multipleOf" : 1.0E-34,
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "MentorshipInvolvement" : {
+      "title" : "MentorshipInvolvement",
+      "description" : "As per the Prompt under the Mentorship Involvement heading\nFormat: Text\nupdate the Mentorship_Involvement__c field\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "NoticePeriod" : {
+      "title" : "NoticePeriod",
+      "description" : "As per the Prompt under the Notice Period heading\nFormat: Text\nupdate the Notice_Period__c field\n\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "PreferredEnvironment" : {
+      "title" : "PreferredEnvironment",
+      "description" : "As per the Prompt under the Preferred Environment heading\nFormat: Text\nupdate the Preferred_Environment__c field\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "PreferredName" : {
+      "title" : "PreferredName",
+      "description" : "As per the Prompt under the Preferred Name heading\nFormat: Text\nupdate the Preferred_Name__c field\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "Reasonforleaving" : {
+      "title" : "Reasonforleaving",
+      "description" : "As per the Prompt under the Reasons For Leaving heading\nFormat: Text\nTo update the Reason_for_wanting_to_Leave__c field\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "TeamRole" : {
+      "title" : "TeamRole",
+      "description" : "As per the Prompt under the Team Role heading\nFormat: Text\nupdate the Team_Role__c field\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "TeamSetup" : {
+      "title" : "TeamSetup",
+      "description" : "As per the Prompt under the Team Setup heading\nFormat: Text\nupdate the Team_Setup__c field\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "TechStack" : {
+      "title" : "TechStack",
+      "description" : "As per the Prompt under the Tech Stack heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "TotalCTC" : {
+      "title" : "TotalCTC",
+      "description" : "As per the Prompt under the Cost To Company heading\nFormat: Number\nTo update the Cost_To_Company__c field\n",
+      "lightning:type" : "lightning__currencyType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "WaysofWorking" : {
+      "title" : "WaysofWorking",
+      "description" : "As per the Prompt under the Ways of Working heading\nFormat: Text\n update the Ways_of_Working__c field\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "WorkHistory" : {
+      "title" : "WorkHistory",
+      "description" : "As per the Prompt under the Work History & Projects heading\nFormat: Text\n update the Work_History_Projects__c field\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "recordId" : {
+      "title" : "recordId",
+      "description" : "The Candidate record that you will be updating\nFormat: 18 digit record ID number",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

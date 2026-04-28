@@ -1,0 +1,69 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "AcademicLevel" : {
+      "title" : "AcademicLevel",
+      "description" : "The Academic Level given to you in the prompt Format: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Average" : {
+      "title" : "Average",
+      "description" : "The Average given to you in the prompt Format: Number",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "CandidateId" : {
+      "title" : "CandidateId",
+      "description" : "The CandidateId given to you in the prompt Format: 18 Digit Id",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "GraduationStatus" : {
+      "title" : "GraduationStatus",
+      "description" : "The Graduation Status given to you in the prompt Format: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "InstitutionName" : {
+      "title" : "InstitutionName",
+      "description" : "The Institution Name given to you in the prompt Format: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Major" : {
+      "title" : "Major",
+      "description" : "The Major given to you in the prompt Format: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Modules" : {
+      "title" : "Modules",
+      "description" : "The Modules given to you in the prompt Format: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Name" : {
+      "title" : "Name",
+      "description" : "The Name given to you in the prompt Format: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Qualification" : {
+      "title" : "Qualification",
+      "description" : "The Qualification given to you in the prompt Format: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

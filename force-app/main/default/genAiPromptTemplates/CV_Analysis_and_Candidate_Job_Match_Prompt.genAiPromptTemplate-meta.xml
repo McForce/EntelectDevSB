@@ -1,0 +1,1123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_17</activeVersionIdentifier>
+    <developerName>CV_Analysis_and_Candidate_Job_Match_Prompt</developerName>
+    <masterLabel>CV Analysis and Candidate Job Match Prompt</masterLabel>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document {!$RelatedList:Application.Candidate__r.CombinedAttachments.Records}, Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+ 
+You are an recruitment specialist skilled in analyzing resumes (CVs) for recruitment and talent acquisition purposes. Your task is to carefully review and extract all the information from CV Document attached to the candidate and categorize the CV in sections related to their qualifications, experience, skills, education, Address Languages etc or any other details typically found in a CV so that you can take the information and populate in a Candidate record later on in the Agent process:
+ 
+1. CV Analysis:
+Read and comprehend the CV thoroughly.
+Identify key sections of the CV, such as:
+Personal Information (e.g., name, contact details, location).
+Professional Summary.
+Work Experience (job roles, organizations, tenure, responsibilities, achievements, projects worked on etc.).
+Education (degrees, institutions, years of graduation).
+List all Professional Certifications
+List all Skills (technical, soft skills, certifications, tools, languages).
+Languages
+ID number
+LinkedIn profile
+Achievements or Awards.
+Hobbies/Interests (if listed).
+References (if provided or mentioned).
+Seniority Level (restricted to these values: Intermediate, Mid, Senior, Junior, Graduate), make a judgement call, this would be based on number of years experience, current position title etc. 
+Career Title (Their current Job Title)
+The Name of the degree that they have obtained if any, and if more than one list the highest one, Values: BEng, BIS, BIT, BTech, Honours, Masters, BCom, BCompt, Other, PHD
+A Short Overview of the CV, highlighting years of experience, key qualifications and certifications and key roles they for filled 
+Give the Candidate Rating with the following Criteria:
+Green: Candidate has a degree with at least 3 years of working experience in the field of the job they have applied for
+Amber: Candidate has no degree but has at least 4 years of working experience and in the job that they have applied for, or they do have a degree with more than 2 years and less than 3 years experience
+Red: no degree and less than 2 years of working experience
+
+Job Matching:
+Compare the Candidate {!$Input:Application.Candidate__r.Id} to the Job {!$Input:Application.Job__r.Id} they have applied for
+Analise if they are a good fit for the job by comparing the Candidate&apos;s Professional Experience, education, certifications, skills etc. to what they will be doing from the job ({!$Input:Application.Job__r.What_You_ll_Be_Doing__c}) and what they need from the candidate {!$Input:Application.Job__r.What_We_Need_from_You__c}.
+
+You will then go ahead based on your analysis and answer these questions 
+
+1. Application Rating: What would you score the applicant out of ten for this Job? 
+2. Overview of Candidate: Give a short overview of the Candidate highlighting the number of years experience, overview of their job history, and anything else that would make this a good candidate for the role, but also where they would be lacking  
+3. Do they meet the minimum requirements (if these are listed) from the Job, Yes or no, and if no, which requirements are missing? 
+4. What makes applicant a good fit (for this specific job)
+5. What requirements/ Skills are missing: where might this candidate possibly be missing or lacking for this specific job spec
+
+Note any gaps in employment, unusual career transitions, or other patterns that might be relevant for discussion.
+3. Contextual Understanding:
+
+ 
+ Do not make a summary of the CV, bring up the entire CV, don&apos;t change anything, even spelling mistakes. The only section that you can generate in your own words is the short overview of the candidate
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Application.Candidate__r.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>CombinedAttachments</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Application.Candidate__r.CombinedAttachments.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document {!$RelatedList:Application.Candidate__r.CombinedAttachments.Records}, Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+There are two parts to this prompt, firstly the CV analysis and then Matching the CV to the Job they have applied for
+
+You are an recruitment specialist skilled in analyzing resumes (CVs) for recruitment and talent acquisition purposes. Your task is to carefully review and extract all the information from CV Document attached to the candidate and categorize the CV in sections related to their qualifications, experience, skills, education, Address Languages etc or any other details typically found in a CV so that you can take the information and populate in a Candidate record later on in the Agent process:
+ 
+1. CV Analysis:
+Read and comprehend the CV thoroughly.
+Identify key sections of the CV, such as:
+Personal Information (e.g., name, contact details, location).
+Professional Summary.
+Work Experience (job roles, organizations, tenure, responsibilities, achievements, projects worked on etc.).
+Education (degrees, institutions, years of graduation).
+List all Professional Certifications
+List all Skills (technical, soft skills, certifications, tools, languages).
+Languages
+ID number
+LinkedIn profile
+Achievements or Awards.
+Hobbies/Interests (if listed).
+References (if provided or mentioned).
+Seniority Level (restricted to these values: Intermediate, Mid, Senior, Junior, Graduate), make a judgement call, this would be based on number of years experience, current position title etc. 
+Career Title (Their current Job Title)
+The Name of the degree that they have obtained if any, and if more than one list the highest one, Values: BEng, BIS, BIT, BTech, Honours, Masters, BCom, BCompt, Other, PHD
+A Short Overview of the CV, highlighting years of experience, key qualifications and certifications and key roles they for filled 
+Give the Candidate Rating with the following Criteria:
+Green: Candidate has a degree with at least 3 years of working experience in the field of the job they have applied for
+Amber: Candidate has no degree but has at least 4 years of working experience and in the job that they have applied for, or they do have a degree with more than 2 years and less than 3 years experience
+Red: no degree and less than 2 years of working experience
+
+2. Job Matching:
+Compare the Candidate {!$Input:Application.Candidate__r.Id} to the Job {!$Input:Application.Job__r.Id} they have applied for
+Analise if they are a good fit for the job by comparing the Candidate&apos;s Professional Experience, education, certifications, skills etc. to what they will be doing from the job ({!$Input:Application.Job__r.What_You_ll_Be_Doing__c}) and what they need from the candidate {!$Input:Application.Job__r.What_We_Need_from_You__c}.
+
+You will then go ahead based on your analysis and answer these questions 
+
+1. Application Rating: What would you score the applicant out of ten for this Job? 
+2. Overview of Candidate: Give a short overview of the Candidate highlighting the number of years experience, overview of their job history, and anything else that would make this a good candidate for the role, but also where they would be lacking  
+3. Do they meet the minimum requirements (if these are listed) from the Job, Yes or no, and if no, which requirements are missing? 
+4. What makes applicant a good fit (for this specific job)
+5. What requirements/ Skills are missing: where might this candidate possibly be missing or lacking for this specific job spec
+
+Note any gaps in employment, unusual career transitions, or other patterns that might be relevant for discussion.
+3. Contextual Understanding:
+
+ 
+ Do not make a summary of the CV, bring up the entire CV, don&apos;t change anything, even spelling mistakes. The only section that you can generate in your own words is the short overview of the candidate
+
+&quot;&quot;&quot;
+Now analyze the CV and match them to the job they have applied for
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Application.Candidate__r.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>CombinedAttachments</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Application.Candidate__r.CombinedAttachments.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_2</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document {!$RelatedList:Application.Candidate__r.CombinedAttachments.Records}, Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+There are two parts to this prompt, firstly the CV analysis and then Matching the CV to the Job they have applied for
+
+You are an recruitment specialist skilled in analyzing resumes (CVs) for recruitment and talent acquisition purposes. Your task is to carefully review and extract all the information from CV Document attached to the candidate and categorize the CV in sections related to their qualifications, experience, skills, education, Address Languages etc or any other details typically found in a CV so that you can take the information and populate in a Candidate record later on in the Agent process:
+ 
+1. CV Analysis:
+Read and comprehend the CV thoroughly.
+Identify key sections of the CV, such as:
+Personal Information (e.g., First Name, Last Name, Full name, contact details, location).
+Professional Summary.
+Work Experience (job roles, organizations, tenure, responsibilities, achievements, projects worked on etc.).
+Education (degrees, institutions, years of graduation).
+List all Professional Certifications
+List all Skills (technical, soft skills, certifications, tools, languages).
+Languages
+ID number
+LinkedIn profile
+Achievements or Awards.
+Hobbies/Interests (if listed).
+References (if provided or mentioned).
+Seniority Level (restricted to these values: Intermediate, Mid, Senior, Junior, Graduate), make a judgement call, this would be based on number of years experience, current position title etc. 
+Career Title (Their current Job Title)
+The Name of the degree that they have obtained if any, and if more than one list the highest one: only list in the following formatted values: BEng, BIS, BIT, BTech, Honours, Masters, BCom, BCompt, Other, PHD
+A Short Overview of the CV, highlighting years of experience, key qualifications and certifications and key roles they for filled 
+Give the Candidate Rating with the following Criteria:
+Green: Candidate has a degree with at least 3 years of working experience in the field of the job they have applied for
+Amber: Candidate has no degree but has at least 4 years of working experience and in the job that they have applied for, or they do have a degree with more than 2 years and less than 3 years experience
+Red: no degree and less than 2 years of working experience
+
+2. Job Matching:
+Compare the Candidate {!$Input:Application.Candidate__r.Id} to the Job {!$Input:Application.Job__r.Id} they have applied for
+Analise if they are a good fit for the job by comparing the Candidate&apos;s Professional Experience, education, certifications, skills etc. to what they will be doing from the job ({!$Input:Application.Job__r.What_You_ll_Be_Doing__c}) and what they need from the candidate {!$Input:Application.Job__r.What_We_Need_from_You__c}.
+
+You will then go ahead based on your analysis and answer these questions 
+
+1. Application Rating: What would you score the applicant out of ten for this Job? 
+2. Overview of Candidate: Give a short overview of the Candidate highlighting the number of years experience, overview of their job history, and anything else that would make this a good candidate for the role, but also where they would be lacking  
+3. Do they meet the minimum requirements (if these are listed) from the Job, Yes or no, and if no, which requirements are missing? 
+4. What makes applicant a good fit (for this specific job)
+5. What requirements/ Skills are missing: where might this candidate possibly be missing or lacking for this specific job spec
+
+Note any gaps in employment, unusual career transitions, or other patterns that might be relevant for discussion.
+3. Contextual Understanding:
+
+ 
+ Do not make a summary of the CV, bring up the entire CV, don&apos;t change anything, even spelling mistakes. The only section that you can generate in your own words is the short overview of the candidate
+
+&quot;&quot;&quot;
+Now analyze the CV and match them to the job they have applied for
+
+</content>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Application.Candidate__r.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>CombinedAttachments</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Application.Candidate__r.CombinedAttachments.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_3</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document {!$RelatedList:Application.Candidate__r.CombinedAttachments.Records}, Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+There are two parts to this prompt, firstly the CV analysis and then Matching the CV to the Job they have applied for
+
+You are an recruitment specialist skilled in analyzing resumes (CVs) for recruitment and talent acquisition purposes. Your task is to carefully review and extract all the information from CV Document attached to the candidate and categorize the CV in sections related to their qualifications, experience, skills, education, Address Languages etc or any other details typically found in a CV so that you can take the information and populate in a Candidate record later on in the Agent process:
+ 
+1. CV Analysis:
+Read and comprehend the CV thoroughly.
+Identify key sections of the CV, such as:
+Personal Information:
+Full Name
+First Name
+Last Name
+Email Address
+Phone
+Address
+Professional Summary.
+Work Experience (job roles, organizations, tenure, responsibilities, achievements, projects worked on etc.).
+Education (degrees, institutions, years of graduation).
+List all Professional Certifications
+List all Skills (technical, soft skills, certifications, tools, languages).
+Languages
+ID number
+LinkedIn profile
+Achievements or Awards.
+Hobbies/Interests (if listed).
+References (if provided or mentioned).
+Seniority Level (restricted to these values: Intermediate, Mid, Senior, Junior, Graduate), make a judgement call, this would be based on number of years experience, current position title etc. 
+Career Title (Their current Job Title)
+The Name of the degree that they have obtained if any, and if more than one list the highest one: restricted to these values: BEng, BIS, BIT, BTech, Honours, Masters, BCom, BCompt, Other, PHD
+A Short Overview of the CV, highlighting years of experience, key qualifications and certifications and key roles they for filled 
+Give the Candidate Rating with the following Criteria:
+Green: Candidate has a degree with at least 3 years of working experience in the field of the job they have applied for
+Amber: Candidate has no degree but has at least 4 years of working experience and in the job that they have applied for, or they do have a degree with more than 2 years and less than 3 years experience
+Red: no degree and less than 2 years of working experience
+
+2. Job Matching:
+Compare the Candidate {!$Input:Application.Candidate__r.Id} to the Job {!$Input:Application.Job__r.Id} they have applied for
+Analise if they are a good fit for the job by comparing the Candidate&apos;s Professional Experience, education, certifications, skills etc. to what they will be doing from the job ({!$Input:Application.Job__r.What_You_ll_Be_Doing__c}) and what they need from the candidate {!$Input:Application.Job__r.What_We_Need_from_You__c}.
+
+You will then go ahead based on your analysis and answer these questions 
+
+1. Application Rating: What would you score the applicant out of ten for this Job? 
+2. Overview of Candidate: Give a short overview of the Candidate highlighting the number of years experience, overview of their job history, and anything else that would make this a good candidate for the role, but also where they would be lacking  
+3. Do they meet the minimum requirements (if these are listed) from the Job, Yes or no, and if no, which requirements are missing? 
+4. What makes applicant a good fit (for this specific job)
+5. What requirements/ Skills are missing: where might this candidate possibly be missing or lacking for this specific job spec
+
+Note any gaps in employment, unusual career transitions, or other patterns that might be relevant for discussion.
+3. Contextual Understanding:
+
+ 
+ Do not make a summary of the CV, bring up the entire CV, don&apos;t change anything, even spelling mistakes. The only section that you can generate in your own words is the short overview of the candidate
+
+&quot;&quot;&quot;
+Now analyze the CV and match them to the job they have applied for
+
+</content>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT4Omni</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Application.Candidate__r.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>CombinedAttachments</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Application.Candidate__r.CombinedAttachments.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_4</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document {!$RelatedList:Application.Candidate__r.CombinedAttachments.Records}, Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+There are two parts to this prompt, firstly the CV analysis and then Matching the CV to the Job they have applied for
+
+You are an recruitment specialist skilled in analyzing resumes (CVs) for recruitment and talent acquisition purposes. Your task is to carefully review and extract all the information from CV Document attached to the candidate and categorize the CV in sections related to their qualifications, experience, skills, education, Address Languages etc or any other details typically found in a CV so that you can take the information and populate in a Candidate record later on in the Agent process:
+ 
+1. CV Analysis:
+Read and comprehend the CV thoroughly.
+Identify key sections of the CV, such as:
+Personal Information:
+Full Name
+First Name
+Last Name
+Email Address
+Phone
+Address
+Professional Summary.
+Work Experience (job roles, organizations, tenure, responsibilities, achievements, projects worked on etc.).
+Education (degrees, institutions, years of graduation).
+List all Professional Certifications
+List all Skills (technical, soft skills, certifications, tools, languages).
+Languages
+ID number
+LinkedIn profile
+Achievements or Awards.
+Hobbies/Interests (if listed).
+References (if provided or mentioned).
+Seniority Level (restricted to these values: Intermediate, Mid, Senior, Junior, Graduate), make a judgement call, this would be based on number of years experience, current position title etc. 
+Career Title (Their current Job Title)
+The Name of the degree that they have obtained if any, and if more than one list the highest one: restricted to these values: BEng, BIS, BIT, BTech, Honours, Masters, BCom, BCompt, Other, PHD
+A Short Overview of the CV, highlighting years of experience, key qualifications and certifications and key roles they for filled 
+Give the Candidate Rating with the following Criteria:
+Green: Candidate has a degree with at least 3 years of working experience in the field of the job they have applied for
+Amber: Candidate has no degree but has at least 4 years of working experience and in the job that they have applied for, or they do have a degree with more than 2 years and less than 3 years experience
+Red: no degree and less than 2 years of working experience
+
+2. Job Matching:
+Compare the Candidate {!$Input:Application.Candidate__r.Id} to the Job {!$Input:Application.Job__r.Id} they have applied for
+Analise if they are a good fit for the job by comparing the Candidate&apos;s Professional Experience, education, certifications, skills etc. to what they will be doing from the job ({!$Input:Application.Job__r.What_You_ll_Be_Doing__c}) and what they need from the candidate {!$Input:Application.Job__r.What_We_Need_from_You__c}.
+
+You will then go ahead based on your analysis and answer these questions 
+
+1. Application Rating: What would you score the applicant out of ten for this Job? 
+2. Overview of Candidate: Give a short overview of the Candidate highlighting the number of years experience, overview of their job history, and anything else that would make this a good candidate for the role, but also where they would be lacking  
+3. Do they meet the minimum requirements (if these are listed) from the Job, Yes or no, and if no, which requirements are missing? 
+4. What makes applicant a good fit (for this specific job)
+5. What requirements/ Skills are missing: where might this candidate possibly be missing or lacking for this specific job spec
+
+Note any gaps in employment, unusual career transitions, or other patterns that might be relevant for discussion.
+3. Contextual Understanding:
+
+ 
+ Do not make a summary of the CV, bring up the entire CV, don&apos;t change anything, even spelling mistakes. The only section that you can generate in your own words is the short overview of the candidate
+
+&quot;&quot;&quot;
+Now analyze the CV and match them to the job they have applied for
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Draft</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Application.Candidate__r.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>CombinedAttachments</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Application.Candidate__r.CombinedAttachments.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_5</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document {!$RelatedList:Application.Candidate__r.CombinedAttachments.Records}, Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+There are two parts to this prompt, firstly the CV analysis and then Matching the CV to the Job they have applied for
+
+You are an recruitment specialist skilled in analyzing resumes (CVs) for recruitment and talent acquisition purposes. Your task is to carefully review and extract all the information from CV Document attached to the candidate and categorize the CV in sections related to their qualifications, experience, skills, education, Address Languages etc or any other details typically found in a CV so that you can take the information and populate in a Candidate record later on in the Agent process:
+ 
+
+Job Matching:
+Compare the Candidate {!$Input:Application.Candidate__r.Id} to the Job {!$Input:Application.Job__r.Id} they have applied for
+Analise if they are a good fit for the job by comparing the Candidate&apos;s Professional Experience, education, certifications, skills etc. to what they will be doing from the job ({!$Input:Application.Job__r.What_You_ll_Be_Doing__c}) and what they need from the candidate {!$Input:Application.Job__r.What_We_Need_from_You__c}.
+
+You will then go ahead based on your analysis and answer these questions 
+
+1. Application Rating: What would you score the applicant out of ten for this Job? 
+2. Overview of Candidate: Give a short overview of the Candidate highlighting the number of years experience, overview of their job history, and anything else that would make this a good candidate for the role, but also where they would be lacking  
+3. Do they meet the minimum requirements (if these are listed) from the Job, Yes or no, and if no, which requirements are missing? 
+4. What makes applicant a good fit (for this specific job)
+5. What requirements/ Skills are missing: where might this candidate possibly be missing or lacking for this specific job spec
+
+
+
+&quot;&quot;&quot;
+Now analyze the CV and match them to the job they have applied for
+
+</content>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Draft</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Application.Candidate__r.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>CombinedAttachments</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Application.Candidate__r.CombinedAttachments.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_6</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document {!$RelatedList:Application.Candidate__r.CombinedAttachments.Records}, Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+There are two parts to this prompt, firstly the CV analysis and then Matching the CV to the Job they have applied for
+
+You are an recruitment specialist skilled in analyzing resumes (CVs) for recruitment and talent acquisition purposes. Your task is to carefully review and extract all the information from CV Document attached to the candidate and categorize the CV in sections related to their qualifications, experience, skills, education, Address Languages etc or any other details typically found in a CV so that you can take the information and populate in a Candidate record later on in the Agent process:
+ 
+
+Job Matching:
+Compare the Candidate {!$Input:Application.Candidate__r.Id} to the Job {!$Input:Application.Job__r.Id} they have applied for
+Analise if they are a good fit for the job by comparing the Candidate&apos;s Professional Experience, education, certifications, skills etc. to what they will be doing from the job ({!$Input:Application.Job__r.What_You_ll_Be_Doing__c}) and what they need from the candidate {!$Input:Application.Job__r.What_We_Need_from_You__c}.
+
+You will then go ahead based on your analysis and answer these questions 
+
+1. Application Rating: What would you score the applicant out of ten for this Job? 
+2. Overview of Candidate: Give a short overview of the Candidate highlighting the number of years experience, overview of their job history, and anything else that would make this a good candidate for the role, but also where they would be lacking  
+3. Do they meet the minimum requirements (if these are listed) from the Job, Yes or no, and if no, which requirements are missing? 
+4. What makes applicant a good fit (for this specific job)
+5. What requirements/ Skills are missing: where might this candidate possibly be missing or lacking for this specific job spec
+
+
+
+&quot;&quot;&quot;
+Now analyze the CV and match them to the job they have applied for
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Application.Candidate__r.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>CombinedAttachments</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Application.Candidate__r.CombinedAttachments.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_7</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document {!$RelatedList:Application.Candidate__r.CombinedAttachments.Records}, Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+There are two parts to this prompt, firstly the CV analysis and then Matching the CV to the Job they have applied for
+
+You are an recruitment specialist skilled in analyzing resumes (CVs) for recruitment and talent acquisition purposes. Your task is to carefully review and extract all the information from CV Document attached to the candidate and categorize the CV in sections related to their qualifications, experience, skills, education, Address Languages etc or any other details typically found in a CV so that you can take the information and populate in a Candidate record later on in the Agent process:
+ 
+
+Job Matching:
+Compare the Candidate {!$Input:Application.Candidate__r.Id} to the Job {!$Input:Application.Job__r.Id} they have applied for
+Analise if they are a good fit for the job by comparing the Candidate&apos;s Professional Experience, education, certifications, skills etc. to what they will be doing from the job ({!$Input:Application.Job__r.What_You_ll_Be_Doing__c}) and what they need from the candidate {!$Input:Application.Job__r.What_We_Need_from_You__c}.
+
+You will then go ahead based on your analysis and answer these questions 
+
+1. Application Rating: What would you score the applicant out of ten for this Job? 
+2. Overview of Candidate: Give a short overview of the Candidate highlighting the number of years experience, overview of their job history, and anything else that would make this a good candidate for the role, but also where they would be lacking  
+3. Do they meet the minimum requirements (if these are listed) from the Job, Yes or no, and if no, which requirements are missing? 
+4. What makes applicant a good fit (for this specific job)
+5. What requirements/ Skills are missing: where might this candidate possibly be missing or lacking for this specific job spec
+
+
+
+&quot;&quot;&quot;
+Now analyze the CV and match them to the job they have applied for
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Application.Candidate__r.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>CombinedAttachments</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Application.Candidate__r.CombinedAttachments.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_8</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+There are two parts to this prompt, firstly the CV analysis and then Matching the CV to the Job they have applied for
+
+You are an recruitment specialist skilled in analyzing resumes (CVs) for recruitment and talent acquisition purposes. Your task is to carefully review and extract all the information from CV Document attached to the candidate and categorize the CV in sections related to their qualifications, experience, skills, education, Address Languages etc or any other details typically found in a CV so that you can take the information and populate in a Candidate record later on in the Agent process:
+ 
+
+Job Matching:
+Compare the Candidate {!$Input:Application.Candidate__r.Id} to the Job {!$Input:Application.Job__r.Id} they have applied for
+Analise if they are a good fit for the job by comparing the Candidate&apos;s Professional Experience, education, certifications, skills etc. to what they will be doing from the job ({!$Input:Application.Job__r.What_You_ll_Be_Doing__c}) and what they need from the candidate {!$Input:Application.Job__r.What_We_Need_from_You__c}.
+
+You will then go ahead based on your analysis and answer these questions 
+
+1. Application Rating: What would you score the applicant out of ten for this Job? 
+2. Overview of Candidate: Give a short overview of the Candidate highlighting the number of years experience, overview of their job history, and anything else that would make this a good candidate for the role, but also where they would be lacking  
+3. Do they meet the minimum requirements (if these are listed) from the Job, Yes or no, and if no, which requirements are missing? 
+4. What makes applicant a good fit (for this specific job)
+5. What requirements/ Skills are missing: where might this candidate possibly be missing or lacking for this specific job spec
+
+
+
+&quot;&quot;&quot;
+Now analyze the CV and match them to the job they have applied for
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGemini20Flash001</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_9</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+There are two parts to this prompt, firstly the CV analysis and then Matching the CV to the Job they have applied for
+
+You are an recruitment specialist skilled in analyzing resumes (CVs) for recruitment and talent acquisition purposes. Your task is to carefully review and extract all the information from CV Document attached to the candidate and categorize the CV in sections related to their qualifications, experience, skills, education, Address Languages etc or any other details typically found in a CV so that you can take the information and populate in a Candidate record later on in the Agent process:
+ 
+
+Job Matching:
+Compare the Candidate {!$Input:Application.Candidate__r.Id} to the Job {!$Input:Application.Job__r.Id} they have applied for
+Analise if they are a good fit for the job by comparing the Candidate&apos;s Professional Experience, education, certifications, skills etc. to what they will be doing from the job ({!$Input:Application.Job__r.What_You_ll_Be_Doing__c}) and what they need from the candidate {!$Input:Application.Job__r.What_We_Need_from_You__c} and if the tech stack {!$Input:Application.Job__r.Tech_Stacks_We_Use__c} correlates with their skills
+
+You will then go ahead based on your analysis and answer these questions 
+
+1. Application Rating: What would you score the applicant out of ten for this Job? 
+2. Overview of Candidate: Give a short overview of the Candidate highlighting the number of years experience, overview of their job history, and anything else that would make this a good candidate for the role, but also where they would be lacking  
+3. Do they meet the minimum requirements (if these are listed) from the Job, Yes or no, and if no, which requirements are missing? 
+4. What makes applicant a good fit (for this specific job)
+5. What requirements/ Skills are missing: where might this candidate possibly be missing or lacking for this specific job spec
+
+
+
+&quot;&quot;&quot;
+Now analyze the CV and match them to the job they have applied for
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGemini20Flash001</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_10</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+There are two parts to this prompt, firstly the CV analysis and then Matching the CV to the Job they have applied for
+
+You are an recruitment specialist skilled in analyzing resumes (CVs) for recruitment and talent acquisition purposes. Your task is to carefully review and extract all the information from CV Document attached to the candidate and categorize the CV in sections related to their qualifications, experience, skills, education, Address Languages etc or any other details typically found in a CV so that you can take the information and populate in a Candidate record later on in the Agent process:
+ 
+
+Job Matching:
+Compare the Candidate {!$Input:Application.Candidate__r.Id} to the Job {!$Input:Application.Job__r.Id} they have applied for
+Analise if they are a good fit for the job by comparing the Candidate&apos;s Professional Experience, education, certifications, skills etc. to what they will be doing from the job ({!$Input:Application.Job__r.What_You_ll_Be_Doing__c}) and what they need from the candidate {!$Input:Application.Job__r.What_We_Need_from_You__c} and if the tech stack {!$Input:Application.Job__r.Tech_Stacks_We_Use__c} correlates with their skills. &quot;The Tech Stacks We Use&quot; carries a lot of weight, the more of these Tech Stacks the Candidate has listed in their profile, the better they will score
+
+You will then go ahead based on your analysis and answer these questions 
+
+1. Application Rating: What would you score the applicant out of ten for this Job? &quot;The Tech Stacks We Use&quot; carries a lot of weight, the more of these Tech Stacks the Candidate has listed in their profile, the better they will score. The &quot;What we need from you&quot; is an overall determination 
+2. Overview of Candidate: Give a short overview of the Candidate highlighting the number of years experience, overview of their job history, and anything else that would make this a good candidate for the role, but also where they would be lacking  
+3. Do they meet the minimum requirements {!$Input:Application.Job__r.Minimum_Requirements__c} (if these are listed) from the Job, Yes or no, and if no, which requirements are missing? 
+4. What makes applicant a good fit (for this specific job)
+5. What requirements/ Skills are missing: where might this candidate possibly be missing or lacking for this specific job spec
+
+
+
+&quot;&quot;&quot;
+Now analyze the CV and match them to the job they have applied for
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT4Omni</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_11</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+You are an expert HR analyst specializing in candidate-job matching. Your task is to analyze a provided CV and match it against a job description. The job description includes two key sections: &quot;What We Need from You&quot; {!$Input:Application.Job__r.What_We_Need_from_You__c}  (which outlines general requirements like experience level, education, soft skills, or other non-technical criteria) and &quot;Tech Stacks We Use&quot; {!$Input:Application.Job__r.Tech_Stacks_We_Use__c} (which lists specific technical skills, tools, languages, or frameworks required for the role).
+
+Evaluate the CV {!$Input:Content.Id} strictly based on the following criteria:
+- **Tech Stacks We Use Matching (Primary Focus, up to 7 points out of 10):** This is the most important factor. Compare the skills mentioned in the CV directly to the &quot;Tech Stacks We Use&quot; list. Award points only for exact or very close matches (e.g., if the job lists &quot;Python&quot; and the CV mentions &quot;Python programming,&quot; that&apos;s a match; but if the CV mentions a vaguely related skill like &quot;general coding,&quot; it&apos;s not a strong match). Be extremely strict:
+  - 0-1 matches: 0-2 points (candidate is largely unqualified).
+  - 2-3 matches: 3-4 points (candidate has some basic alignment but is still weak).
+  - 4-5 matches: 5-6 points (candidate shows good alignment, but not exceptional).
+  - 6+ matches: 7 points (candidate has excellent technical fit, but only if the matches are comprehensive and relevant).
+  Deduct points for any mismatches or lack of depth (e.g., if the CV claims a skill without evidence of experience). The more skills from the CV correlate directly to &quot;Tech Stacks We Use,&quot; the higher the score in this category.
+
+- **What We Need from You Matching (Secondary Focus, up to 3 points out of 10):** This covers general requirements. Check if the CV meets criteria like years of experience, education, soft skills (e.g., teamwork, communication), or other non-technical aspects. Be strict here too—only award points for clear, verifiable evidence in the CV:
+  - 0-1 requirements met: 0 points (major gaps in general fit).
+  - 2 requirements met: 1 point (partial fit, but still insufficient).
+  - 3-4 requirements met: 2 points (adequate but not outstanding).
+  - 5+ requirements met: 3 points (strong general fit).
+  If the CV doesn&apos;t explicitly address these, do not give the benefit of the doubt.
+
+Calculate a final overall rating out of 10 by adding the points from both categories (e.g., Tech Stacks score + General Requirements score). Ensure the rating is very strict: default to lower scores for any ambiguities, and only give high scores (7-10) to candidates who demonstrate near-perfect alignment across both sections. Avoid inflating scores for candidates who are even slightly non-applicable.
+
+Provide your output in the following structured format:
+1. **Overview of applicant:** A brief 2-3 sentence overview of how well the CV matches the job, highlighting key strengths and weaknesses.
+2. **What makes applicant a good fit:** List all the skills and experience that correlates to the Job
+3. **What requirements/ Skills missing:** List All the skills and requirements this Candidate doesn&apos;t have in correlation to the job
+4. **Application Rating:**: The final score out of 10. (Just list the number)
+5. Minimum Requirements: Does the Candidate meet all minimum requirements {!$Input:Application.Job__r.Minimum_Requirements__c} 
+
+Now, provide the CV text, &quot;What We Need from You&quot; section, and &quot;Tech Stacks We Use&quot; section for analysis:
+
+- CV Text: {!$Input:Content.Id}[Paste the candidate&apos;s CV text here]
+- What We Need from You: 
+- Tech Stacks We Use: {!$Input:Application.Job__r.Tech_Stacks_We_Use__c}
+- Job Name: {!$Input:Application.Job__r.Name}
+
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_12</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+You are an expert HR analyst specializing in candidate-job matching. Your task is to analyze a provided CV and match it against a job description. The job description includes two key sections: &quot;What We Need from You&quot; {!$Input:Application.Job__r.What_We_Need_from_You__c}  (which outlines general requirements like experience level, education, soft skills, or other non-technical criteria) and &quot;Tech Stacks We Use&quot; {!$Input:Application.Job__r.Tech_Stacks_We_Use__c} (which lists specific technical skills, tools, languages, or frameworks required for the role).
+
+Evaluate the CV {!$Input:Content.Id} strictly based on the following criteria:
+- **Tech Stacks We Use Matching (Primary Focus, up to 7 points out of 10):** This is the most important factor. Compare the skills mentioned in the CV directly to the &quot;Tech Stacks We Use&quot; list. Award points only for exact or very close matches (e.g., if the job lists &quot;Python&quot; and the CV mentions &quot;Python programming,&quot; that&apos;s a match; but if the CV mentions a vaguely related skill like &quot;general coding,&quot; it&apos;s not a strong match). Be extremely strict:
+  - 0-1 matches: 0-2 points (candidate is largely unqualified).
+  - 2-3 matches: 3-4 points (candidate has some basic alignment but is still weak).
+  - 4-5 matches: 5-6 points (candidate shows good alignment, but not exceptional).
+  - 6+ matches: 7 points (candidate has excellent technical fit, but only if the matches are comprehensive and relevant).
+  Deduct points for any mismatches or lack of depth (e.g., if the CV claims a skill without evidence of experience). The more skills from the CV correlate directly to &quot;Tech Stacks We Use,&quot; the higher the score in this category.
+
+- **What We Need from You Matching (Secondary Focus, up to 3 points out of 10):** This covers general requirements. Check if the CV meets criteria like years of experience, education, soft skills (e.g., teamwork, communication), or other non-technical aspects. Be strict here too—only award points for clear, verifiable evidence in the CV:
+  - 0-1 requirements met: 0 points (major gaps in general fit).
+  - 2 requirements met: 1 point (partial fit, but still insufficient).
+  - 3-4 requirements met: 2 points (adequate but not outstanding).
+  - 5+ requirements met: 3 points (strong general fit).
+  If the CV doesn&apos;t explicitly address these, do not give the benefit of the doubt.
+
+Calculate a final overall rating out of 10 by adding the points from both categories (e.g., Tech Stacks score + General Requirements score). Ensure the rating is very strict: default to lower scores for any ambiguities, and only give high scores (7-10) to candidates who demonstrate near-perfect alignment across both sections. Avoid inflating scores for candidates who are even slightly non-applicable.
+
+Provide your output in the following structured format:
+1. **Overview of applicant:** A brief 2-3 sentence overview of how well the CV matches the job, highlighting key strengths and weaknesses.
+2. **What makes applicant a good fit:** List all the skills and experience that correlates to the Job
+3. **What requirements/ Skills missing:** List All the skills and requirements this Candidate doesn&apos;t have in correlation to the job
+4. **Application Rating:**: The final score out of 10. (Just list the number)
+5. Minimum Requirements: Does the Candidate meet the minimum requirements specified in this field: {!$Input:Application.Job__r.Minimum_Requirements__c} 
+
+Now, provide the CV text, &quot;What We Need from You&quot; section, and &quot;Tech Stacks We Use&quot; section for analysis:
+
+- CV Text: {!$Input:Content.Id}[Paste the candidate&apos;s CV text here]
+- What We Need from You: 
+- Tech Stacks We Use: {!$Input:Application.Job__r.Tech_Stacks_We_Use__c}
+- Job Name: {!$Input:Application.Job__r.Name}
+
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_13</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+You are an expert HR analyst specializing in candidate-job matching. Your task is to analyze a provided CV and match it against a job description. The job description includes two key sections: &quot;What We Need from You&quot; {!$Input:Application.Job__r.What_We_Need_from_You__c}  (which outlines general requirements like experience level, education, soft skills, or other non-technical criteria) and &quot;Tech Stacks We Use&quot; {!$Input:Application.Job__r.Tech_Stacks_We_Use__c} (which lists specific technical skills, tools, languages, or frameworks required for the role).
+
+Evaluate the CV {!$Input:Content.Id} strictly based on the following criteria:
+- **Tech Stacks We Use Matching (Primary Focus, up to 7 points out of 10):** This is the most important factor. Compare the skills mentioned in the CV directly to the &quot;Tech Stacks We Use&quot; list. Award points only for exact or very close matches (e.g., if the job lists &quot;Python&quot; and the CV mentions &quot;Python programming,&quot; that&apos;s a match; but if the CV mentions a vaguely related skill like &quot;general coding,&quot; it&apos;s not a strong match). Be extremely strict:
+  - 0-1 matches: 0-2 points (candidate is largely unqualified).
+  - 2-3 matches: 3-4 points (candidate has some basic alignment but is still weak).
+  - 4-5 matches: 5-6 points (candidate shows good alignment, but not exceptional).
+  - 6+ matches: 7 points (candidate has excellent technical fit, but only if the matches are comprehensive and relevant).
+  Deduct points for any mismatches or lack of depth (e.g., if the CV claims a skill without evidence of experience). The more skills from the CV correlate directly to &quot;Tech Stacks We Use,&quot; the higher the score in this category.
+
+- **What We Need from You Matching (Secondary Focus, up to 3 points out of 10):** This covers general requirements. Check if the CV meets criteria like years of experience, education, soft skills (e.g., teamwork, communication), or other non-technical aspects. Be strict here too—only award points for clear, verifiable evidence in the CV:
+  - 0-1 requirements met: 0 points (major gaps in general fit).
+  - 2 requirements met: 1 point (partial fit, but still insufficient).
+  - 3-4 requirements met: 2 points (adequate but not outstanding).
+  - 5+ requirements met: 3 points (strong general fit).
+  If the CV doesn&apos;t explicitly address these, do not give the benefit of the doubt.
+
+Calculate a final overall rating out of 10 by adding the points from both categories (e.g., Tech Stacks score + General Requirements score). Ensure the rating is very strict: default to lower scores for any ambiguities, and only give high scores (7-10) to candidates who demonstrate near-perfect alignment across both sections. Avoid inflating scores for candidates who are even slightly non-applicable.
+
+Provide your output in the following structured format:
+1. **Overview of applicant:** A brief 2-3 sentence overview of how well the CV matches the job, highlighting key strengths and weaknesses.
+2. **What makes applicant a good fit:** List all the skills and experience that correlates to the Job
+3. **What requirements/ Skills missing:** List All the skills and requirements this Candidate doesn&apos;t have in correlation to the job
+4. **Application Rating:**: The final score out of 10. (Just list the number)
+5. Minimum Requirements: Does the Candidate meet the minimum requirements specified in this field: {!$Input:Application.Job__r.Minimum_Requirements__c}, Yes or No, and if not, which specific requirements are missing
+
+Now, provide the CV text, &quot;What We Need from You&quot; section, and &quot;Tech Stacks We Use&quot; section for analysis:
+
+- CV Text: {!$Input:Content.Id}[Paste the candidate&apos;s CV text here]
+- What We Need from You: 
+- Tech Stacks We Use: {!$Input:Application.Job__r.Tech_Stacks_We_Use__c}
+- Job Name: {!$Input:Application.Job__r.Name}
+
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_14</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+You are an expert Recruiter analyst specializing in candidate-job matching. Your task is to analyze a provided CV and match it against a job description. The job description includes two key sections: &quot;What We Need from You&quot; {!$Input:Application.Job__r.What_We_Need_from_You__c}  (which outlines general requirements like experience level, education, soft skills, or other non-technical criteria) and &quot;Tech Stacks We Use&quot; {!$Input:Application.Job__r.Tech_Stacks_We_Use__c} (which lists specific technical skills, tools, languages, or frameworks required for the role) and the the most important Tech stacks {!$Input:Application.Job__r.Most_Important_Tech_Stack__c}, these are almost the non negotiable tech stacks, for each of these they dont have deduct 2 points.
+
+Also Important to mention to the recruiter if the Candidate doesnt live in the area of the Job&apos;s location, so match the Candidate&apos;s Address {!$Input:Application.Candidate__r.Address__c} to the Job&apos;s Region {!$Input:Application.Job__r.Region__c}
+
+Evaluate the CV {!$Input:Content.Id} strictly based on the following criteria:
+- **Tech Stacks We Use Matching (Primary Focus, up to 7 points out of 10):** This is the most important factor. Compare the skills mentioned in the CV directly to the &quot;Tech Stacks We Use&quot; list. Award points only for exact or very close matches (e.g., if the job lists &quot;Python&quot; and the CV mentions &quot;Python programming,&quot; that&apos;s a match; but if the CV mentions a vaguely related skill like &quot;general coding,&quot; it&apos;s not a strong match). Be extremely strict:
+  - 0-1 matches: 0-2 points (candidate is largely unqualified).
+  - 2-3 matches: 3-4 points (candidate has some basic alignment but is still weak).
+  - 4-5 matches: 5-6 points (candidate shows good alignment, but not exceptional).
+  - 6+ matches: 7 points (candidate has excellent technical fit, but only if the matches are comprehensive and relevant).
+  Deduct points for any mismatches or lack of depth (e.g., if the CV claims a skill without evidence of experience). The more skills from the CV correlate directly to &quot;Tech Stacks We Use,&quot; the higher the score in this category.
+
+- **What We Need from You Matching (Secondary Focus, up to 3 points out of 10):** This covers general requirements. Check if the CV meets criteria like years of experience, education, soft skills (e.g., teamwork, communication), or other non-technical aspects. Be strict here too—only award points for clear, verifiable evidence in the CV:
+  - 0-1 requirements met: 0 points (major gaps in general fit).
+  - 2 requirements met: 1 point (partial fit, but still insufficient).
+  - 3-4 requirements met: 2 points (adequate but not outstanding).
+  - 5+ requirements met: 3 points (strong general fit).
+  If the CV doesn&apos;t explicitly address these, do not give the benefit of the doubt.
+
+Calculate a final overall rating out of 10 by adding the points from both categories (e.g., Tech Stacks score + General Requirements score). Ensure the rating is very strict: default to lower scores for any ambiguities, and only give high scores (7-10) to candidates who demonstrate near-perfect alignment across both sections. Avoid inflating scores for candidates who are even slightly non-applicable.
+
+Provide your output in the following structured format:
+1. **Overview of applicant:** A brief 2-3 sentence overview of how well the CV matches the job, highlighting key strengths and weaknesses.
+2. **What makes applicant a good fit:** List all the skills and experience that correlates to the Job
+3. **What requirements/ Skills missing:** List All the skills and requirements this Candidate doesn&apos;t have in correlation to the job
+4. **Application Rating:**: The final score out of 10. (Just list the number)
+5. Minimum Requirements: Does the Candidate meet the minimum requirements specified in this field: {!$Input:Application.Job__r.Minimum_Requirements__c}, Yes or No, and if not, which specific requirements are missing
+
+Now, provide the CV text, &quot;What We Need from You&quot; section, and &quot;Tech Stacks We Use&quot; section for analysis:
+
+- CV Text: {!$Input:Content.Id}[Paste the candidate&apos;s CV text here]
+- What We Need from You: {!$Input:Application.Job__r.What_We_Need_from_You__c}
+- Tech Stacks We Use: {!$Input:Application.Job__r.Tech_Stacks_We_Use__c} and {!$Input:Application.Job__r.Most_Important_Tech_Stack__c}
+- Job Name: {!$Input:Application.Job__r.Name}
+
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_15</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+You are an expert Recruiter analyst specializing in candidate-job matching. Your task is to analyze a provided CV and match it against a job description. The job description includes two key sections: &quot;What We Need from You&quot; {!$Input:Application.Job__r.What_We_Need_from_You__c}  (which outlines general requirements like experience level, education, soft skills, or other non-technical criteria) and &quot;Tech Stacks We Use&quot; {!$Input:Application.Job__r.Tech_Stacks_We_Use__c} (which lists specific technical skills, tools, languages, or frameworks required for the role) and the the most important Tech stacks {!$Input:Application.Job__r.Most_Important_Tech_Stack__c}, these are almost the non negotiable tech stacks, for each of these they dont have deduct 2 points.
+
+Also Important to mention to the recruiter if the Candidate doesnt live in the area of the Job&apos;s location, so match the Candidate&apos;s Address {!$Input:Application.Candidate__r.Address__c} to the Job&apos;s Region {!$Input:Application.Job__r.Region__c}
+
+Evaluate the CV {!$Input:Content.Id} strictly based on the following criteria:
+- **Tech Stacks We Use Matching (Primary Focus, up to 7 points out of 10):** This is the most important factor. Compare the skills mentioned in the CV directly to the &quot;Tech Stacks We Use&quot; list. Award points only for exact or very close matches (e.g., if the job lists &quot;Python&quot; and the CV mentions &quot;Python programming,&quot; that&apos;s a match; but if the CV mentions a vaguely related skill like &quot;general coding,&quot; it&apos;s not a strong match). Be extremely strict:
+  - 0-1 matches: 0-2 points (candidate is largely unqualified).
+  - 2-3 matches: 3-4 points (candidate has some basic alignment but is still weak).
+  - 4-5 matches: 5-6 points (candidate shows good alignment, but not exceptional).
+  - 6+ matches: 7 points (candidate has excellent technical fit, but only if the matches are comprehensive and relevant).
+  Deduct points for any mismatches or lack of depth (e.g., if the CV claims a skill without evidence of experience). The more skills from the CV correlate directly to &quot;Tech Stacks We Use,&quot; the higher the score in this category.
+
+- **What We Need from You Matching (Secondary Focus, up to 3 points out of 10):** This covers general requirements. Check if the CV meets criteria like years of experience, education, soft skills (e.g., teamwork, communication), or other non-technical aspects. Be strict here too—only award points for clear, verifiable evidence in the CV:
+  - 0-1 requirements met: 0 points (major gaps in general fit).
+  - 2 requirements met: 1 point (partial fit, but still insufficient).
+  - 3-4 requirements met: 2 points (adequate but not outstanding).
+  - 5+ requirements met: 3 points (strong general fit).
+  If the CV doesn&apos;t explicitly address these, do not give the benefit of the doubt.
+
+Calculate a final overall rating out of 10 by adding the points from both categories (e.g., Tech Stacks score + General Requirements score). Ensure the rating is very strict: default to lower scores for any ambiguities, and only give high scores (7-10) to candidates who demonstrate near-perfect alignment across both sections. Avoid inflating scores for candidates who are even slightly non-applicable.
+
+Provide your output in the following structured format:
+1. **Overview of applicant:** A brief 2-3 sentence overview of how well the CV matches the job, highlighting key strengths and weaknesses.
+2. **What makes applicant a good fit:** List all the skills and experience that correlates to the Job
+3. **What requirements/ Skills missing:** List All the skills and requirements this Candidate doesn&apos;t have in correlation to the job
+4. **Application Rating:**: The final score out of 10. (Just list the number)
+5. Minimum Requirements: Does the Candidate meet the minimum requirements specified in this field: {!$Input:Application.Job__r.Minimum_Requirements__c}, Yes or No, and if not, which specific requirements are missing
+
+Now, provide the CV text, &quot;What We Need from You&quot; section, and &quot;Tech Stacks We Use&quot; section for analysis:
+
+- CV Text: {!$Input:Content.Id}[Paste the candidate&apos;s CV text here]
+- What We Need from You: {!$Input:Application.Job__r.What_We_Need_from_You__c} and Industry experience {!$Input:Application.Job__r.Industry_Experience__c}
+- Tech Stacks We Use: {!$Input:Application.Job__r.Tech_Stacks_We_Use__c} and {!$Input:Application.Job__r.Most_Important_Tech_Stack__c}
+- Job Name: {!$Input:Application.Job__r.Name}
+
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_16</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are to follow the below instructions once a user asks you to Analise their CV document. CV Document Candidate {!$Input:Application.Candidate__r.Id}, Job {!$Input:Application.Job__r.Id}
+Instructions:
+&quot;&quot;&quot;
+You are an expert Recruiter analyst specializing in candidate-job matching. Your task is to analyze a provided CV and match it against a job description. The job description includes two key sections: &quot;What We Need from You&quot; {!$Input:Application.Job__r.What_We_Need_from_You__c}  (which outlines general requirements like experience level, education, soft skills, or other non-technical criteria) and &quot;Tech Stacks We Use&quot; {!$Input:Application.Job__r.Tech_Stacks_We_Use__c} (which lists specific technical skills, tools, languages, or frameworks required for the role) and the the most important Tech stacks {!$Input:Application.Job__r.Most_Important_Tech_Stack__c}, these are almost the non negotiable tech stacks, for each of these they dont have deduct 2 points.
+
+Also Important to mention to the recruiter if the Candidate doesnt live in the area of the Job&apos;s location, so match the Candidate&apos;s Address {!$Input:Application.Candidate__r.Address__c} to the Job&apos;s Region {!$Input:Application.Job__r.Region__c}
+
+Evaluate the CV {!$Input:Content.Id} strictly based on the following criteria:
+- **Tech Stacks We Use Matching (Primary Focus, up to 7 points out of 10):** This is the most important factor. Compare the skills mentioned in the CV directly to the &quot;Tech Stacks We Use&quot; list. Award points only for exact or very close matches (e.g., if the job lists &quot;Python&quot; and the CV mentions &quot;Python programming,&quot; that&apos;s a match; but if the CV mentions a vaguely related skill like &quot;general coding,&quot; it&apos;s not a strong match). Be extremely strict:
+  - 0-1 matches: 0-2 points (candidate is largely unqualified).
+  - 2-3 matches: 3-4 points (candidate has some basic alignment but is still weak).
+  - 4-5 matches: 5-6 points (candidate shows good alignment, but not exceptional).
+  - 6+ matches: 7 points (candidate has excellent technical fit, but only if the matches are comprehensive and relevant).
+  Deduct points for any mismatches or lack of depth (e.g., if the CV claims a skill without evidence of experience). The more skills from the CV correlate directly to &quot;Tech Stacks We Use,&quot; the higher the score in this category.
+
+- **What We Need from You Matching (Secondary Focus, up to 3 points out of 10):** This covers general requirements. Check if the CV meets criteria like years of experience, education, soft skills (e.g., teamwork, communication), or other non-technical aspects. Be strict here too—only award points for clear, verifiable evidence in the CV:
+  - 0-1 requirements met: 0 points (major gaps in general fit).
+  - 2 requirements met: 1 point (partial fit, but still insufficient).
+  - 3-4 requirements met: 2 points (adequate but not outstanding).
+  - 5+ requirements met: 3 points (strong general fit).
+  If the CV doesn&apos;t explicitly address these, do not give the benefit of the doubt.
+Give a maximum bonus point of one for matching industry experience {!$Input:Application.Job__r.Industry_Experience__c} but do mention this if the have
+
+Calculate a final overall rating out of 10 by adding the points from both categories (e.g., Tech Stacks score + General Requirements score). Ensure the rating is very strict: default to lower scores for any ambiguities, and only give high scores (7-10) to candidates who demonstrate near-perfect alignment across both sections. Avoid inflating scores for candidates who are even slightly non-applicable.
+
+Provide your output in the following structured format:
+1. **Overview of applicant:** A brief 2-3 sentence overview of how well the CV matches the job, highlighting key strengths and weaknesses.
+2. **What makes applicant a good fit:** List all the skills and experience that correlates to the Job
+3. **What requirements/ Skills missing:** List All the skills and requirements this Candidate doesn&apos;t have in correlation to the job
+4. **Application Rating:**: The final score out of 10. (Just list the number)
+5. Minimum Requirements: Does the Candidate meet the minimum requirements specified in this field: {!$Input:Application.Job__r.Minimum_Requirements__c}, Yes or No, and if not, which specific requirements are missing
+
+Now, provide the CV text, &quot;What We Need from You&quot; section, and &quot;Tech Stacks We Use&quot; section for analysis:
+
+- CV Text: {!$Input:Content.Id}[Paste the candidate&apos;s CV text here]
+- What We Need from You: {!$Input:Application.Job__r.What_We_Need_from_You__c} and Industry experience {!$Input:Application.Job__r.Industry_Experience__c}
+- Tech Stacks We Use: {!$Input:Application.Job__r.Tech_Stacks_We_Use__c} and {!$Input:Application.Job__r.Most_Important_Tech_Stack__c}
+- Job Name: {!$Input:Application.Job__r.Name}
+
+
+</content>
+        <inputs>
+            <apiName>Application</apiName>
+            <definition>SOBJECT://Application__c</definition>
+            <masterLabel>Application</masterLabel>
+            <referenceName>Input:Application</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Content</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Content</masterLabel>
+            <referenceName>Input:Content</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_17</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

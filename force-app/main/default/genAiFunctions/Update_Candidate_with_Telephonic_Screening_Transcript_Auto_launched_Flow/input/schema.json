@@ -1,0 +1,143 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "ActivelyInterviewing" : {
+      "title" : "ActivelyInterviewing",
+      "description" : "As per the Prompt under the Actively Interviewing Heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Address" : {
+      "title" : "Address",
+      "description" : "As per the Prompt under the Address Heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "ColTechStack" : {
+      "title" : "ColTechStack",
+      "description" : "As per the Prompt under the Tech Stack Heading\nFormat: Text",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "lightning__textType"
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "CounterOfferRisk" : {
+      "title" : "CounterOfferRisk",
+      "description" : "As per the Prompt under the Counter Offer Risk heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "DecisionFactors" : {
+      "title" : "DecisionFactors",
+      "description" : "As per the Prompt under the Decision Factors heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "HobbiesInterests" : {
+      "title" : "HobbiesInterests",
+      "description" : "As per the Prompt under the Hobbies & Interests heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Increase" : {
+      "title" : "Increase",
+      "description" : "As per the Prompt under the Increase % heading\nFormat: Number",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "MentorshipInvolvement" : {
+      "title" : "MentorshipInvolvement",
+      "description" : "As per the Prompt under the Mentorship Involvement heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "NoticePeriod" : {
+      "title" : "NoticePeriod",
+      "description" : "As per the Prompt under the Notice Period heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "PreferredEnvironment" : {
+      "title" : "PreferredEnvironment",
+      "description" : "As per the Prompt under the Preferred Environment heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "PreferredName" : {
+      "title" : "PreferredName",
+      "description" : "As per the Prompt under the Preferred Environment heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Reasonforleaving" : {
+      "title" : "Reasonforleaving",
+      "description" : "As per the Prompt under the Reasons For Leaving heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "TeamRole" : {
+      "title" : "TeamRole",
+      "description" : "As per the Prompt under the Team Role heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "TeamSetup" : {
+      "title" : "TeamSetup",
+      "description" : "As per the Prompt under the Team Setup heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "TechStack" : {
+      "title" : "TechStack",
+      "description" : "As per the Prompt under the Tech Stack heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "TotalCTC" : {
+      "title" : "TotalCTC",
+      "description" : "As per the Prompt under the Cost To Company heading\nFormat: Number",
+      "lightning:type" : "lightning__currencyType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "WaysofWorking" : {
+      "title" : "WaysofWorking",
+      "description" : "As per the Prompt under the Ways of Working heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "WorkHistory" : {
+      "title" : "WorkHistory",
+      "description" : "As per the Prompt under the Work History & Projects heading\nFormat: Text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "recordId" : {
+      "title" : "recordId",
+      "description" : "The Candidate record \nFormat: 18 digit record ID number",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

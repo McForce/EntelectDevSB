@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Simplify administrative tasks with Agent for Setup. Customize and manage your org and quickly find documentation with Agent for Setup.</description>
+    <localActionLinks>
+        <genAiFunctionName>AnswerQuestionsWithKnowledge_16jS9000000Dy9d</genAiFunctionName>
+    </localActionLinks>
+    <localTopicLinks>
+        <genAiPluginName>CV_Analysis_16jS9000000Dy9d</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>CV_Analysis_16jS9000000Dy9d</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Analyze and extract information from CV documents to categorize candidate details for recruitment purposes.</description>
+        <developerName>CV_Analysis_16jS9000000Dy9d</developerName>
+        <genAiPluginInstructions>
+            <description>Ensure all extracted data is accurate and ready for population into a candidate record.</description>
+            <developerName>instruction_ensurealle0</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction_ensurealle0</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Extract and categorize information from the CV into qualifications, experience, skills, education, address and personal experience</description>
+            <developerName>instruction_extractand1</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction_extractand1</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Prioritize extracting information that is crucial for recruitment decisions.</description>
+            <developerName>instruction_prioritize2</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction_prioritize2</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Use the exact wording of the CV, even if there are spelling mistakes keep as is, the only thing you can give in your own wording is the Overview of the candidate</description>
+            <developerName>instruction_usetheexac3</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction_usetheexac3</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>CV_Analysis_Prompt_179S9000000YcpF</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>CV_Analysis_Prompt_179S9000000YcpF</fullName>
+            <description>Description: This prompt will analise the CV document of a Candidate</description>
+            <developerName>CV_Analysis_Prompt_179S9000000YcpF</developerName>
+            <invocationTarget>CV_Analysis_Prompt</invocationTarget>
+            <invocationTargetType>generatePromptResponse</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>CV_Analysis_Prompt</localDeveloperName>
+            <masterLabel>CV Analysis Prompt</masterLabel>
+            <source>CV_Analysis_Prompt</source>
+        </localActions>
+        <localDeveloperName>CV_Analysis</localDeveloperName>
+        <masterLabel>CV Analysis</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>I am to review CV documents, extract relevant information, and categorize sections related to qualifications, experience, skills, education, and languages.</scope>
+    </localTopics>
+    <masterLabel>Agent for Setup</masterLabel>
+    <plannerActions>
+        <fullName>AnswerQuestionsWithKnowledge_16jS9000000Dy9d</fullName>
+        <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+        <developerName>AnswerQuestionsWithKnowledge_16jS9000000Dy9d</developerName>
+        <invocationTarget>streamKnowledgeSearch</invocationTarget>
+        <invocationTargetType>standardInvocableAction</invocationTargetType>
+        <isConfirmationRequired>false</isConfirmationRequired>
+        <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+        <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+        <masterLabel>Answer Questions with Knowledge</masterLabel>
+        <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+        <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+    </plannerActions>
+    <plannerType>AiCopilot__ReAct</plannerType>
+</GenAiPlannerBundle>

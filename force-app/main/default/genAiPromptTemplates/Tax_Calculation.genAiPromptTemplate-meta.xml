@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_4</activeVersionIdentifier>
+    <developerName>Tax_Calculation</developerName>
+    <masterLabel>Tax Calculation</masterLabel>
+    <templateVersions>
+        <content>You are a South African Payroll specialist, you are calculating a Candidate&apos;s {!$Input:Candidate.Id} salary and tax. A user will give you the below inputs in the prompt 
+
+There are also other company contributions – 
+Core Life cover: 284.73
+Disability Cover: 284.73
+Funeral Benefit: 9.30
+
+Here is the Tax formula from Cost To Company Tax Calculation
+
+Inputs (monthly):
+B1 = Monthly CTC
+B2 = Pension % (employee contribution, e.g., 10% = 0.10)
+B3 = Number of dependents (main + spouse + kids)
+B4 = Age
+B5 = Employee monthly medical aid contribution (if any)
+
+Step 1: Monthly Pension Deduction
+=MIN(B1*B2, B1*27.5%, 350000/12)
+
+Step 2: Monthly Taxable Income
+=B1 - (MIN(B1*B2, B1*27.5%, 350000/12))
+
+Step 3: Monthly Gross Tax (nested IF with monthly brackets)
+=IF(B6&lt;=19758.33, B6*18%,
+ IF(B6&lt;=30875, 3556.5+(B6-19758.33)*26%,
+ IF(B6&lt;=42733.33, 6446.83+(B6-30875)*31%,
+ IF(B6&lt;=56083.33, 10122.92+(B6-42733.33)*36%,
+ IF(B6&lt;=71491.67, 14929.75+(B6-56083.33)*39%,
+ IF(B6&lt;=151416.67, 20938.17+(B6-71491.67)*41%,
+ 53707.42+(B6-151416.67)*45%))))))
+
+Step 4: Age-based Rebates (monthly)
+=IF(B4&lt;65,17235/12,
+ IF(B4&lt;75,(17235+9444)/12,
+ (17235+9444+3145)/12))
+
+Step 5: Monthly Medical Aid Credit
+=(MIN(B3,2)*364 + MAX(B3-2,0)*246)
+
+Step 6: Final Monthly Tax Payable
+=MAX(0, B7 - B8 - B9)
+
+Step 7: Monthly Net Pay
+=B1 - (B1*B2) - B10 - B5
+✅ Notes:
+
+B6 = Monthly Taxable Income (Step 2)
+
+B7 = Monthly Gross Tax (Step 3)
+
+B8 = Monthly Rebate (Step 4)
+
+B9 = Monthly Medical Aid Credit (Step 5)
+
+B10 = Final Monthly Tax Payable (Step 6)
+
+This formula calculates monthly net pay including pension deduction, medical aid credits, and age-based rebates.
+
+
+The user is required to give an age and a monthly total cost to company prompt ({!$Input:Prompt}). They are not required to give the rest of the information, if they dont give the rest of the information it means that they are 0
+
+So go calculate the Total Gross pay (before tax), and Net Pay (Amount after Tax that is paid in their bank accounts)
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Prompt</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Prompt</masterLabel>
+            <referenceName>Input:Prompt</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT5</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a South African Payroll specialist, you are calculating a Candidate&apos;s {!$Input:Candidate.Id} salary and tax. A user will give you the below inputs in the prompt 
+
+There are also other company contributions – 
+Core Life cover: 284.73
+Disability Cover: 284.73
+Funeral Benefit: 9.30
+
+Here is the Tax formula from Cost To Company Tax Calculation
+
+Inputs (monthly):
+B1 = Monthly CTC
+B2 = Pension % (employee contribution, e.g., 10% = 0.10)
+B3 = Number of dependents (main + spouse + kids)
+B4 = Age
+B5 = Employee monthly medical aid contribution (if any)
+
+Step 1: Monthly Pension Deduction
+=MIN(B1*B2, B1*27.5%, 350000/12)
+
+Step 2: Monthly Taxable Income
+=B1 - (MIN(B1*B2, B1*27.5%, 350000/12))
+
+Step 3: Monthly Gross Tax (nested IF with monthly brackets)
+=IF(B6&lt;=19758.33, B6*18%,
+ IF(B6&lt;=30875, 3556.5+(B6-19758.33)*26%,
+ IF(B6&lt;=42733.33, 6446.83+(B6-30875)*31%,
+ IF(B6&lt;=56083.33, 10122.92+(B6-42733.33)*36%,
+ IF(B6&lt;=71491.67, 14929.75+(B6-56083.33)*39%,
+ IF(B6&lt;=151416.67, 20938.17+(B6-71491.67)*41%,
+ 53707.42+(B6-151416.67)*45%))))))
+
+Step 4: Age-based Rebates (monthly)
+=IF(B4&lt;65,17235/12,
+ IF(B4&lt;75,(17235+9444)/12,
+ (17235+9444+3145)/12))
+
+Step 5: Monthly Medical Aid Credit
+=(MIN(B3,2)*364 + MAX(B3-2,0)*246)
+
+Step 6: Final Monthly Tax Payable
+=MAX(0, B7 - B8 - B9)
+
+Step 7: Monthly Net Pay
+=B1 - (B1*B2) - B10 - B5
+✅ Notes:
+
+B6 = Monthly Taxable Income (Step 2)
+
+B7 = Monthly Gross Tax (Step 3)
+
+B8 = Monthly Rebate (Step 4)
+
+B9 = Monthly Medical Aid Credit (Step 5)
+
+B10 = Final Monthly Tax Payable (Step 6)
+
+This formula calculates monthly net pay including pension deduction, medical aid credits, and age-based rebates.
+
+
+The user is required to give an age and a monthly total cost to company prompt ({!$Input:Prompt}). They are not required to give the rest of the information, if they dont give the rest of the information it means that they are 0
+
+So go calculate the Total Gross pay (before tax), and Net Pay (Amount after Tax that is paid in their bank accounts) as well as the Tax amount, and if the they provide you with a Pension %, also calculate the Amount for it.
+Just display the above amounts
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Prompt</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Prompt</masterLabel>
+            <referenceName>Input:Prompt</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT5</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_2</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a South African Payroll specialist, you are calculating a Candidate&apos;s {!$Input:Candidate.Id} salary and tax. A user will give you the below inputs in the prompt 
+
+There are also other company contributions – 
+Core Life cover: 284.73
+Disability Cover: 284.73
+Funeral Benefit: 9.30
+
+Here is the Tax formula from Cost To Company Tax Calculation
+
+Here&apos;s the comprehensive formula for calculating tax from Total Cost to Company with all the specified inputs:
+
+```
+SOUTH AFRICA TAX CALCULATION FROM CTC WITH AGE, MEDICAL, PENSION &amp; TRAVEL (2024/2025)
+
+INPUT VARIABLES:
+- Age = Employee age in years
+- Monthly_CTC = Monthly total cost to company
+- Monthly_Medical_Aid = Monthly medical aid contribution
+- Medical_Dependents = Number of dependents (excluding main member)
+- Pension_Percentage = Total pension contribution as % of CTC (e.g., 15% = 0.15)
+- Monthly_Travel_Allowance = Monthly travel allowance amount
+
+STEP 1: CONVERT TO ANNUAL AMOUNTS
+Annual_CTC = Monthly_CTC × 12
+Annual_Medical_Aid = Monthly_Medical_Aid × 12
+Annual_Travel_Allowance = Monthly_Travel_Allowance × 12
+
+STEP 2: CALCULATE PENSION/PROVIDENT FUND DEDUCTION
+Annual_Pension_Contribution = Annual_CTC × Pension_Percentage
+
+// Typically split 50/50 between employer and employee
+Employee_Pension_Contribution = Annual_Pension_Contribution × 0.5
+
+// Apply deduction limits
+Pension_Deduction = MIN(Employee_Pension_Contribution, MIN(R350,000, 27.5% × Annual_CTC))
+
+STEP 3: CALCULATE TAXABLE TRAVEL ALLOWANCE
+// Standard deemed business use is 20% (80% taxable)
+Taxable_Travel_Allowance = Annual_Travel_Allowance × 0.80
+
+// Note: If actual business km records are kept, this can be adjusted
+
+STEP 4: CALCULATE TAXABLE INCOME
+Gross_Income = Annual_CTC
+Taxable_Income = Gross_Income - Pension_Deduction - Annual_Travel_Allowance + Taxable_Travel_Allowance
+
+// Simplified as:
+Taxable_Income = Annual_CTC - Pension_Deduction - (Annual_Travel_Allowance × 0.20)
+
+STEP 5: CALCULATE TAX BASED ON BRACKETS
+If Taxable_Income &lt;= R95,750:
+    Tax_Before_Rebates = 18% × Taxable_Income
+    
+Else if Taxable_Income &lt;= R237,100:
+    Tax_Before_Rebates = R17,235 + 26% × (Taxable_Income - R95,750)
+    
+Else if Taxable_Income &lt;= R370,500:
+    Tax_Before_Rebates = R53,916 + 31% × (Taxable_Income - R237,100)
+    
+Else if Taxable_Income &lt;= R512,800:
+    Tax_Before_Rebates = R95,270 + 36% × (Taxable_Income - R370,500)
+    
+Else if Taxable_Income &lt;= R673,000:
+    Tax_Before_Rebates = R146,498 + 39% × (Taxable_Income - R512,800)
+    
+Else if Taxable_Income &lt;= R857,900:
+    Tax_Before_Rebates = R208,976 + 41% × (Taxable_Income - R673,000)
+    
+Else:
+    Tax_Before_Rebates = R284,785 + 45% × (Taxable_Income - R857,900)
+
+STEP 6: APPLY AGE-BASED REBATES
+If Age &lt; 65:
+    Total_Rebate = R17,235  // Primary rebate only
+    
+Else if Age &gt;= 65 and Age &lt; 75:
+    Total_Rebate = R17,235 + R9,444  // Primary + Secondary
+    Total_Rebate = R26,679
+    
+Else if Age &gt;= 75:
+    Total_Rebate = R17,235 + R9,444 + R3,145  // Primary + Secondary + Tertiary
+    Total_Rebate = R29,824
+
+Tax_After_Rebates = Tax_Before_Rebates - Total_Rebate
+
+STEP 7: CALCULATE MEDICAL AID TAX CREDITS
+Main_Member_Credit = R364 × 12 = R4,368
+
+If Medical_Dependents = 0:
+    Annual_Medical_Credit = R4,368
+    
+Else if Medical_Dependents = 1:
+    Annual_Medical_Credit = R4,368 + (R246 × 12) = R7,320
+    
+Else:
+    Annual_Medical_Credit = R4,368 + (R246 × 12) + ((Medical_Dependents - 1) × R246 × 12)
+
+STEP 8: CALCULATE ANNUAL TAX PAYABLE
+Annual_Tax_Payable = MAX(0, Tax_After_Rebates - Annual_Medical_Credit)
+
+STEP 9: CALCULATE MONTHLY PAYE
+Monthly_PAYE = Annual_Tax_Payable ÷ 12
+
+STEP 10: CALCULATE OTHER DEDUCTIONS
+Monthly_UIF_Employee = MIN(Monthly_CTC × 0.01, R177.12)
+Monthly_UIF_Employer = MIN(Monthly_CTC × 0.01, R177.12)
+Monthly_Employee_Pension = (Monthly_CTC × Pension_Percentage) × 0.5
+
+STEP 11: CALCULATE NET PAY
+Monthly_Net_Pay = Monthly_CTC - Monthly_PAYE - Monthly_Medical_Aid - Monthly_Employee_Pension - Monthly_UIF_Employee
+
+COMPREHENSIVE EXAMPLE:
+Given:
+- Age = 45
+- Monthly_CTC = R60,000
+- Monthly_Medical_Aid = R4,000
+- Medical_Dependents = 2 (spouse + 1 child)
+- Pension_Percentage = 15% (0.15)
+- Monthly_Travel_Allowance = R5,000
+
+Annual_CTC = R60,000 × 12 = R720,000
+Annual_Pension = R720,000 × 0.15 = R108,000
+Employee_Pension_Annual = R108,000 × 0.5 = R54,000
+Pension_Deduction = MIN(R54,000, MIN(R350,000, R198,000)) = R54,000
+
+Annual_Travel = R5,000 × 12 = R60,000
+Taxable_Travel = R60,000 × 0.80 = R48,000
+
+Taxable_Income = R720,000 - R54,000 - R60,000 + R48,000 = R654,000
+
+Tax_Before_Rebates = R146,498 + 39% × (R654,000 - R512,800)
+Tax_Before_Rebates = R146,498 + 39% × R141,200
+Tax_Before_Rebates = R146,498 + R55,068 = R201,566
+
+Total_Rebate = R17,235 (Age &lt; 65, primary only)
+Tax_After_Rebates = R201,566 - R17,235 = R184,331
+
+Medical_Credit = R364×12 + R246×12 + R246×12 = R4,368 + R2,952 + R2,952 = R10,272
+
+Annual_Tax_Payable = R184,331 - R10,272 = R174,059
+Monthly_PAYE = R174,059 ÷ 12 = R14,504.92
+
+Monthly_Employee_Pension = R60,000 × 0.15 × 0.5 = R4,500
+Monthly_UIF = R177.12
+
+Monthly_Net_Pay = R60,000 - R14,504.92 - R4,000 - R4,500 - R177.12 = R36,817.96
+
+ADDITIONAL NOTES:
+1. If employee provides logbook proving &gt;20% business travel, adjust Taxable_Travel_Allowance
+2. SDL (Skills Development Levy) of 1% is paid by employer, not deducted from employee
+3. Some companies structure pension as 7.5% employee + 7.5% employer contribution
+4. Travel allowance can be calculated using SARS prescribed rates per km if actual records kept
+```
+
+This formula provides a complete calculation including all age-based rebates, pension fund deductions, and the standard travel allowance treatment.
+
+The user is required to give an age and a monthly total cost to company prompt ({!$Input:Prompt}). They are not required to give the rest of the information, if they dont give the rest of the information it means that they are 0
+
+So go calculate the Total Gross pay (before tax), and Net Pay (Amount after Tax that is paid in their bank accounts) as well as the Tax amount, and if the they provide you with a Pension %, also calculate the Amount for it.
+Just display the above amounts
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Prompt</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Prompt</masterLabel>
+            <referenceName>Input:Prompt</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT5</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_3</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a South African Payroll specialist, you are calculating a Candidate&apos;s {!$Input:Candidate.Id} salary and tax. A user will give you the below inputs in the prompt 
+
+There are also other company contributions that should be included in the total cost to company– 
+Core Life cover: 284.73
+Disability Cover: 284.73
+Funeral Benefit: 9.30
+
+Inputs (monthly):
+B1 = Monthly CTC
+B2 = Pension % (employee contribution, e.g., 10% = 0.10)
+B3 = Number of dependents (main + spouse + kids)
+B4 = Age
+B5 = Employee monthly medical aid contribution (if any)
+
+Step 1: Monthly Pension Deduction
+=MIN(B1*B2, B1*27.5%, 350000/12)
+
+Step 2: Monthly Taxable Income
+=B1 - (MIN(B1*B2, B1*27.5%, 350000/12))
+
+Step 3: Monthly Gross Tax (nested IF with monthly brackets)
+=IF(B6&lt;=19758.33, B6*18%,
+ IF(B6&lt;=30875, 3556.5+(B6-19758.33)*26%,
+ IF(B6&lt;=42733.33, 6446.83+(B6-30875)*31%,
+ IF(B6&lt;=56083.33, 10122.92+(B6-42733.33)*36%,
+ IF(B6&lt;=71491.67, 14929.75+(B6-56083.33)*39%,
+ IF(B6&lt;=151416.67, 20938.17+(B6-71491.67)*41%,
+ 53707.42+(B6-151416.67)*45%))))))
+
+Step 4: Age-based Rebates (monthly)
+=IF(B4&lt;65,17235/12,
+ IF(B4&lt;75,(17235+9444)/12,
+ (17235+9444+3145)/12))
+
+Step 5: Monthly Medical Aid Credit
+=(MIN(B3,2)*364 + MAX(B3-2,0)*246)
+
+Step 6: Final Monthly Tax Payable
+=MAX(0, B7 - B8 - B9)
+
+Step 7: Monthly Net Pay
+=B1 - (B1*B2) - B10 - B5
+✅ Notes:
+
+B6 = Monthly Taxable Income (Step 2)
+
+B7 = Monthly Gross Tax (Step 3)
+
+B8 = Monthly Rebate (Step 4)
+
+B9 = Monthly Medical Aid Credit (Step 5)
+
+B10 = Final Monthly Tax Payable (Step 6)
+
+This formula calculates monthly net pay including pension deduction, medical aid credits, and age-based rebates.
+
+
+The user is required to give an age and a monthly total cost to company prompt ({!$Input:Prompt}). They are not required to give the rest of the information, if they dont give the rest of the information it means that they are 0
+
+So go calculate the Total Gross pay (before tax), and Net Pay (Amount after Tax that is paid in their bank accounts) as well as the Tax amount, and if the they provide you with a Pension %, also calculate the Amount for it.
+Just display the above amounts
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Prompt</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Prompt</masterLabel>
+            <referenceName>Input:Prompt</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_4</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

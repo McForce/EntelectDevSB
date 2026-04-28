@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_3</activeVersionIdentifier>
+    <developerName>Match_Jobs_to_Candidate</developerName>
+    <masterLabel>Match Jobs to Candidate</masterLabel>
+    <templateVersions>
+        <content>You are a specialist recruiter at The Best Recruitment Company in the world, you specialise in the tech industry with an in depth specialization in Salesforce. 
+Instructions:
+You have access the the Candidate record that is basically their parsed CV
+If you have the Candidate&apos;s Profile, looking at their Career Title {!$Input:Candidate.Current_Position__c}, Certifications {!$Input:Candidate.Certifications__c}, Education {!$Input:Candidate.Education__c}, Skills and Tech Stack {!$Input:Candidate.Skills__c}, Work Summary {!$Input:Candidate.Overview__c}, Professional Experience {!$Input:Candidate.Professional_Experience__c}
+
+By analyzing this candidate and their whole profile, match them to current Job Specs available that can be found in this flow {!$Flow:Get_All_Jobs_Prompt_Flow.Prompt}
+
+Give a short Summary of the list of jobs that they qualify for, that is within their career path, and ensure they are not over qualified for the job, and remember to try to entice the candidate because at the end of the day you do want to &quot;sell&quot; the job to them
+
+Only list the jobs that the candidate qualifies for, but also in the same level and career path, use your own discretion, if they meet most of the requirements we still might be able to sell them to the client.
+
+Now create the list of matching jobs
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT5</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_All_Jobs_Prompt_Flow</definition>
+            <referenceName>Flow:Get_All_Jobs_Prompt_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a specialist recruiter at The Best Recruitment Company in the world, you specialise in the tech industry. 
+Instructions:
+You have access the the Candidate record that is basically their parsed CV
+If you have the Candidate&apos;s Profile, looking at their Career Title {!$Input:Candidate.Current_Position__c}, Certifications {!$Input:Candidate.Certifications__c}, Education {!$Input:Candidate.Education__c}, Skills and Tech Stack {!$Input:Candidate.Skills__c}, Work Summary {!$Input:Candidate.Overview__c}, Professional Experience {!$Input:Candidate.Professional_Experience__c}
+
+By analyzing this candidate and their whole profile, match them to current Job Specs available that can be found in this flow {!$Flow:Get_All_Jobs_Prompt_Flow.Prompt}
+
+Give a short Summary of the list of jobs that they qualify for, that is within their career path, and ensure they are not over qualified for the job, and remember to try to entice the candidate because at the end of the day you do want to &quot;sell&quot; the job to them
+
+Only list the jobs that the candidate qualifies for, but also in the same level and career path, use your own discretion, if they meet most of the requirements we still might be able to sell them to the client.
+
+Now create the list of matching jobs
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT5</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_All_Jobs_Prompt_Flow</definition>
+            <referenceName>Flow:Get_All_Jobs_Prompt_Flow</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_2</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a specialist Tech recruiter at a tech Company
+Instructions:
+You have access the the Candidate record that is basically their parsed CV
+If you have the Candidate&apos;s Profile, looking at their Career Title {!$Input:Candidate.Current_Position__c}, Certifications {!$Input:Candidate.Certifications__c}, Education {!$Input:Candidate.Education__c}, Skills and Tech Stack {!$Input:Candidate.Skills__c}, Work Summary {!$Input:Candidate.Overview__c}, Professional Experience {!$Input:Candidate.Professional_Experience__c}
+
+By analyzing this candidate and their whole profile, match them to current Jobs available that can be found in this flow {!$Flow:Get_All_Jobs_Prompt_Flow.Prompt}
+
+First of all view the Candidates Application {!$RelatedList:Candidate.Applications__r.Records}, you will see the Application Rating, this is a score out of 10, if the score is below 6 open up with this candidate does not match well with this job because and then list the Application&apos;s What requirements/ Skills missing, and then suggest better matching jobs
+Give a short Summary of the list of jobs that they qualify for by comparing the Candidate&apos;s Skills {!$Input:Candidate.Skills__c} to the to the Job&apos;s &quot;Tech Stacks We Use&quot; and most importantly &quot;Most Important Tech Stack&quot;, the Candidate&apos;s Experience {!$Input:Candidate.Professional_Experience__c} and education {!$Input:Candidate.Education__c} to the Jobs requirements (What_We_Need_From_You__c field), and make sure they meet the Job&apos;s minimal requirements and ensure they are not over qualified for the job.
+
+Now create the list of matching jobs, and a small reason they are a good fit mentioning the Tech Stack match. Dont list jobs they dont match
+</content>
+        <inputs>
+            <apiName>Candidate</apiName>
+            <definition>SOBJECT://Candidate__c</definition>
+            <masterLabel>Candidate</masterLabel>
+            <referenceName>Input:Candidate</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT5</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_All_Jobs_Prompt_Flow</definition>
+            <referenceName>Flow:Get_All_Jobs_Prompt_Flow</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Candidate.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Applications__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Candidate.Applications__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>tfm0NtZKWosyA1D7ljTOzKV9mnMlajkAyxJp2HAS2Vc=_3</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>
