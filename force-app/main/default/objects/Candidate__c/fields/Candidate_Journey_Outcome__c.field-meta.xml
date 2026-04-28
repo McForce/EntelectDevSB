@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Candidate_Journey_Outcome__c</fullName>
+    <label>Candidate Journey Outcome</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Candidate Driven - Withdrew Application</fullName>
+                <default>false</default>
+                <label>Candidate Driven - Withdrew Application</label>
+            </value>
+            <value>
+                <fullName>Candidate Driven - Not Interested in Role</fullName>
+                <default>false</default>
+                <label>Candidate Driven - Not Interested in Role</label>
+            </value>
+            <value>
+                <fullName>Candidate Driven - Non-Responsive</fullName>
+                <default>false</default>
+                <label>Candidate Driven - Non-Responsive</label>
+            </value>
+            <value>
+                <fullName>Candidate Driven - Accepted Another Offer</fullName>
+                <default>false</default>
+                <label>Candidate Driven - Accepted Another Offer</label>
+            </value>
+            <value>
+                <fullName>Candidate Driven - Happy at current Company</fullName>
+                <default>false</default>
+                <label>Candidate Driven - Happy at current Company</label>
+            </value>
+            <value>
+                <fullName>Candidate Driven - Salary/Compensation Expectations Not Met</fullName>
+                <default>false</default>
+                <label>Candidate Driven - Salary/Compensation Expectations Not Met</label>
+            </value>
+            <value>
+                <fullName>Company Driven - Skills Mismatch</fullName>
+                <default>false</default>
+                <label>Company Driven - Skills Mismatch</label>
+            </value>
+            <value>
+                <fullName>Company Driven - Insufficient Experience</fullName>
+                <default>false</default>
+                <label>Company Driven - Insufficient Experience</label>
+            </value>
+            <value>
+                <fullName>Company Driven - Overqualified</fullName>
+                <default>false</default>
+                <label>Company Driven - Overqualified</label>
+            </value>
+            <value>
+                <fullName>Company Driven - Cultural or Team Fit Concerns</fullName>
+                <default>false</default>
+                <label>Company Driven - Cultural or Team Fit Concerns</label>
+            </value>
+            <value>
+                <fullName>Company Driven - Budget or Hiring Freeze</fullName>
+                <default>false</default>
+                <label>Company Driven - Budget or Hiring Freeze</label>
+            </value>
+            <value>
+                <fullName>Company Driven - Better Qualified Candidates Selected</fullName>
+                <default>false</default>
+                <label>Company Driven - Better Qualified Candidates Selected</label>
+            </value>
+            <value>
+                <fullName>Company Driven - No Current Openings Matching Profile</fullName>
+                <default>false</default>
+                <label>Company Driven - No Current Openings Matching Profile</label>
+            </value>
+            <value>
+                <fullName>Company Driven - Failed screening (background, assessment, test, etc.)</fullName>
+                <default>false</default>
+                <label>Company Driven - Failed screening (background, assessment, test, etc.)</label>
+            </value>
+            <value>
+                <fullName>Other - please specify in note</fullName>
+                <default>false</default>
+                <label>Other - please specify in note</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

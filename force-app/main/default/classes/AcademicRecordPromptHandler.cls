@@ -1,4 +1,3 @@
-
 public with sharing class AcademicRecordPromptHandler {
 
     public class Request {

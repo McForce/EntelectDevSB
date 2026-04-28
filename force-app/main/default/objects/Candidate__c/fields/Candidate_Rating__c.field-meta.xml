@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Candidate_Rating__c</fullName>
+    <description>Green: Solid Candidate, meet most of requirements, have degrees, certs etc
+Amber: Doesnt meet all of the requirements but will still be considered 
+Red: Meets none of the requirements
+DO NOT CONTACT: Candidate asked to not be contacted or something problematic occurred</description>
+    <label>Candidate Rating</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Green</fullName>
+                <default>false</default>
+                <label>Green</label>
+            </value>
+            <value>
+                <fullName>Amber</fullName>
+                <default>false</default>
+                <label>Amber</label>
+            </value>
+            <value>
+                <fullName>Red</fullName>
+                <default>false</default>
+                <label>Red</label>
+            </value>
+            <value>
+                <fullName>DO NOT CONTACT</fullName>
+                <default>false</default>
+                <label>DO NOT CONTACT</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

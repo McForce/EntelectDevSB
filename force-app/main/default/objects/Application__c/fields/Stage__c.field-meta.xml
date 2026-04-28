@@ -10,49 +10,29 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>New</fullName>
+                <fullName>Pre-Screen</fullName>
                 <default>false</default>
-                <label>New</label>
+                <label>Pre-Screen</label>
             </value>
             <value>
-                <fullName>Recruiter Review</fullName>
+                <fullName>Telephonic Screening</fullName>
                 <default>false</default>
-                <label>Recruiter Review</label>
+                <label>Telephonic Screening</label>
             </value>
             <value>
-                <fullName>Recruiter Interview</fullName>
+                <fullName>Interview</fullName>
                 <default>false</default>
-                <label>Recruiter Interview</label>
+                <label>Interview</label>
             </value>
             <value>
-                <fullName>Hiring Manager Interview</fullName>
+                <fullName>Offer</fullName>
                 <default>false</default>
-                <label>Hiring Manager Interview</label>
+                <label>Offer</label>
             </value>
             <value>
-                <fullName>Post  manager interview</fullName>
+                <fullName>Successful</fullName>
                 <default>false</default>
-                <label>Post  manager interview</label>
-            </value>
-            <value>
-                <fullName>Review Verifications</fullName>
-                <default>false</default>
-                <label>Review Verifications</label>
-            </value>
-            <value>
-                <fullName>Salary negotiations</fullName>
-                <default>false</default>
-                <label>Salary negotiations</label>
-            </value>
-            <value>
-                <fullName>Contract creation</fullName>
-                <default>false</default>
-                <label>Contract creation</label>
-            </value>
-            <value>
-                <fullName>Contract signed</fullName>
-                <default>false</default>
-                <label>Contract signed</label>
+                <label>Successful</label>
             </value>
             <value>
                 <fullName>Started</fullName>
@@ -63,6 +43,65 @@
                 <fullName>Unsuccessful</fullName>
                 <default>false</default>
                 <label>Unsuccessful</label>
+            </value>
+            <value>
+                <fullName>Potential Jedi</fullName>
+                <default>false</default>
+                <label>Potential Jedi</label>
+            </value>
+            <value>
+                <fullName>Contract creation</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Contract creation</label>
+            </value>
+            <value>
+                <fullName>Contract signed</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Contract signed</label>
+            </value>
+            <value>
+                <fullName>Hiring Manager Interview</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Hiring Manager Interview</label>
+            </value>
+            <value>
+                <fullName>New</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Post  manager interview</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Post  manager interview</label>
+            </value>
+            <value>
+                <fullName>Recruiter Interview</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Recruiter Interview</label>
+            </value>
+            <value>
+                <fullName>Recruiter Review</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Recruiter Review</label>
+            </value>
+            <value>
+                <fullName>Review Verifications</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Review Verifications</label>
+            </value>
+            <value>
+                <fullName>Salary negotiations</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Salary negotiations</label>
             </value>
         </valueSetDefinition>
     </valueSet>

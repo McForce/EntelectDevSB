@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Potential_Jedi_No_Edit</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(Stage__c, &quot;Potential Jedi&quot;),
+    NOT(ISCHANGED(Stage__c)),
+    NOT(ISNEW())
+)</errorConditionFormula>
+    <errorMessage>You cannot edit a Candidate while in &apos;Potential Jedi&apos; Stage</errorMessage>
+</ValidationRule>

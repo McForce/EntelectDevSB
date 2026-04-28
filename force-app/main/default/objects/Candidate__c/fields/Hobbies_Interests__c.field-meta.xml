@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hobbies_Interests__c</fullName>
+    <description>Personal interests and hobbies.</description>
+    <inlineHelpText>Personal interests and hobbies.</inlineHelpText>
+    <label>Hobbies &amp; Interests</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

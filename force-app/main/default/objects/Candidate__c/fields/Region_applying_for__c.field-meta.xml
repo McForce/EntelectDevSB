@@ -3,6 +3,7 @@
     <fullName>Region_applying_for__c</fullName>
     <label>Region applying for</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>

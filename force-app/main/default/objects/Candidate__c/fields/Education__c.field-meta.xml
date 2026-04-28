@@ -4,6 +4,7 @@
     <description>Summary of the candidate’s academic qualifications, degrees, and institutions.</description>
     <label>Education</label>
     <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>
     <visibleLines>3</visibleLines>

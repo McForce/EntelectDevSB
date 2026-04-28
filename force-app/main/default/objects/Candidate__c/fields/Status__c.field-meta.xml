@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <label>Status</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Awaiting Info</fullName>
+                <default>false</default>
+                <label>Awaiting Info</label>
+            </value>
+            <value>
+                <fullName>Candidate Assigned</fullName>
+                <default>false</default>
+                <label>Candidate Assigned</label>
+            </value>
+            <value>
+                <fullName>Candidate Based in another Location</fullName>
+                <default>false</default>
+                <label>Candidate Based in another Location</label>
+            </value>
+            <value>
+                <fullName>Candidate Research</fullName>
+                <default>false</default>
+                <label>Candidate Research</label>
+            </value>
+            <value>
+                <fullName>Client Check - Awaiting Approval</fullName>
+                <default>false</default>
+                <label>Client Check - Awaiting Approval</label>
+            </value>
+            <value>
+                <fullName>Competiror/Supplier Relationship</fullName>
+                <default>false</default>
+                <label>Competiror/Supplier Relationship</label>
+            </value>
+            <value>
+                <fullName>Contacted</fullName>
+                <default>false</default>
+                <label>Contacted</label>
+            </value>
+            <value>
+                <fullName>Currently based at our client</fullName>
+                <default>false</default>
+                <label>Currently based at our client</label>
+            </value>
+            <value>
+                <fullName>Declined by Candidate(Before interview)</fullName>
+                <default>false</default>
+                <label>Declined by Candidate(Before interview)</label>
+            </value>
+            <value>
+                <fullName>Declined by Entelect</fullName>
+                <default>false</default>
+                <label>Declined by Entelect</label>
+            </value>
+            <value>
+                <fullName>Declined by Entelect (By Council at offer stage)</fullName>
+                <default>false</default>
+                <label>Declined by Entelect (By Council at offer stage)</label>
+            </value>
+            <value>
+                <fullName>Do not contact</fullName>
+                <default>false</default>
+                <label>Do not contact</label>
+            </value>
+            <value>
+                <fullName>Dont Revisit - Poor Profile</fullName>
+                <default>false</default>
+                <label>Dont Revisit - Poor Profile</label>
+            </value>
+            <value>
+                <fullName>Draft Offer</fullName>
+                <default>false</default>
+                <label>Draft Offer</label>
+            </value>
+            <value>
+                <fullName>Interview</fullName>
+                <default>false</default>
+                <label>Interview</label>
+            </value>
+            <value>
+                <fullName>Lost Lead</fullName>
+                <default>false</default>
+                <label>Lost Lead</label>
+            </value>
+            <value>
+                <fullName>No current Requirements</fullName>
+                <default>false</default>
+                <label>No current Requirements</label>
+            </value>
+            <value>
+                <fullName>No response from Candidate after contact</fullName>
+                <default>false</default>
+                <label>No response from Candidate after contact</label>
+            </value>
+            <value>
+                <fullName>Offer accepted</fullName>
+                <default>false</default>
+                <label>Offer accepted</label>
+            </value>
+            <value>
+                <fullName>Offer accepted - Start date pending</fullName>
+                <default>false</default>
+                <label>Offer accepted - Start date pending</label>
+            </value>
+            <value>
+                <fullName>Offer Declined</fullName>
+                <default>false</default>
+                <label>Offer Declined</label>
+            </value>
+            <value>
+                <fullName>Offered</fullName>
+                <default>false</default>
+                <label>Offered</label>
+            </value>
+            <value>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+                <label>On Hold</label>
+            </value>
+            <value>
+                <fullName>On Hold - Graduate Interview</fullName>
+                <default>false</default>
+                <label>On Hold - Graduate Interview</label>
+            </value>
+            <value>
+                <fullName>Please decline</fullName>
+                <default>false</default>
+                <label>Please decline</label>
+            </value>
+            <value>
+                <fullName>Please make an offer</fullName>
+                <default>false</default>
+                <label>Please make an offer</label>
+            </value>
+            <value>
+                <fullName>Please setup Interview</fullName>
+                <default>false</default>
+                <label>Please setup Interview</label>
+            </value>
+            <value>
+                <fullName>Please setup screening call</fullName>
+                <default>false</default>
+                <label>Please setup screening call</label>
+            </value>
+            <value>
+                <fullName>Pre-screen</fullName>
+                <default>false</default>
+                <label>Pre-screen</label>
+            </value>
+            <value>
+                <fullName>Profile no longer relevant (dont revisit)</fullName>
+                <default>false</default>
+                <label>Profile no longer relevant (dont revisit)</label>
+            </value>
+            <value>
+                <fullName>Resigned</fullName>
+                <default>false</default>
+                <label>Resigned</label>
+            </value>
+            <value>
+                <fullName>Still Studying</fullName>
+                <default>false</default>
+                <label>Still Studying</label>
+            </value>
+            <value>
+                <fullName>To be merged</fullName>
+                <default>false</default>
+                <label>To be merged</label>
+            </value>
+            <value>
+                <fullName>Technical Interview Set</fullName>
+                <default>false</default>
+                <label>Technical Interview Set</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

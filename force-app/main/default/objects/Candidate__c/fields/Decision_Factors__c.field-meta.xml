@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Decision_Factors__c</fullName>
+    <description>Key factors influencing candidate’s job decision.</description>
+    <inlineHelpText>Key factors influencing candidate’s job decision.</inlineHelpText>
+    <label>Decision Factors</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

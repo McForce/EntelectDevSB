@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actively_Interviewing__c</fullName>
+    <description>Whether the candidate is currently interviewing elsewhere.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Whether the candidate is currently interviewing elsewhere.</inlineHelpText>
+    <label>Actively Interviewing</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

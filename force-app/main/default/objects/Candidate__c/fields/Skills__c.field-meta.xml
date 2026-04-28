@@ -4,6 +4,7 @@
     <description>List of technical and soft skills tagged to the candidate (e.g., Apex, LWC, Agile, Communication).</description>
     <label>Skills</label>
     <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>
     <visibleLines>3</visibleLines>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Employee_Status__c</fullName>
+    <label>Employee Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Applicant - Not yet hired</fullName>
+                <default>true</default>
+                <label>Applicant - Not yet hired</label>
+            </value>
+            <value>
+                <fullName>TFO</fullName>
+                <default>false</default>
+                <label>TFO</label>
+            </value>
+            <value>
+                <fullName>On a Client Engagement</fullName>
+                <default>false</default>
+                <label>On a Client Engagement</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

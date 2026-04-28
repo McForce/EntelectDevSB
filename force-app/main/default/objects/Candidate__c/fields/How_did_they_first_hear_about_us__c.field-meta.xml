@@ -3,6 +3,7 @@
     <fullName>How_did_they_first_hear_about_us__c</fullName>
     <label>How did they first hear about us</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>

@@ -3,6 +3,7 @@
     <fullName>Fields_Updated_by_AI__c</fullName>
     <defaultValue>false</defaultValue>
     <label>Fields Updated by AI</label>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>
 </CustomField>

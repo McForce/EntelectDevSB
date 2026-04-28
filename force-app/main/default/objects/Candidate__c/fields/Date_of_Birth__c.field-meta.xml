@@ -4,6 +4,7 @@
     <description>Candidate’s date of birth, useful for background checks or demographics (ensure compliance with local data privacy laws).</description>
     <label>Date of Birth</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>
     <type>Date</type>
 </CustomField>

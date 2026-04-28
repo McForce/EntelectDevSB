@@ -4,6 +4,7 @@
     <description>AI Generated overview of Candidate&apos;s CV</description>
     <label>Overview</label>
     <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>
     <visibleLines>3</visibleLines>

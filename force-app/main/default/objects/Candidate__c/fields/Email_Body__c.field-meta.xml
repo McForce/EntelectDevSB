@@ -4,6 +4,7 @@
     <description>For Automation purposes</description>
     <label>Email Body</label>
     <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>
     <type>Html</type>
     <visibleLines>10</visibleLines>

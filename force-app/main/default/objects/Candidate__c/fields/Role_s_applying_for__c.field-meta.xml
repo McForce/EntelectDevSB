@@ -4,6 +4,7 @@
     <description>Roles indicated by candidate that that are interested in</description>
     <label>Role/s applying for</label>
     <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>
     <visibleLines>3</visibleLines>

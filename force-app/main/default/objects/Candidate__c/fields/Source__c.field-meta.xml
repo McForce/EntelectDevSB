@@ -3,6 +3,7 @@
     <fullName>Source__c</fullName>
     <label>Source</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -43,6 +44,11 @@
                 <fullName>Pnet</fullName>
                 <default>false</default>
                 <label>Pnet</label>
+            </value>
+            <value>
+                <fullName>Wiza</fullName>
+                <default>false</default>
+                <label>Wiza</label>
             </value>
         </valueSetDefinition>
     </valueSet>

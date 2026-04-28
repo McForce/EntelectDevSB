@@ -12,6 +12,7 @@ public with sharing class CandidateController {
             WHERE Id = :projectRoleId
             LIMIT 1
         ];
+        System.debug('Project Role: ' + projectRole);
 
         // 2. Build a map of required skills for easy comparison
         Map<Id, Candidate_Skill__c> requiredSkills = new Map<Id, Candidate_Skill__c>();
@@ -22,6 +23,8 @@ public with sharing class CandidateController {
                 requiredSkills.put(reqSkill.Skill__c, reqSkill);
             }
         }
+
+        System.debug('Required Skills: ' + requiredSkills);
 
         // 3. Query candidates that match base filters
         List<Candidate__c> candidates = [
@@ -34,6 +37,8 @@ public with sharing class CandidateController {
             ORDER BY CreatedDate DESC
             LIMIT 200
         ];
+
+        System.debug('Candidates Fetched: ' + candidates.size());
 
         // 4. Proficiency ranking helper
         Map<String, Integer> proficiencyRank = new Map<String, Integer>{
@@ -87,6 +92,7 @@ public with sharing class CandidateController {
                 }
                 // If candidate doesn't have this required skill at all
                 if (!foundMatch) {
+                    System.debug('Candidate ' + cand.Name + ' missing required skill: ' + reqSkill.Skill__c);
                     meetsAll = false;
                 }
                 if (!meetsAll) break;

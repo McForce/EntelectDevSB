@@ -3,6 +3,7 @@
     <fullName>Years_of_Experience__c</fullName>
     <label>Years of Experience</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>

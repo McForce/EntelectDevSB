@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Academic_Record_Average__c</fullName>
+    <label>Academic Record Average</label>
+    <summarizedField>Academic_Record__c.Average__c</summarizedField>
+    <summaryForeignKey>Academic_Record__c.Candidate__c</summaryForeignKey>
+    <summaryOperation>max</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

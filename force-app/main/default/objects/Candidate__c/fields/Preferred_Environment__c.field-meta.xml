@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Preferred_Environment__c</fullName>
+    <description>Ideal working environment (e.g., remote, hybrid, in-office).</description>
+    <inlineHelpText>Ideal working environment (e.g., remote, hybrid, in-office).</inlineHelpText>
+    <label>Preferred Environment</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>
